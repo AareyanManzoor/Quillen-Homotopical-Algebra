@@ -1,0 +1,165 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Closed model categories}\label{sec:1.5}
+We will say that a map $i : A \longrightarrow B$ has the \defemphi{left lifting property} with respect to a class $S$ of maps in a category $\mathbf C$ if the dotted arrow exists in any diagram of the form
+%TODO: label 1
+\[\tag{1}\label{diag:1.5.1}
+    \begin{tikzcd}
+    A \arrow[dd, "i"'] \arrow[rr]     &  & X \arrow[dd, "f"] \\
+                                      &  &                   \\
+    B \arrow[rr] \arrow[rruu, dashed] &  & Y                
+    \end{tikzcd}
+\]
+where $f$ is in the class $S$. Similarly $f$ has the \defemph{right lifting property} with respect to $S$ if the dotted arrow exists in any diagram of the form (\ref{diag:1.5.1}) where $i$ is in $S$.
+
+\begin{definition}
+A model category $\mathbf C$ is said to be \defemph{closed}\index{closed model category}\index{model category!\indexline closed} if it satisfies the axiom
+
+\begin{enumerate}[label = M6]
+    \item\label{M6} Any two of the following classes of maps in $\mathbf C$ -- the fibrations, cofibrations, and weak equivalences -- determine the third by the following rules:
+
+\begin{itemize}
+    \item[(a)] A map is a fibration $\iff$ it has the right lifting property with respect to the maps which are both cofibrations and weak equivalences
+    \item[(b)] A map is a cofibration $\iff$ it has the left lifting property with respect to the maps which are both fibrations and weak equivalences.
+    \item[(c)] A map $f$ is a weak equivalence $\iff$ $f = uv$ where $v$ has the left lifting property with respect to the class of fibrations and $u$ has the right lifting property with respect to the class of cofibrations.
+\end{itemize} \end{enumerate}
+\end{definition} 
+
+\begin{remarks*}
+\begin{enumerate}
+    \item It is clear that \ref{M6} implies \ref{1.1.M1}, \ref{1.1.M3}, and \ref{1.1.M4}. Hence a closed model category may be defined using axioms \ref{1.1.M0}, \ref{1.1.M2}, \ref{1.1.M5}, and \ref{M6}.
+    \item Examples \ref{ex:1.1.A}, \ref{ex:1.1.B} and \ref{ex:1.1.C} of \S\ref{sec:1.1} are all closed model categories (see proposition \ref{prop:1.5.2} below). Model categories which are not closed may be constructed by reducing the class of cofibrations but keeping \ref{1.1.M2}, \ref{1.1.M3} and \ref{1.1.M4} valid. For example, take example \ref{ex:1.1.B}, \S\ref{sec:1.1}, where $\mathbf A$ is the category of left $R$ modules, $R$ a ring, and define cofibrations to be injective maps $f$ in $C_+(\mathbf A)$ such that $\Coker f$ is a complex of \defemph{free} $R$ modules.
+\end{enumerate} 
+\end{remarks*} 
+
+In the following $\mathbf C$ is a fixed model category and we retain the notations of the previous sections.
+
+\begin{lemma}\label{lem:1.5.1}
+Let $p : X \longrightarrow Y$ be a fibration $\mathbf C_{cf}$. The following are equivalent.
+\begin{itemize}
+    \item[(i)] $p$ has the right lifting property with respect to the cofibrations.
+    \item[(ii)] $p$ is the dual of a strong deformation retract map in the following prcise sense: there is a map $t : Y \longrightarrow X$ with $pt = \id_Y$ and there is a homotopy $h : X \times I \longrightarrow X$ from $tp$ to $\id_X$ with $ph = p\sigma$. 
+    \item[(iii)] $\gamma(p)$ is an isomorphism. 
+\end{itemize}
+\end{lemma} 
+
+\begin{proof}\phantom{}
+\begin{implyenumerate}
+    \item[(i) $\implies$ (ii)]  One lifts successively in
+\begin{equation*}
+    \begin{tikzcd}
+    \emptyset \arrow[dd] \arrow[rr]                  &  & X \arrow[dd, "P"] \\
+                                                     &  &                   \\
+    Y \arrow[rr, "\id_Y"'] \arrow[rruu, "t", dashed] &  & Y                
+    \end{tikzcd}
+    \quad 
+    \begin{tikzcd}
+    X \vee X \arrow[dd, "\partial_0+\partial_1"'] \arrow[rr, "tp+\id_X"] &  & X \arrow[dd, "f"] \\
+                                                                         &  &                   \\
+    X\times I \arrow[rr, "p\sigma"] \arrow[rruu, "h", dashed]            &  & Y                
+    \end{tikzcd}
+\end{equation*}
+    
+    \item[(ii) $\implies$ (i)] Let $p^I : X^I \longrightarrow \gamma^I$ be a compatible choice of path objects for $X$ and $Y$ as in the beginning of \S\ref{sec:1.2} and let $Q$ be a lifting in
+\begin{center}
+    \begin{tikzcd}
+    X \arrow[rr, "s^X"] \arrow[dd, "\partial_1"']                          &  & X^I \arrow[dd, "{(d_0^X, p^I, d_1^X)}"] \\
+                                                                           &  &                                         \\
+    X\times I \arrow[rruu, "Q"'] \arrow[rr, "{(h, s^Y, p\sigma, \sigma)}"] &  & X \times_Y Y^I \times_Y X              
+    \end{tikzcd}
+\end{center} 
+Then $k = Q \partial_0 : X \longrightarrow X^I$ is a right homotopy from $tp$ to $\id_X$ with\\ $p^Ik = s^Y p$. Given the first diagram
+\begin{equation*}
+    \begin{tikzcd}
+    A \arrow[rr, "\alpha"] \arrow[dd, "i"']            &  & X \arrow[dd, "p"] \\
+                                                       &  &                   \\
+    B \arrow[rr, "\beta"] \arrow[rruu, "\phi", dashed] &  & Y                
+    \end{tikzcd}
+    \quad 
+    \begin{tikzcd}
+    A \arrow[rr, "k\alpha"] \arrow[dd, "i"']                        &  & X^I \arrow[dd, "{(d_0^X, p^I)}"] \\
+                                                                    &  &                                  \\
+    B \arrow[rruu, "H", dashed] \arrow[rr, "{(t\beta, s^Y \beta)}"] &  & X \times_\gamma \gamma^I        
+    \end{tikzcd}
+\end{equation*} 
+the dotted arrow $\phi$ may be constructed by choosing a dotted arrow $H$ in the second and setting $\phi = d_1^X H$.
+
+\item[(ii) $\implies$ (iii)] $t$ is a homotopy inverse for $p$, hence $p$ is a homotopy equivalence and $\gamma(p)$ is an isomorphism. 
+
+\item[(iii) $\implies$ (ii)]By Theorem \ref{thm:1} $\gamma(p)$ an isomorphism $\implies$ $p$ is a homotopy equivalence and there is a map $t : Y \longrightarrow X$ with $pt \sim \id_Y$ and $tp \sim \id_X$. By the covering homotopy theorem we may assume that $pt = \id_Y$. Let $q : X \times I \longrightarrow X$ be a left homotopy from $tp$ to $\id_X$. Then the composite homotopy $q^{-1} \cdot tpq : X \times I' \longrightarrow X$ from $\id_X$ to $tp$ covers the composite homotopy $(pq)^{-1} \cdot pq : X \times I' \longrightarrow Y$ from $p$ to $p$. However proposition \ref{prop:1.2.1} implies that $(pq)^{-1} \cdot (pq)$ is left homotopic to $p\sigma : X \times I \longrightarrow Y$, that is, there exists $H : X \times J \longrightarrow Y$ with $H j_0 = p\sigma$ and $H j_1 = (pq)^{-1} \cdot pq$ where $X \times J$, $j_0$, $j_1$, $\tau$ are as in (\ref{diag:1.2.1}) with $A$ replaced by $X$. By a covering homotopy argument which takes the form
+
+\begin{center}
+    \begin{tikzcd}
+    X\times I \arrow[dd, "j_1"'] \arrow[rr, "(pq)^{-1} \cdot (pq)"] &  & X \arrow[dd, "f"] \\
+                                                                      &  &                   \\
+    X\times J \arrow[rr, "H"'] \arrow[rruu, "K"']                     &  & Y                
+    \end{tikzcd}
+\end{center} 
+
+we obtain a left homotopy $K j_0 : X \times I \longrightarrow Y$ from $\id_X$ to $tp$ with $p Kj_0 = p\sigma$ whose inverse is the desired homotopy $h$. 
+\end{implyenumerate}
+
+\end{proof}
+
+\begin{definition*}
+A map $f \colon X \longrightarrow Y$ is said to be a retract of a map $f' : X' \longrightarrow Y'$ if there is a diagram
+
+\begin{center}
+    \begin{tikzcd}
+    && 
+    X' 
+    \arrow[lld] 
+    \arrow[rrd] 
+    \arrow[dd, "f'", pos = 0.3] 
+    \\
+    X 
+    \arrow[rrrr, "\id_X"', crossing over, pos = 0.3] 
+    \arrow[dd, "f"'] 
+    &&&& 
+    X \arrow[dd, "f"] 
+    \\&& 
+    Y'
+    &&\\
+    Y 
+    \arrow[rru] 
+    \arrow[rrrr, "\id_Y"]
+    &&&& 
+    Y 
+    \arrow[llu]    
+    \end{tikzcd}
+\end{center}
+\end{definition*} 
+
+\begin{proposition}\label{prop:1.5.1}
+Let $\mathbf C$ be a closed model category and let $f$ be a map in $\mathbf C$. Then $\gamma(f)$ is an isomorphism iff $f$ is a weak equivalence. 
+\end{proposition} 
+
+\begin{proof}
+The direction $\Leftarrow$ is the basic property of $\gamma$, so we suppose that $\gamma(f)$ is an isomorphism. By \ref{1.1.M5} and \ref{1.1.M2} we reduce to the case where $f$ is a fibration $\mathbf C_{cf}$ whence the result follows from the above lemma and \ref{M6}(c).
+\end{proof} 
+
+\begin{proposition}\label{prop:1.5.2}
+Let $\mathbf C$ be a model category. Then $\mathbf C$ is closed if and only if each of the classes of fibrations, cofibrations, and weak equivalences has the property that any retract of a member of the class is again a member. 
+\end{proposition} 
+
+\begin{proof}\phantom{}
+\begin{enumerate}
+    \item[$\impliedby$]Let $p \colon X \longrightarrow Y$ have the lifting property (\ref{diag:1.5.1}) whenever $i$ is a trivial cofibration. By \ref{1.1.M2} we may factor $p$ into $X \varrightarrow{i} Z \varrightarrow{u} Y$ where $i$ is a trivial cofibration and $u$ is a fibration. By the property of $p$ there is a dotted arrow $s$ in 
+\begin{center}
+    \begin{tikzcd}
+    X \arrow[dd, "i"] \arrow[rr, "\id"]         &  & X \arrow[dd, "p"] \\
+                                                &  &                   \\
+    Z \arrow[rr, "u"] \arrow[rruu, "s", dashed] &  & Y                
+    \end{tikzcd}
+\end{center}
+It follows that $p$ is a) retract of the fibration $u$ and hence that $p$ is a fibration. This proves a since \ref{1.1.M1} gives the $\Rightarrow$ direction of \ref{M6} a), and the proof of b) is similar. Suppose that $f = uv$ as in c. Then by the above argument $u$ is a retract of a trivial cofibration and hence by assumption is a weak equivalence. Similarly $v$ is a weak equivalence and so $f$ is also. This proves c since the implication $\Rightarrow$ is contained in \ref{1.1.M2}, \ref{1.1.M5}, and \ref{1.1.M1}. So $\mathbf C$ is closed.
+
+    \item[$\implies$]It is immediate that a retract of a map with a lifting propety of the kind in \ref{M6} a) b) c) again has that lifting property. Thus the classes of fibrations and cofibrations, are closed under retracts. Let $\gamma : \mathbf C \longrightarrow \Ho \mathbf C$ be the canonical localization functor and suppose that $f$ is a retract of a weak equivalence. Then $\gamma(f)$ is a retract of an isomorphism and hence is an isomorphism so $f$ is a weak equivalence by proposition~\ref{prop:1.5.1}. 
+\end{enumerate}
+\end{proof} 
+
+
+
+
+\end{document}

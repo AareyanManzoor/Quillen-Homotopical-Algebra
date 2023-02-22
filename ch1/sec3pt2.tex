@@ -1,0 +1,193 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\begin{proposition}\label{prop:1.3.5}
+    The class of fibration sequences in \(\Ho\cat{C}\) has the following properties:
+    \begin{enumerate}[(i)]
+        \item\label{prop:1.3.5(i)} Any map \(f:X\longrightarrow  Y\) may be embedded in a fibration sequence 
+        \[
+        F\longrightarrow  X\varrightarrow{f}Y,\quad F\times \Omega Y\longrightarrow  F.
+        \]
+        \item\label{prop:1.3.5(ii)} Given a diagram of solid arrows 
+        % https://q.uiver.app/?q=WzAsMTAsWzAsMCwiRiJdLFsyLDAsIkUiXSxbNCwwLCJCIl0sWzIsMiwiRSciXSxbNCwyLCJCJyJdLFswLDIsIkYnIl0sWzYsMCwiRlxcdGltZXNcXE9tZWdhIEIiXSxbOSwwLCJGIl0sWzYsMiwiRidcXHRpbWVzXFxPbWVnYSBCJyJdLFs5LDIsIkYnIl0sWzAsMSwiaSJdLFsxLDIsInAiXSxbMSwzLCJcXGJldGEiXSxbMiw0LCJcXGFscGhhIl0sWzMsNCwicCciXSxbNSwzLCJpJyJdLFswLDUsIlxcZ2FtbWEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNiw3LCJtIl0sWzgsOSwibSciXSxbNiw4LCJcXGdhbW1hXFx0aW1lc1xcT21lZ2FcXGFscGhhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzcsOSwiXFxnYW1tYSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+\[\tag{8}\label{diag:1.3.8}\begin{tikzcd}
+	F && E && B && {F\times\Omega B} &&& F \\
+	\\
+	{F'} && {E'} && {B'} && {F'\times\Omega B'} &&& {F'}
+	\arrow["i", from=1-1, to=1-3]
+	\arrow["p", from=1-3, to=1-5]
+	\arrow["\beta", from=1-3, to=3-3]
+	\arrow["\alpha", from=1-5, to=3-5]
+	\arrow["{p'}", from=3-3, to=3-5]
+	\arrow["{i'}", from=3-1, to=3-3]
+	\arrow["\gamma", dashed, from=1-1, to=3-1]
+	\arrow["m", from=1-7, to=1-10]
+	\arrow["{m'}", from=3-7, to=3-10]
+	\arrow["\gamma\times\Omega\alpha", dashed, from=1-7, to=3-7]
+	\arrow["\gamma", dashed, from=1-10, to=3-10]
+\end{tikzcd}\]
+        where the rows are fibration sequences, the dotted arrow \(\gamma\) exists.
+        \item\label{prop:1.3.5(iii)} In any diagram \eqref{diag:1.3.8} where the rows are fibration sequences, if \(\alpha\) and \(\beta\) are isomorphisms so is \(\gamma.\)
+        \item Proposition \ref{prop:1.3.3}.
+    \end{enumerate}
+\end{proposition}
+\begin{remark}
+    Proposition \ref{prop:1.3.4} gives the analogues for fibration sequences of all non-trivial axioms for the triangles in a triangulated category (see \cite{verdier_categories_nodate} or \cite{hartshorne_residues_1966}) \defemph{except} the octahedral axiom. The analogue of that axiom holds also, but as far as the author knows, it's not worth the trouble required to write it down. 
+\end{remark}
+\begin{proof}
+    \begin{enumerate}[(i)]
+        \item Any map in \(\Ho\cat{C}\) is isomorphic to a fibration of objects in \(\cat{C}_{cf}.\)
+        \item[(iii)] If \(A\) is any object in \(\Ho\cat{C},\) then Prop. \ref{prop:1.3.4} gives a diagram
+\[
+\begin{tikzcd}
+    {[A,\Omega E]} \arrow[r] \arrow[dd,"S"]
+        & {[A,\Omega B]} \arrow[r] \arrow[dd,"S"]
+            & {[A,F]} \arrow[r] \arrow[dd,"Y_*"]
+                & {[A,E]} \arrow[r] \arrow[dd,"S"]
+                    & {[A,B]} \arrow[dd,"S"]\\ \\
+    {[A,\Omega E']} \arrow[r]
+        & {[A,\Omega B']} \arrow[r]
+            & {[A,F']} \arrow[r]
+                & {[A,E']} \arrow[r]
+                    & {[A,B']} 
+\end{tikzcd}
+\]
+        where the rows are ``exact'' in the sense that (i)-(iii) of Prop. \ref{prop:1.3.4} hold. However this is enough to conclude by the usual \(5\)-lemma argument that \\\(\gamma_*:[A,F]\longrightarrow  [A,F']\) is a bijection for all \(A\) and hence \(\gamma\) is an isomorphism. 
+        \item We may suppose by replacing the diagram \eqref{diag:1.3.8} by an isomorphic diagram if necessary that the rows are constructed in the standard way from fibrations \(p\) and \(p'\) in \(\cat{C}_f.\) Let \(\xtilde{B}\varrightarrow[]{u}B\) be a trivial fibration with \(\xtilde{B}\) cofibrant and let \({\xtilde{E}\varrightarrow{v}\Ex_B\xtilde{B}}\) be a trivial fibration with \(\xtilde{E}\) cofibrant. By \ref{1.1.M4}\\ \(\pr_1:\Ex_B \xtilde{B}\longrightarrow  E\) is a trivial fibration and \(\pr_2:\Ex_B\xtilde{B}\longrightarrow  \xtilde{B}\) is a fibration so we obtain a diagram  
+        % https://q.uiver.app/?q=WzAsNixbMCwwLCJcXHdpZGV0aWxkZXtGfSJdLFsyLDAsIlxcd2lkZXRpbGRle0V9Il0sWzQsMCwiXFx3aWRldGlsZGV7Qn0iXSxbMCwyLCJGIl0sWzIsMiwiRSJdLFs0LDIsIkIiXSxbMCwxLCJcXHdpZGV0aWxkZXtpfSJdLFsxLDIsIlxcb3BlcmF0b3JuYW1le3ByfV8ydiJdLFswLDMsIlxcdmFyZXBzaWxvbiJdLFsxLDQsIlxcb3BlcmF0b3JuYW1le3ByfV8xdiJdLFsyLDUsInUiXSxbNCw1LCJwIiwyXSxbMyw0LCJpIiwyXV0=
+    \[\begin{tikzcd}
+    	{\widetilde{F}} && {\widetilde{E}} && {\widetilde{B}} \\
+    	\\
+      	F && E && B
+    	\arrow["{\widetilde{i}}", from=1-1, to=1-3]
+    	\arrow["{\pr_2v}", from=1-3, to=1-5]
+     	\arrow["\varepsilon", from=1-1, to=3-1]
+    	\arrow["{\pr_1v}", from=1-3, to=3-3]
+    	\arrow["u", from=1-5, to=3-5]
+    	\arrow["p"', from=3-3, to=3-5]
+    	\arrow["i"', from=3-1, to=3-3]
+    \end{tikzcd}\]
+        in \(\cat{C},\) where \(\pr_1 v\) and \(u\) are weak equivalences. It follows easily from the calculation given in Prop. \ref{prop:1.3.2}, that 
+       % https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXHdpZGV0aWxkZXtGfVxcdGltZXMgXFxPbWVnYVxcd2lkZXRpbGRle0IgfSJdLFsyLDAsIlxcd2lkZXRpbGRle0Z9Il0sWzAsMiwiRlxcdGltZXNcXE9tZWdhIEIiXSxbMiwyLCJGIl0sWzAsMSwiXFx3aWRldGlsZGV7bX0iXSxbMCwyXSxbMiwzLCJtIl0sWzEsM11d
+    \[\begin{tikzcd}
+    	{\widetilde{F}\times \Omega\widetilde{B }} && {\widetilde{F}} \\
+    	\\
+    	{F\times\Omega B} && F
+    	\arrow["{\widetilde{m}}", from=1-1, to=1-3]
+    	\arrow[from=1-1, to=3-1]
+    	\arrow["m", from=3-1, to=3-3]
+    	\arrow[from=1-3, to=3-3]
+    \end{tikzcd}\]
+        commutes. Hence by \ref{prop:1.3.5(iii)} the sequence \(\sim\) is isomorphic to first row of \eqref{diag:1.3.8} and so we may suppose that the rows of \eqref{diag:1.3.8} are not only constructed in the standard way form fibrations \(p\) and \(p'\) but that \(E\) and \(B\) are in \(\cat{C}_{cf}.\) Then by Theorem \ref{thm:1} \(\alpha\) and \(\beta\) are represented by maps \(u\) and \(v\) in \(\cat{C}\) with \(p'v\sim up.\) As \(E\) is cofibrant, we may by the corollary of Lemma \ref{lem:1.1.2}, modify \(v,\) so that \(p'v=up.\) Then we may take \(\gamma:F\longrightarrow  F'\) in \eqref{diag:1.3.8} to be the map in \(\cat{C}\) induced by \(v.\) The first part of \eqref{diag:1.3.8} commutes clearly and the second square may be shown to commute in \(\Ho\cat{C}\) by use of Proposition \ref{prop:1.3.2}. This proves \ref{prop:1.3.5(ii)}\qedhere
+    \end{enumerate}
+\end{proof}
+\par The dual proposition for cofibration sequences is left to the reader.
+\par The following proposition will be used in the definition of the Toda bracket.
+\begin{proposition}\label{prop:1.3.6}
+    Let
+   % https://q.uiver.app/?q=WzAsMTIsWzAsMCwiQSJdLFsyLDAsIlgiXSxbNCwwLCJDIl0sWzYsMCwiXFxTaWdtYSBBIl0sWzAsMiwiXFxPbWVnYSBCIl0sWzIsMiwiRiJdLFs0LDIsIkUiXSxbNiwyLCJCIl0sWzcsMCwiQyJdLFs5LDAsIkNcXHZlZVxcU2lnbWEgQSJdLFs3LDIsIkZcXHRpbWVzXFxPbWVnYSBCIl0sWzksMiwiRiJdLFszLDcsIlxcZGVsdGEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMCw0LCIiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMSw1LCJcXGJldGEiLDIseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbMiw2LCJcXGdhbW1hIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzEsNiwiZiJdLFs0LDUsIlxccGFydGlhbCJdLFs1LDYsImkiXSxbMCwxLCJ1Il0sWzEsMiwidiJdLFsyLDMsIlxccGFydGlhbCciXSxbNiw3LCJwIl0sWzgsOSwibiJdLFsxMCwxMSwibSJdXQ==
+    \[\tag{9}\label{diag:1.3.9}\begin{tikzcd}
+    	A && X && C && {\Sigma A} & C && {C\vee\Sigma A} \\
+    	\\
+    	{\Omega B} && F && E && B & {F\times\Omega B} && F
+    	\arrow["\delta", dashed, from=1-7, to=3-7]
+    	\arrow[dashed, from=1-1, to=3-1]
+    	\arrow["\beta"', dashed, from=1-3, to=3-3]
+    	\arrow["\gamma", dashed, from=1-5, to=3-5]
+    	\arrow["f", from=1-3, to=3-5]
+    	\arrow["\partial", from=3-1, to=3-3]
+    	\arrow["i", from=3-3, to=3-5]
+    	\arrow["u", from=1-1, to=1-3]
+    	\arrow["v", from=1-3, to=1-5]
+    	\arrow["{\partial'}", from=1-5, to=1-7]
+    	\arrow["p", from=3-5, to=3-7]
+    	\arrow["n", from=1-8, to=1-10]
+    	\arrow["m", from=3-8, to=3-10]
+    \end{tikzcd}\]
+    be a solid arrow diagram in \(\Ho\cat{C}\) where the first row except \(\partial'\) is a cofibration sequence, and where the second row except for \(\partial\) is a fibration sequence. We suppose that \(\partial'=(\id_{C}+0)\circ n\) and \(\partial=m\circ (0,\id_{\Omega B})\) as in Proposition \ref{prop:1.3.4} and \ref{prop:1.3.4'}. Suppose that \(fu=0\) and \(pf=0.\) Then dotted arrow \(\alpha,\beta,\gamma,\delta\) exist and the set of possibilities for \(\alpha\) formas a left \(\Omega p_*[A,\Omega E]\) - right \(u^*[X,\Omega B]\) double coset in \([A,\Omega B]\) and the set of possibilities for \(\delta\) forms a left \((\Sigma u)^*[\Sigma X,B]\) -right \(p_*[\Sigma A,E]\) double coset in \([\Sigma A,B].\) Furthermore under the identification \([A,\Omega B]=[\Sigma A,B]\) the first coset is the inverse of the second.
+\end{proposition}
+\begin{proof}
+    By Prop. \ref{prop:1.3.4} \[pf=0\Rightarrow \exists\beta:X\longrightarrow  F\]
+    with \(f=i\beta.\) Similarly \(i\beta u=0\Rightarrow\exists\alpha\) with \(\partial\alpha=\beta u.\) Hence \(\alpha,\beta\) exist. Suppose that \(\alpha',\beta'\) are other maps. By the exact sequence of Prop. \ref{prop:1.3.4} \(\beta'=\beta\cdot\lambda\) for some \(\lambda \in [X,\Omega B].\) More precisely \(\beta'=m\circ(\beta,\lambda)\) hence 
+    \[\adjustbox{scale=0.8}{
+    $\partial\alpha'=\beta'u=m\circ (\beta,\lambda) u=m(\beta u,\lambda u)= m(\partial \alpha, \lambda u)
+    =\partial \alpha\cdot (\lambda u)=(0\cdot\alpha)\cdot\lambda u=0(\alpha\cdot \lambda u)=\partial(\alpha\cdot\lambda u)$}.
+    \]
+    By exactness \[
+    \alpha'=(\Omega p)_*\mu\cdot\alpha\cdot\lambda u=(\Omega p)_*\mu\cdot\alpha\cdot u^*(\lambda)
+    \]
+    and so \(\alpha'\) lies in the double coset \(\Omega p_* [A,\Omega E]\cdot \alpha\cdot u^*[X,\Omega B].\) As \(\mu\) and \(\lambda\) may be arbitrary we see that any element of this double coset may be an \(\alpha'.\) Dual assertions hold for \(\gamma\) and \(\delta\) and so the first statement of the proposition is proved.
+    \par To prove the second assertion we must construct \(\alpha,\beta,\gamma,\delta\) so that \(\alpha\) corresponds to \(\delta^{-1}.\) We may assume that \(u\) is a cofibration of cofibrant objects, that \(p\) is a fibration of fibrant objects and that the top and bottom rows of \eqref{diag:1.3.1} are constructed as above. In this case Theorem \ref{thm:1} shows that the map \(f\) in \(\Ho\cat{C}\) may be represented by a map in \(\cat{C}\) which we shall denote again by \(f.\) Now \(pf\sim 0\) and as \(X\) is cofibrant and \(u\) is a fibration we may by the corrollary to Lemma \ref{lem:1.1.2} lift this homotopy to \(E\) and so assume that pf=0. (We may not, however, simultaneously assume that \(fu=0.\)) Let \(h:A\times I\longrightarrow  E\) be such that \(h\partial_0=fu,\; h\partial_1=0\) and consider the following diagram
+    \[\tag{10}\label{diag:1.3.10}
+    % https://q.uiver.app/?q=WzAsNyxbNCwwLCJYXFx2ZWVfQSBBXFx0aW1lcyBJXFx2ZWVfQSgqKSJdLFs2LDAsIlxcU2lnbWEgQSJdLFs2LDIsIlxcYnVsbGV0Il0sWzIsMCwiWCJdLFswLDAsIkEiXSxbNCwyLCJcXGJ1bGxldCJdLFsyLDIsIlxcYnVsbGV0Il0sWzAsMSwiMCtxKzAiXSxbMSwyLCJwaHFeey0xfSJdLFs0LDMsInUiXSxbMywwLCJcXG9wZXJhdG9ybmFtZXtpbn1fMSJdLFswLDUsImYraCswIl0sWzUsMiwicCJdLFszLDUsImYiXSxbMyw2LCJpXnstMX1mIl0sWzYsNSwiaSIsMl1d
+    \begin{tikzcd}
+	A && X && {X\vee_A A\times I\vee_A(*)} && {\Sigma A} \\
+	\\
+	&& F && E && B
+	\arrow["{0+q+0}", from=1-5, to=1-7]
+	\arrow["{phq^{-1}}", from=1-7, to=3-7]
+	\arrow["u", from=1-1, to=1-3]
+	\arrow["{\operatorname{in}_1}", from=1-3, to=1-5]
+	\arrow["{f+h+0}", from=1-5, to=3-5]
+	\arrow["p", from=3-5, to=3-7]
+	\arrow["f", from=1-3, to=3-5]
+	\arrow["{i^{-1}f}", from=1-3, to=3-3]
+	\arrow["i"', from=3-3, to=3-5]
+    \end{tikzcd}\]
+    where \(q:A\times I\longrightarrow  \Sigma A\) is the cokernel of \(A\vee A\longrightarrow  A\times I\) and where we extend to epimorphisms the convention for morphisms introduced at the beginning of this section so that \(phq^{-1}\) is the unique map such that \((phq^{-1})q=ph.\) Now the top line of \eqref{diag:1.3.10} is isomorphic in \(\Ho\cat{C}\) to the top line of the first part of \eqref{diag:1.3.9} -- see the proof of Proposition \ref{prop:1.3.3} especially the homotopy commutativity of \eqref{diag:1.3.7} for the dual considerations. Consequently by means of this isomorphism we may define \(\beta\) in \eqref{diag:1.3.9} to be represented by \(i^{-1}f,\;\gamma\) by \(f+h+0,\) and \(\delta\) by \(phq^{-1}.\) But we also have the diagram 
+    % https://q.uiver.app/?q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiRSJdLFsyLDIsIkIiXSxbMCwyLCJBXFx0aW1lcyBJIl0sWzAsMSwiZnUiXSxbMSwyLCJwIl0sWzAsMywiXFxwYXJ0aWFsXzAiXSxbMywyLCJwaCJdLFszLDEsImgiXV0=
+    \[\begin{tikzcd}
+    	A && E \\
+    	\\
+    	{A\times I} && B
+    	\arrow["fu", from=1-1, to=1-3]
+    	\arrow["p", from=1-3, to=3-3]
+    	\arrow["{\partial_0}", from=1-1, to=3-1]
+    	\arrow["ph", from=3-1, to=3-3]
+    	\arrow["h", from=3-1, to=1-3]
+    \end{tikzcd},\qquad h\partial_1=0\]
+    which by Prop. \ref{prop:1.3.2} shows that \(\beta u\cdot \delta =0\) since \(i^{-1}f u\) represents \(\beta u\) in \eqref{diag:1.3.1}. Hence \(\beta u=0\cdot\delta^{-1}=\partial(\delta^{-1})\) and we may take \(\alpha\) in \eqref{diag:1.3.1} to be \(\delta^{-1}.\)
+\end{proof}
+\begin{definition}\label{def:1.3.2}
+Let \(A\varrightarrow{u} X \varrightarrow{f} E\varrightarrow{p} B\) be three maps in \(\Ho\cat{C}\) such that \(fu=pf=0.\) Form a solid arrow diagram
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJBIl0sWzIsMCwiWCJdLFs0LDAsIkMiXSxbNiwwLCJcXFNpZ21hIEEiXSxbNCwyLCJFIl0sWzYsMiwiQiJdLFs4LDAsIkMiXSxbOSwwLCJDXFx2ZWUgXFxTaWdtYSBBIl0sWzAsMSwidSJdLFsxLDIsInYiXSxbMiwzLCJcXHBhcnRpYWwiXSxbMSw0LCJmIl0sWzIsNCwiXFxnYW1tYSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDUsIlxcZGVsdGEiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XSxbNCw1LCJwIl0sWzYsNywibiJdXQ==
+\[\tag{11}\label{diag:1.3.11}\begin{tikzcd}
+	A && X && C && {\Sigma A} && C & {C\vee \Sigma A} \\
+	\\
+	&&&& E && B
+	\arrow["u", from=1-1, to=1-3]
+	\arrow["v", from=1-3, to=1-5]
+	\arrow["\partial", from=1-5, to=1-7]
+	\arrow["f", from=1-3, to=3-5]
+	\arrow["\gamma", dashed, from=1-5, to=3-5]
+	\arrow["\delta", dashed, from=1-7, to=3-7]
+	\arrow["p", from=3-5, to=3-7]
+	\arrow["n", from=1-9, to=1-10]
+\end{tikzcd}\]
+by choosing by Prop. \ref{prop:1.3.5}\ref{prop:1.3.5(i)} for the first row a cofibration sequence containing \(u,\) and then fill in the dotted arrows as in Prop. \ref{prop:1.3.6}. The set of possibilities for \(\delta\) is as in Prop. \ref{prop:1.3.6} a left \((\Sigma u)^*[\Sigma X,B]\) -right \(p_*[\Sigma A,E]\) double coset in \([\Sigma A,B]\) which is called \defemphi{Toda bracket} of \(u,f,\) and \(p,\) and is denoted \(\langle u,f,p\rangle.\)
+\end{definition}
+\begin{remark}
+    \begin{enumerate}
+        \item The Toda bracket is independent of the choice of the top row of \eqref{diag:1.3.3} by Prop. \ref{prop:1.3.5}\ref{prop:1.3.5(ii)} and \ref{prop:1.3.5(iii)}.
+        \item The Toda bracket \(\langle u, f,p\rangle\) may also be computed by choosing a solid arrow diagram
+        % https://q.uiver.app/?q=WzAsOCxbMCwwLCJBIl0sWzIsMCwiWCJdLFsyLDIsIkYiXSxbMCwyLCJcXE9tZWdhIEIiXSxbNCwyLCJFIl0sWzYsMiwiQiJdLFs4LDIsIkZcXHRpbWVzXFxPbWVnYSBCIl0sWzEwLDIsIkYiXSxbMCwxLCJ1Il0sWzEsMiwiXFxiZXRhIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV0sWzAsMywiXFxhbHBoYSIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dLFszLDIsIlxccGFydGlhbCJdLFsyLDQsImkiXSxbNCw1LCJwIl0sWzEsNCwiZiJdLFs2LDcsIm0iXV0=
+\[\tag{12}\label{diag:1.3.12}\begin{tikzcd}
+	A && X \\
+	\\
+	{\Omega B} && F && E && B & {F\times\Omega B} & F
+	\arrow["u", from=1-1, to=1-3]
+	\arrow["\beta", dashed, from=1-3, to=3-3]
+	\arrow["\alpha", dashed, from=1-1, to=3-1]
+	\arrow["\partial", from=3-1, to=3-3]
+	\arrow["i", from=3-3, to=3-5]
+	\arrow["p", from=3-5, to=3-7]
+	\arrow["f", from=1-3, to=3-5]
+	\arrow["m", from=3-8, to=3-9]
+\end{tikzcd}\]
+    where the bottom row comes from a fibration sequence, and filling in the dotted arrows. By Proposition \ref{prop:1.3.6} we have 
+    \[
+        (\Sigma u)^*[\Sigma Y,B]\cdot\alpha^{-1},\quad p_*[\Sigma A,B]\subseteq [\Sigma A,B].
+    \]
+    \end{enumerate}
+\end{remark}
+\end{document}

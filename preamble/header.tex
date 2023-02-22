@@ -1,0 +1,27 @@
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]
+{\scshape\fillast\LARGE\bfseries}
+{\thechapter .}
+{0.5em}
+{}
+
+\titleformat*{\section}{\large\bfseries}
+
+\usepackage{fancyhdr}
+\fancyhf{}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\fancyhead[LE]{\scshape Chapter \thechapter: \leftmark }
+\renewcommand{\sectionmark}[1]{ \markright{#1}{} }
+\fancyhead[RO]{
+\ifthenelse{\value{section}= 0}{\scshape Chapter \thechapter: \leftmark}{\scshape Section \thesection: \rightmark}
+ }
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{\iffootnote{0pt}{0.3pt}}
+
+\fancyfoot[C]{\thepage}
+
+\titleformat{\part}[display]
+{\centering\scshape\huge}
+{Part \thepart}
+{0.5em}
+{}

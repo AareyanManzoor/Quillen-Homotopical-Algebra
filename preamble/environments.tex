@@ -1,0 +1,89 @@
+\theoremstyle{definition}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{corollary}{Corollary}
+\newtheorem{example}{Example}[chapter]
+\newtheorem{remark}{Remark}
+\newtheorem{remarks}{Remarks}
+\newtheorem{condition}{Condition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{proposition}{Proposition}[section]
+
+%problems are counted a bit differently
+
+
+
+%numberless env's:
+
+\newtheorem*{examples}{Examples}
+\newtheorem*{exercise}{Exercise}
+\newtheorem*{notes}{Notes}
+\newtheorem*{note}{Note}
+\newtheorem*{hint}{Hint}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem*{theorem*}{Theorem}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem*{remark*}{Remark}
+\newtheorem*{remarks*}{Remarks}
+\newtheorem*{explanation}{Explanation}
+\newtheorem*{warning}{Warnings}
+\newtheorem*{problems}{Problems}
+\newtheorem*{assertion*}{Assertion}
+\newtheorem*{hypo}{Hypothesis}
+\newtheorem*{conv}{Convention}
+\newtheorem*{definition*}{Definition}
+\newtheorem*{example*}{Example}
+
+
+
+% this is just for chapter 1 and 3 where there's a small paragraph after the chapter title
+\renewenvironment{quote}{
+  \noindent     % No indent of first character.
+  \topsep=0pt   % No additional separator before.
+  \parskip=0pt  % No paragraph separator.
+  \interlinepenalty=10000  % Prevent a page break to occur in a quote block.
+  \leftskip=0pt 
+  \rightskip=0pt 
+  \parfillskip=0pt
+  \itshape  % Make quotations in italic.
+  \list{}{
+    \leftmargin 5em   % this is the adjusting screw
+    \rightmargin 5em  % this is the adjusting screw
+  }
+  \item
+  \relax
+  }
+  {\endlist}
+
+
+\newenvironment{implyenumerate}
+    {\begin{enumerate}[align=left,leftmargin=!,labelindent=5pt,itemindent=-15pt]
+    }
+    {
+    \end{enumerate}
+    }
+  
+
+
+
+%solution for custom numbering in theorems and lemmata:
+\newtheorem{innercustomgeneric}{\customgenericname}
+\providecommand{\customgenericname}{}
+\newcommand{\newcustomtheorem}[2]{%
+  \newenvironment{#1}[1]
+  {%
+   \renewcommand\customgenericname{#2}%
+   \renewcommand\theinnercustomgeneric{##1}%
+   \innercustomgeneric
+  }
+  {\endinnercustomgeneric}
+}
+\newcustomtheorem{customthm}{Theorem}
+\newcustomtheorem{customlemma}{Lemma}
+\newcustomtheorem{customcor}{Corollary}
+\newcustomtheorem{customprop}{Proposition}
+\newcustomtheorem{customexample}{Examples}
+\newcustomtheorem{customremark}{Remark}
+\newcustomtheorem{customdef}{Definition}
+

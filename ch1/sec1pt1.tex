@@ -1,0 +1,270 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{The axioms}\label{sec:1.1}
+All diagrams are assumed to be commutative unless stated otherwise.
+
+\begin{definition}
+\label{def:1.1.1}
+By a \defemph{model category} we mean a category together with three classes of maps in $\cat{C}$, called the fibrations, cofibrations, and weak equivalences, satisfying the following axioms.
+
+\begin{enumerate}[label = M\arabic*]\setcounter{enumi}{-1}
+
+\item\label{1.1.M0} $\cat{C}$ is closed under finite projective and inductive limits.
+\item\label{1.1.M1} Given a solid arrow diagram
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJBIl0sWzAsMSwiQiJdLFsxLDAsIlgiXSxbMSwxLCJZIl0sWzAsMSwiaSJdLFsyLDMsInAiXSxbMCwyXSxbMSwzXSxbMSwyLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\tag{1}\label{diag:1.1.1}\begin{tikzcd}
+	A && X \\ \\
+	B && Y
+	\arrow["i" left, from=1-1, to=3-1]
+	\arrow["p", from=1-3, to=3-3]
+	\arrow[from=1-1, to=1-3]
+	\arrow[from=3-1, to=3-3]
+	\arrow[dashed, from=3-1, to=1-3]
+\end{tikzcd}\]
+where $i$ is a cofibration, $p$ is a fibration, and where either $i$ or $p$ is a weak equivalence, then the dotted arrow exists.
+\item\label{1.1.M2} Any map $f$ may be factored $f=p i$ where $i$ is a cofibration and weak equivalence and $p$ is a fibration. Also $f=p i$ where $i$ is a cofibration and $p$ is a fibration and weak equivalence.
+\item\label{1.1.M3} Fibrations are stable under composition and base change. Any isomorphism is a fibration.
+
+Cofibrations are stable under composition and co-base change. Any isomorphism is a cofibration.
+
+\item\label{1.1.M4} The bases extension of a map which is both a fibration and a weak equivalence is a weak equivalence. The co-base extension of a map which is both a cofibration and a weak equivalence is a weak equivalence.
+
+\item\label{1.1.M5} The bases extension of a map which is both a fibration and a weak equivalence is a weak equivalence. The co-base extension of a map which is both a cofibration and a weak equivalence is a weak equivalence.
+
+\item\label{1.1.M6} Let $X\varrightarrow{f} Y\varrightarrow{g}Z$ be maps in $\cat{C}$. Then if two of the maps $f,g,$ and $gf$ are weak equivalences, so is the third. Any isomorphism is a weak equivalence.
+\end{enumerate}
+\end{definition}
+\begin{examples}
+
+\begin{enumerate}[label = \Alph*.]
+
+\item\label{ex:1.1.A} Let $\cat{C}$ be the category of topological spaces and continuous maps. Let fibrations in $\cat{C}$ be fibrations in the sense of Serre, let cofibrations be maps having the lifting property of axiom \ref{1.1.M1} whenever $p$ is both a Serre fibration and a weak homotopy equivalence, and finally let weak equivalences in $\cat{C}$ be weak homotopy equivalences (maps inducing isomorphism for the functions $[K,-]$ where $K$ is a finite complex). Then the axioms are satisfied. (This is proved in \S\ref{sec:2.3}.)
+
+\item\label{ex:1.1.B} Let $\cat{A}$ be an abelian category with sufficiently many projectives and let $\cat{C}=C_+(\cat{A})$ be the category of complexes $K=\{K_q,\, d:K_q\varrightarrow{}K_{q-1}\}$ of objects of $\cat{A}$ which are bounded below $(K_q=0 \quad \text{if}\quad q\ll 0)$. Then $\cat{C}$ is a model category where weak equivalences are maps inducing isomorphisms on homology, where fibrations re the epimorphisms in $\cat{C}$, and where the cofibrations are maps $i$ which are injective such that $\Coker i$ is a complex having a projective object of $\cat{A}$ in each dimension.
+
+\item\label{ex:1.1.C} Let $\cat{C}$ be the category of semi-simplicial sets and let fibrations in $\cat{C}$ be the Kan fibrations, cofibrations be injective maps, and let the weak equivalences be maps which become homotopy equivalences when the geometric realizations functor is applied. Then $\cat{C}$ is a model category (\S\ref{sec:2.3}).
+
+\end{enumerate}
+
+\end{examples}
+
+For the rest of this section $\cat{C}$ will denote a fixed model category.
+
+\begin{definition}\label{def:1.1.2}
+	Let $\varnothing$ (resp. $e$) denote ``the'' initial (resp. final) object of the category $\cat{C}$). (These exist by \ref{1.1.M0}.) An object $X$ will be called \defemphi{cofibrant}\index{fibrant!\indexline co} if \\ $\varnothing \varrightarrow{} X$ is a cofibration and \defemphi{fibrant} if $X\varrightarrow{} e$ is a fibration. A map which is a fibration (resp. cofibration) and a weak equivalence will be called a \defemph{trivial fibration}\index{fibration!\indexline trivial} (resp. \defemph{trivial cofibration}\index{fibration!\indexline trivial co}.)
+\end{definition}
+
+\begin{remark*}
+In example \ref{ex:1.1.A} every object is fibrant and the class of cofibrant objects include CW complexes, and more generally any spaces that is constructed by a well ordered succession of attaching cells. In example \ref{ex:1.1.B} every object is fibrant and the cofibrant objects are the projective complexes (that is, complexes consisting of projective objects -- these are \defemph{not} projective objects in $C_+(\cat{A}$)). In example \ref{ex:1.1.C} every object is cofibrant and the fibrant objects are those s.s. sets satisfying the extension condition.
+
+\end{remark*}	
+
+Before stating the next definition we recall some standard notation concerning the fibre products and introduce some not-so-standard notation for cofibre products. Given a diagram
+\[\tag{2}\label{diag:1.1.2}
+	\begin{tikzcd}
+		A\arrow[rr,"\beta"]\arrow[dd,"\alpha"]&& X\arrow[dd,"\gamma"]\\ \\ B\arrow[rr,"\delta"] &&Y
+	\end{tikzcd}
+\]
+there is a unique map $A\varrightarrow{} B\times_YX$ denotes $(\alpha,\beta)_Y$ or simply $(\alpha,\beta)$ such that $\pr_1(\alpha,\beta)=\alpha$ and $\pr_2(\alpha,\beta)=\beta$, where $\pr_1:B\times_YX\varrightarrow{} B$ and $\pr_2:B\times_YX\varrightarrow{} X$ are the canonical projections. Also (\ref{diag:1.1.2}) is said to be \defemphi{cartesian} if $(\alpha,\beta)$ is an isomorphism. We shall denote the \defemphi{cofibre product} of $B$ and $X$ under $A$ by $B\vee_A X$ and the two canonical maps by $\In_1:B\varrightarrow{} B\vee_AX$ and $\In_2:X\varrightarrow{} B\vee_AX$. The unique map $B\vee_AX \varrightarrow{u}Y$ with $u\In_1=\delta$ and $u\In_2=\gamma$ will be denoted $\delta+_A \gamma$ or simply $\delta+\gamma$, and (\ref{diag:1.1.2}) will be called \defemphi{co-cartesian} if $\delta+\gamma$ is an isomorphism. Finally given a map $f:X\varrightarrow{} Y$ there is the \defemphi{diagonal} map \[\Delta_f= (\id_X,\id_X):X\varrightarrow{} X\times_Y X\]
+and the \defemphi{codiagional} map \[\nabla_f= \id_Y+\id_Y: Y\vee_XY\varrightarrow{}Y\] of $f$. We write $\Delta_X$ (resp. $\nabla_Y$) if $Y=e$ (resp. $X=\varnothing$).
+
+\begin{definition}\label{def:1.1.3}
+	Let $f,g:A\rightrightarrows B$ be maps. We say that $f$ is \defemphi{left-homotopic} to $g$ notation $f\LHom g$) if there is a diagram of the form
+
+	% https://q.uiver.app/?q=WzAsNCxbMCwwLCJBXFx2ZWUgQSJdLFsyLDAsIkIiXSxbMiwyLCJcXHh0aWxkZXtBfSJdLFswLDIsIkEiXSxbMCwxLCJmK2ciXSxbMiwxLCJoIiwyXSxbMiwzLCJcXHNpZ21hIl0sWzAsMywiXFxuYWJsYSIsMl0sWzAsMiwiXFxwYXJ0aWFsXzArXFxwYXJ0aWFsXzEiXV0=
+	\[\tag{3}\label{diag:1.1.3}\begin{tikzcd}
+		{A\vee A} && B \\
+		\\
+		A && {\xtilde{A}}
+		\arrow["{f+g}", from=1-1, to=1-3]
+		\arrow["h"', from=3-3, to=1-3]
+		\arrow["\sigma", from=3-3, to=3-1]
+		\arrow["\nabla"', from=1-1, to=3-1]
+		\arrow["{\partial_0+\partial_1}", from=1-1, to=3-3]
+	\end{tikzcd}\]
+	where $\sigma$ is a weak equivalence. Dually we say that $f$ is \defemphi{right-homotopic} to $g$ (notation: $f\RHom g$) if there is a diagram of the form
+	% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXHh0aWxkZXtCfSJdLFsyLDAsIkIiXSxbMCwyLCJBIl0sWzIsMiwiQlxcdGltZXMgQiJdLFsyLDAsImsiXSxbMSwwLCJzIiwyXSxbMSwzLCJcXERlbHRhIl0sWzIsMywiKGYsZykiLDJdLFswLDMsIihkXzAsZF8xKSJdXQ==
+	\[\tag{4}\label{diag:1.1.4}\begin{tikzcd}
+		{\xtilde{B}} && B \\
+		\\
+		A && {B\times B}
+		\arrow["k", from=3-1, to=1-1]
+		\arrow["s"', from=1-3, to=1-1]
+		\arrow["\Delta", from=1-3, to=3-3]
+		\arrow["{(f,g)}"', from=3-1, to=3-3]
+		\arrow["{(d_0,d_1)}", from=1-1, to=3-3]
+	\end{tikzcd}\]
+	where $s$ is a weak equivalence.
+\end{definition}
+
+\begin{remark*}
+	In example \ref{ex:1.1.A} above two maps of spaces which are homtopic in the usual sences are both left and right homotopic as one sees by taking $\xtilde{A}=A\times I$ and $\xtilde{B}=B^I$ where $I$ is the unit interval. In fact we have the implications:
+	\[\tag{5}\label{eq:1.1.5} \text{homotopic} \implies \text{right homotopic} \implies \text{left homotopic}\]
+	where the last implication comes from the dual of lemma \ref{lem:1.1.5}(i) below and the fact that every space is fibrant. if $A$ is cofibrant (e.g. a CW complex) then the three notation coincide, but in general it seems that the implication (\ref{eq:1.1.5}) are strict.
+\end{remark*}
+
+\begin{definition}\label{def:1.1.4}
+	By \defemphi{cylinder object} for an object $A$ we mean an object $A\times I$ together with maps 
+	\[A\vee A \varrightarrow{\partial_0+\partial_1}A\times I\varrightarrow{\sigma} A \quad \text{with}\quad \sigma(\partial_0+\partial_1)=\nabla_A\]
+	such that $\partial_0+\partial_1$ is a cofibration and $\sigma$ is a weak equivalence. Dually, a \defemphi{path object} for $B$ shall be an object $B^I$ together with a factorization 
+	\[B\varrightarrow{s}B^I\varrightarrow{(d_0,d_1)}B\times B\quad \text{of}\quad \Delta_B\]
+	where $s$ is a weak equivalence and $(d_0,d_1)$ is a fibration. By a \defemphi{left homotopy}\index{homotopy!\indexline left} from $f:A\varrightarrow{}B$ to $g:A\varrightarrow{}B$ we mean a diagram (\ref{diag:1.1.3}) where $\partial_0+\partial_1$ is a cofibration and hence $\xtilde{A}$ is a cylinder object for $A$. Similarly a \defemphi{right homotopy}\index{homotopy!\indexline right} from $f$ to $g$ is a diagram (\ref{diag:1.1.4}) where $\xtilde{B}$ is a path object for $B$.
+\end{definition}
+
+\begin{remark*}
+	\begin{enumerate}[label= \arabic*.]
+		\item $A\times I$ is \defemph{not} the product of $A$ and an object $I$ nor is it a functor of $A$. In example \ref{ex:1.1.A}, the product of a space $A$ and the unit interval is not necessarily a cylinder object of $A$ unless $A$ is cofibrant.
+		\item Since the dual of a model category is again a model category in an evident way there is a corresponding dual assertion for every assertion we make. In the following we will often give only one form and leave the formulation of the dual assertion to the reader.
+	\end{enumerate}
+\end{remark*}
+
+\begin{lemma}\label{lem:1.1.1}
+	If $f,g\in \Hom(A,B)$ and $f\LHom g$, then there is a left homotopy $h:A\times I\varrightarrow{} B$ from $f$ to $g$.
+\end{lemma}
+
+\begin{proof}
+	Given diagram (\ref{diag:1.1.3}) use \ref{1.1.M2} to factor $\partial_0+\partial_1$ into $A\vee A \varrightarrow{\partial_0'+\partial_1'} A' \varrightarrow{\rho} \xtilde{A}$ where $\partial_0'+\partial_1'$ is a trivial cofibration and $\rho$ is a trivial fibration. By \ref{1.1.M5} \\ $\sigma'=\sigma \rho:A'\varrightarrow{}A$ is a weak equivalences so $A'$ with $\partial_0',\partial_1',$ and $\sigma'$ is a cylinder object for $A$. $h'=h\rho:A'\varrightarrow{}B$ is the desired left homotopy from $f$ to $g$.
+\end{proof}
+
+\begin{lemma}\label{lem:1.1.2}
+	Let $A$ be a cofibrant object and let $A\times I$ be a cylinder object for $A$. Then \newline $\partial_0:A\varrightarrow{}A\times I$ and $\partial_1:A\varrightarrow{}A\times I$ are trivial cofibrations.
+\end{lemma}
+
+\begin{proof}
+	$\In_1:A\varrightarrow{}A\vee A$ is a commutativ by the coase change assertion in \ref{1.1.M3}, hence $\partial_0=(\partial_0+\partial_1)\In_1$ is a cofibration. $\sigma \partial_0=\id_A$ ands \ref{1.1.M5} imply that $\partial_0$ is also a weak equivalence. Similarly $\partial_1$ is a trivial cofibration.	
+\end{proof}
+
+\begin{corollary*}[Covering Homotopy theorem]\label{cor:1.1.1} 
+	Let $A$ be cofibrant and let \\$p:X\varrightarrow{}Y$ be a fibration, let $\alpha:A\varrightarrow{}X$, and let $h:A\times I\varrightarrow{}Y$ be a left homotopy with $h\partial_0=p\alpha$. Then there is a left homotopy $H:A\times I\varrightarrow{} X$ with $H\partial_0=\alpha$ and $pH=h$.
+\end{corollary*}
+
+\begin{proof}
+	By \ref{1.1.M1}, $H$ exists in
+	% https://q.uiver.app/?q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiWCJdLFswLDIsIkFcXHRpbWVzIEkiXSxbMiwyLCJZIl0sWzAsMiwiXFxwYXJ0aWFsXzAiLDJdLFswLDEsIlxcYWxwaGEiXSxbMiwzLCJoIiwyXSxbMSwzLCJwIl0sWzIsMSwiSCIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    \[\begin{tikzcd}
+	A && X \\
+	\\
+	{A\times I} && Y
+	\arrow["{\partial_0}"', from=1-1, to=3-1]
+	\arrow["\alpha", from=1-1, to=1-3]
+	\arrow["h"', from=3-1, to=3-3]
+	\arrow["p", from=1-3, to=3-3]
+	\arrow["H", dashed, from=3-1, to=1-3]
+    \end{tikzcd}\]
+	The dual assertion is the homotopy extension theorem.
+\end{proof}
+
+\begin{lemma}\label{lem:1.1.3}
+	Let $A$ be cofibrant and let $A\times I$ and $A\times I'$ be two cylinder objects for $A$. Then the result of ``gluing'' $A\times I$ to $A\times I'$ by the identification $\partial_1A=\partial_0'A$, defined precisely to be the object $\xtilde{A}$ in the co-Cartesian diagram
+	% https://q.uiver.app/?q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiQVxcdGltZXMgSSciXSxbMCwyLCJBXFx0aW1lcyBJIl0sWzIsMiwiXFx4dGlsZGV7QX0iXSxbMCwyLCJcXHBhcnRpYWxfMSIsMl0sWzAsMSwiXFxwYXJ0aWFsXzAiXSxbMiwzLCJcXEluXzEiLDJdLFsxLDMsIlxcSW5fMiJdXQ==
+    \[\tag{6}\label{diag:1.1.6}\begin{tikzcd}
+	A && {A\times I'} \\
+	\\
+	{A\times I} && {\xtilde{A}}
+	\arrow["{\partial_1}"', from=1-1, to=3-1]
+	\arrow["{\partial_0'}", from=1-1, to=1-3]
+	\arrow["{\In_1}"', from=3-1, to=3-3]
+	\arrow["{\In_2}", from=1-3, to=3-3]
+    \end{tikzcd}\]
+	is also a cylinder object $A\times I''$ for $A$ with \[\partial_0''=\In_1\partial_0, \quad \partial_1''=\In_2\partial_1', \quad \sigma'' \In_1 = \sigma,\quad \sigma''\In_2=\sigma'.\]
+\end{lemma}
+
+\begin{proof}
+	\ref{1.1.M4} and Lemma \ref{lem:1.1.2} show that $\In_1$ and $\In_2$ are weak equivalences; as $\partial_0''=\In_1\partial_0,\quad \sigma''\partial_0''=\id_A$ we have by \ref{1.1.M5} that $\sigma'':\xtilde{A}\varrightarrow{}A$ is a weak equivalence. $\partial_0''+\partial_1'':A\vee A\varrightarrow{}\xtilde{A}$ is the composition of $A\vee A\varrightarrow{\In_1\vee \id_A}(A\times I)\vee A$, which is the co-base extension of $\partial_0$ by $A\varrightarrow{\In_1}A\vee A_1$, and the map $(A\times I)\vee A\varrightarrow{\In_1+\partial_0''} \xtilde{A},$ which is the co-base extension of $\partial_0'+\partial_1'$ by $A\vee A\varrightarrow{\partial_1+\id_A}(A\times I)\vee A$. By \ref{1.1.M3} $\partial_0''+\partial_1''$ is a cofibration and hence $\xtilde{A}$ is a cylinder object for $A$.
+\end{proof}
+
+\begin{lemma}\label{lem:1.1.4}
+	If $A$ is cofibrant, then $\LHom$ is an equivalence relation in $\Hom(A,B)$.
+\end{lemma}
+
+\begin{proof}
+	The relation is reflexive since if $f=g$ we may take $\xtilde{A}=A$ and $h=f$ in (\ref{diag:1.1.3}) and it is symmetric since given (\ref{diag:1.1.3}) we may interchange $\partial_0$ and $\partial_1$. Finally given $f_0,f_1,f_2\in \Hom(A,B)$ and a left homotopy $h:A\times I\varrightarrow{} B$ from $f_0$ to $f_1$ and a left homotopy $h':A\times I'\varrightarrow{}B$ from $f_0$ to $f_1$ and a left homotopy $h':A\times I'\varrightarrow{}B$ we obtain by Lemma \ref{lem:1.1.3} a left homotopy $h'':A\times I''\varrightarrow{} B$ from $f_0$ to $f_2$ by setting $h''\In_1=h$ and $h''\In_2 = h'$.
+\end{proof}
+
+\begin{lemma}\label{lem:1.1.5}
+	Let $A$ be cofibrant and let $f,g\in \Hom(A,B)$. Then
+	\begin{enumerate}[label = (\roman*)]
+		\item $f\LHom g \implies f\RHom g$.
+		\item $f\RHom g \implies$ there exists a right homotopy $k:A\varrightarrow{}B^I$ from $f$ to $g$ with $s:B\varrightarrow{}B^I$ a trivial cofibration.
+		\item If $u:B\varrightarrow{}C$, then $f\RHom g\implies uf\RHom ug$.
+	\end{enumerate}
+\end{lemma}
+\begin{proof}
+	\begin{enumerate}[label = (\roman*)]
+		\item By Lemma \ref{lem:1.1.1} there is a left homotopy $h:A\times I\varrightarrow{}B$ from $f$ to $g$ and by \ref{1.1.M2} there is a path object $B^I$ for $B$. By Lemma \ref{lem:1.1.2} and \ref{1.1.M1} the dotted arrow $K$ exists in
+		% https://q.uiver.app/?q=WzAsNCxbMCwwLCJBIl0sWzIsMCwiQl5JIl0sWzAsMiwiQVxcdGltZXMgSSJdLFsyLDIsIkJcXHRpbWVzIEIiXSxbMCwyLCJcXHBhcnRpYWxfMCIsMl0sWzIsMywiKGZcXHNpZ21hLGgpIiwyXSxbMSwzLCIoZF8wLGRfMSkiXSxbMCwxLCJzZiJdLFsyLDEsIksiLDAseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+    \[\tag{7}\label{diag:1.1.7}\begin{tikzcd}
+	A && {B^I} \\
+	\\
+	{A\times I} && {B\times B}
+	\arrow["{\partial_0}"', from=1-1, to=3-1]
+	\arrow["{(f\sigma,h)}"', from=3-1, to=3-3]
+	\arrow["{(d_0,d_1)}", from=1-3, to=3-3]
+	\arrow["sf", from=1-1, to=1-3]
+	\arrow["K", dashed, from=3-1, to=1-3]
+    \end{tikzcd}\]
+		and $k=K\partial_1:A\varrightarrow{}B^I$ is the desired right homotopy from $f$ to $g$.
+
+		\item Let $k':A\varrightarrow{} B^I$ be a right homotopy from $f$ to $g$ and let $B\varrightarrow{s} \xtilde{B}\varrightarrow{\rho} B^{I'}$ be a factorization of $s':B\varrightarrow{}B^{I'}$ into a trivial cofibration followed by a fibration. By \ref{1.1.M5} $\rho$ is a weak equivalence. Let \newline $(d_0,d_1)=(d_0',d_1')\rho:\xtilde{B} \varrightarrow{}B\times B$ so that $(d_0,d_1)$ is a fibration by \ref{1.1.M3} and hence $\xtilde{B}$ with $d_0,d_1,$ and $s$ is a path object for $B$. By \ref{1.1.M1} there is a dotted arrow $k$ in
+			% https://q.uiver.app/?q=WzAsNCxbMCwwLCJcXHZhcm5vdGhpbmciXSxbMiwwLCJCXkkiXSxbMCwyLCJBIl0sWzIsMiwiQl57SSd9Il0sWzAsMl0sWzAsMV0sWzIsMywiayciLDJdLFsxLDMsIlxccmhvIl0sWzIsMSwiayIsMCx7InN0eWxlIjp7ImJvZHkiOnsibmFtZSI6ImRhc2hlZCJ9fX1dXQ==
+    \[\tag{8}\label{diag:1.1.8}\begin{tikzcd}
+	\varnothing && {B^I} \\
+	\\
+	A && {B^{I'}}
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-1, to=1-3]
+	\arrow["{k'}"', from=3-1, to=3-3]
+	\arrow["\rho", from=1-3, to=3-3]
+	\arrow["k", dashed, from=3-1, to=1-3]
+    \end{tikzcd}\]
+		and $k$ gives the desired homotopy from $f$ to $g$.
+
+	\item Let $k$ be as in (ii) and let $C^I$ be a path object for $C$. By \ref{1.1.M1} it is possible to lift in
+		% https://q.uiver.app/?q=WzAsNCxbMCwwLCJCIl0sWzIsMCwiQ15JIl0sWzAsMiwiQl5JIl0sWzIsMiwiQ1xcdGltZXMgQyJdLFswLDIsInMiLDJdLFswLDEsInN1Il0sWzIsMywiKGRfMHUsZF8xdSkiLDJdLFsxLDMsIihkXzAsZF8xKSJdLFsyLDEsIlxccGhpIiwwLHsic3R5bGUiOnsiYm9keSI6eyJuYW1lIjoiZGFzaGVkIn19fV1d
+    \[\tag{9}\label{diag:1.1.9}\begin{tikzcd}
+	B && {C^I} \\
+	\\
+	{B^I} && {C\times C}
+	\arrow["s"', from=1-1, to=3-1]
+	\arrow["su", from=1-1, to=1-3]
+	\arrow["{(d_0u,d_1u)}"', from=3-1, to=3-3]
+	\arrow["{(d_0,d_1)}", from=1-3, to=3-3]
+	\arrow["\phi", dashed, from=3-1, to=1-3]
+    \end{tikzcd}\]
+		and $k\phi:A\varrightarrow{}C^I$ is a right homotopy from $uf$ to $ug$.
+	\end{enumerate}
+\end{proof}
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

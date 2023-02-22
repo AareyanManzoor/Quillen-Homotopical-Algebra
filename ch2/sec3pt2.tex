@@ -1,0 +1,163 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\begin{corollary*}
+Every object of $\mathbf{SimpGrp}$ is fibrant and the fibrations and trivial fibrations of $\mathbf{SimpGrp}$ satisfy \ref{SM7a}
+\end{corollary*}
+
+\begin{lemma}\label{lem:2.3.6}
+    If $f, g \colon G \rightrightarrows H$ are homotopic maps in $\mathbf{SimpGrp}$, then \[\pi_{\bullet} (f)  = \pi_{\bullet}(g) \colon \pi_{\bullet}(G) \longrightarrow \pi_{\bullet} (H).\]
+\end{lemma}
+
+\begin{proof}
+We may assume that $f$ is strictly homotopic to $g$. Let $h \colon G \times \Delta(1) \longrightarrow H$ be a homotopy with $hi_{0} = f, hi_{1} = g$. Then $h = \{h_{\sigma}\}$ where $\sigma$ is a simplex of $\Delta(1)$, $h_{\sigma} \colon G_{q} \longrightarrow H_{q}$ is a group homomorphism and $q$ is the degree of $\sigma$. $\sigma$ may be identified with the sequence $(\sigma 0, \ldots, \sigma q)$, which is a sequence $(0 \ldots 0, 1 \ldots 1)$. Let $h_{1} \colon G_{q} \longrightarrow H_{q}$ be $h_{\sigma}$ where $\sigma$ has $i+1$ zeroes and $q-1$ ones. Then $h_{-1} = f$ and $h_{q} =g$ in degree $q$. If $\alpha \in \pi_q G$, represent $\alpha$ by $x \in G_{q}$with $d_{j}x = 1, 0 \leq j \leq q$, and set
+\begin{gather*}
+    z_1 = (h_0 s_0 x) \cdot (h_1 s_1 x)^{-1} \ldots (h_{q} s_{q} x)^{(-1)^{q}} \\
+    z_2 = (f s_0 x) \cdot (f s_1 x)^{-1} \ldots (f s_{q} x)^{(-1)^{q}}
+.\end{gather*}
+Then $z_1 z_2^{-1} \in N_{q+1} H$ and $d(z_1 z_2^{-1}) = gx \cdot (fx)^{-1}$ showing that $\pi_{q}(f)\alpha = \pi_q (g) \alpha$
+\end{proof}
+
+\begin{proof}[Proof of Theorem \ref{thm:2.3.2}]: 
+We first note that Lemma \ref{lem:2.3.4} holds in $\mathbf{SimpGrp}$. In effect (iii) $\implies$ (i) 
+because a homotopy equivalence is a weak equivalence by Lemma \ref{lem:2.3.6} and the rest of the proof used only the definition of cofibration and the corollary to Lemma \ref{lem:2.3.2} which for $\mathbf{SimpGrp}$ is replaced by the corollary to Prop. 2. The factorization axiom Lemma \ref{lem:2.3.2} may be proved by the small object argument since trivial fibrations are characterized by the RLP with respect to $F\overset{\bullet}{\Delta(n)} \longrightarrow F \Delta (n)$ ($F = $ free group functor), and since $F\overset{\bullet}{\Delta(n)}$ is small. The rest of the proof follows that of Theorem \ref{thm:2.3.1}.
+\end{proof}
+
+Let the category of $\mathbf{Simp}$ of simplicial sets be considered as a simplicial category as in \S\ref{sec:2.1}. Define fibrations and trivial fibrations as in \S\ref{sec:2.2} and call a map a cofibration (resp. trivial cofibration) if it has the LLP with respect to the class of trivial fibrations (resp. fibrations). Finally define a weak equivalence in $\mathbf{Simp}$ to be a map $f$ which may be factored $f = pi$ where $i$ is a trivial cofibration and $p$ is a trivial fibration.
+
+\begin{theorem}\label{thm:2.3.3}
+With these definitions the category $\mathbf{Simp}$ of simplicial sets is a closed simplicial model category.
+\end{theorem}
+
+\begin{proof}
+First note that ``trivial'' has its customary meaning in the sense that a map is a trivial cofibration (resp. fibration) iff it is a cofibration (resp. fibration) and a weak equivalence. Indeed the direction $(\implies)$ is clear. If $f \colon A \longrightarrow B$ is a cofibration and 
+\begin{equation}\label{eq:2.3.2}\tag{2}
+\begin{tikzcd}
+	&& Z \\
+	A \\
+	&& B
+	\arrow["p", from=1-3, to=3-3]
+	\arrow["1", from=2-1, to=1-3]
+	\arrow["f"', from=2-1, to=3-3]
+\end{tikzcd}
+\end{equation}
+is a factorization of $f$, where $i$ is a trivial cofibration and $p$ is a trivial fibration, then there exists a section $s$ of $p$ with $sf = i$. Hence $f$ is a retract of $i$ and so $f$ is a trivial cofibration. Fibrations are handled similarly.
+
+The factorization axiom \ref{1.1.M2} may be proved by the small object argument using Prop \ref{prop:2.2.1}(i) and \ref{prop:2.2.2}(i) and the fact that $\overset{\bullet}{\Delta(n)}$ and $V(n, k)$ are small. This actually proves that any map $f$ may be factored $f=pi$ where $p$ is a trivial fibration (resp. fibration) and where $i$ is a sequential composition of cobase extensions of direct sums of the maps $\overset{\bullet}{\Delta(n)} \longrightarrow \Delta (n)$ (resp. $V(n, k) \longrightarrow \Delta (n)$). In particular $i$ is injective (resp. an ``anodyne extension'' in the terminology of Gabriel-Zisman). If $f$ is already a cofibration (resp. trivial cofibration), then as above (see (\ref{eq:2.3.2})) $f$ is a retract of $i$, hence is injective (resp. an ``anodyne extension''). The converse is also true (\ref{prop:2.1.01} and \cite[3.1]{gabriel_calculus_1967}). Hence:
+\end{proof}
+
+\begin{proposition}\label{prop:2.3.3}
+In $\mathbf{Simp}$ the cofibrations are the injective maps and the trivial cofibrations are the anodyne extensions. Any object of $\mathbf{Simp}$ is cofibrant.
+\end{proposition}
+
+All of the axioms except \ref{1.1.M5} are now clear. \ref{1.1.M0}, \ref{SM0} are trivial and \ref{M6} is true by the way things have been defined. \ref{1.1.M2} follows from the small object argument, and as the fibrations and trivial fibrations of $\mathbf{Simp}$ satisfies \ref{SM7a}, \ref{M6} implies that \ref{SM7} holds.
+
+The fibrant objects of $\mathbf{Simp}$ are the Kan complexes. If $E$ is a Kan complex and $A$ is a simplicial set, then by \ref{SM7} $\UHom (A, E)$ is a Kan complex so ``is strictly homotopic to'' is an equivalence relation on $\Hom (A, E)$. Let \\$[A, E] = \pi_0 \UHom (A, E)$ denote the equivalence classes. Then \ref{1.1.M5} follows immediately from:
+
+\begin{proposition}\label{prop:2.3.4}
+    A map $f \colon X \longrightarrow Y$ in $\mathbf{Simp}$ is a weak equivalence if and only if for all Kan complexes $E$, $[f, E] \colon [Y, E] \longrightarrow [X, E]$ is bijective.
+\end{proposition}
+
+\begin{proof}\phantom{,}\begin{enumerate}
+    \item[$(\implies)$] If $f$ is a trivial cofibration then this follows from the covering homotopy extension theorem (Prop \ref{prop:2.2.4}) which depends only on \ref{SM7}. If $f$ is a trivial fibration then as every simplicial set is cofibrant one sees by the dual of the argument used to prove (ii) $\implies$ (iii) in Lemma \ref{lem:2.3.3} that $f$ is the dual of a strong deformation retract map. In particular $f$ is a homotopy equivalence so $[f, E]$ is bijective. If $f$ is a weak equivalence then $f$ is the composition of a trivial cofibration and a trivial fibration so $[f, E]$ is bijective.
+    
+    \item[$(\impliedby)$]Factoring $f = pi$ where $i$ is a cofibration and $p$ is a trivial fibration we have $[p, E]$ bijective by the above so we reduce to the case where $f$ is a cofibration. In this case $f$ is a trivial cofibration by the following two lemmas.
+\end{enumerate}
+\end{proof}
+
+\begin{lemma}\label{lem:2.3.7}
+If $i$ is a cofibration and $[i, e]$ is bijective for all Kan complexes $E$, then $i$ has the LLP with respect to all fibrations of Kan complexes. 
+\end{lemma}
+
+\begin{lemma}\label{lem:2.3.8}
+If a cofibration $i$ has the LLP with respect to all fibrations of Kan complexes, then it has the LLP with respect to all fibrations and so is a trivial cofibration.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma \ref{lem:2.3.7}]
+We begin by showing that if $p \colon X \longrightarrow Y$ is a fibration of Kan complexes, then $p$ is a trivial fibration if and only if $p$ is a homotopy equivalence. The direction $\implies$ has been proved above. To prove $\impliedby$ let $s$ be a homotopy inverse for $p$. By lifting the homotopy from $ps$ to $id_{Y}$ we may assume that $ps = id_{Y}$. Then $id_{X}$ and $sp$ are homotopic and as $X$ is a Kan complex we may choose $h \colon X \times \Delta (1) \longrightarrow X$ with $hi_{0} = sp$ and \\ $hi_{1} = id_{Y}$. Now 
+\[\UHom (X, p) \colon \UHom (X, X) \longrightarrow \UHom (X, Y)\] is a fibration and the $l$-simplicies $h$ and $sph$ define a map $a \colon V (2, 0) \longrightarrow \UHom (X, X)$ which covers the map $\beta \colon \Delta (2) \longrightarrow \UHom (X, X)$ given by the 2-simplex $s_1(ph)$. Hence there is a map $\gamma \colon \Delta (2) \longrightarrow \UHom (X, X)$ which covers the map $\beta$ and restricts to $\alpha $; the $0$-th face of $\gamma(id)$ is a homotopy $k \colon X \times \Delta (1) \longrightarrow X$ from $id_{X}$ to $sp$ which is fiber-wise, i.e. $pk = \sigma (p \times \Delta (1))$. This shows that $p \colon X \longrightarrow Y$ is a fibration and the dual of a strong deformation retract and hence is a trivial fibration. 
+
+Now let $i \colon A \longrightarrow B$ and $E$ be as in the statement of Lemma \ref{lem:2.3.7} and apply this fact to the fibration \[\UHom (i, E) \colon \UHom (B, E) \longrightarrow \UHom (A, E).\] If $K$ is any simplicial set, then $[K, \UHom (B,E)] \longrightarrow [K, \UHom (A,E)]$ may be identified with $[B, \UHom (K,E)] \longrightarrow [A, \UHom (K, E)]$ which is bijective since $\UHom (K, E)$ is a Kan complex and the assumption on $i$. Hence $\UHom (i, E)$ is a trivial fibration.
+
+Let $p \colon X \longrightarrow Y$ be a fibration in $\mathbf{Simp}$ where $Y$ and hence $X$ is a Kan complex and consider the diagram
+\[\begin{tikzcd}
+	{\UHom (B, X)} & {\UHom (A, X)\times_{\UHom (A, Y)} \UHom(B,Y)} & {\UHom (A, X)} \\ \\
+	& {\UHom (B, Y)} & {\UHom (A, Y)}
+	\arrow["{\UHom (i, Y)}", from=3-2, to=3-3]
+	\arrow["{\UHom (A, p)}", from=1-3, to=3-3]
+	\arrow["{\pr_1}", from=1-2, to=1-3]
+	\arrow["{\pr_1}", from=1-2, to=3-2]
+	\arrow["{(i^{\ast}, p_{\ast})}", from=1-1, to=1-2]
+\end{tikzcd}\]
+where the square is cartesian. We have just shown that $\UHom (i, Y)$ is a trivial fibration and hence so is $\pr_1$. Thus $\pr_1$ and \[\pr_1 (i^{\ast}, p_{\ast }) = 1^{\ast } = \UHom (i, X)\] are trivial fibrations, hence homotopy equivalences, and so $(i^{\ast }, p_{\ast })$ is a fibration (\ref{SM7}) it is a trivial fibration hence surjective in dimension zero and so $i$ has the LLP with respect to $p$.
+\end{proof}
+
+\begin{proof}[Proof of Lemma \ref{lem:2.3.8}]
+If $p \colon X \longrightarrow Y$ is an arbitrary fibration in $\mathbf{Simp}$, then by \cite{barratt_semisimplicial_1959}
+there is a minimal fibration $q \colon Z \longrightarrow Y$ such that $Z$ is a strong deformation retract of $X$ \defemph{over} $Y$ (i.e. the homotopies are fiber-wise). As $i$ is a cofibration \ref{SM7} implies that $i$ has the LLP with respect to $p$ iff $i$ has the LLP with respect to $q$. But $q$ is induced from a fibration of Kan complexes. To see this we may suppose $Y$ is connected and let $F$ be the fiber of $q$ over a 0-simplex of $Y$. Then by \cite{barratt_semisimplicial_1959} there is a cartesian square
+\[\begin{tikzcd}
+    X && {W(\operatorname{\mathbf{Aut}} F) \times_{\operatorname{\mathbf{Aut}}F} F} \\\\
+	Y && {\xoverline{W} (\operatorname{\mathbf{Aut}} F)}
+	\arrow["r", from=1-3, to=3-3]
+	\arrow["q", from=1-1, to=3-1]
+	\arrow[from=3-1, to=3-3]
+	\arrow[from=1-1, to=1-3]
+\end{tikzcd}\]
+where $r$ is a fibration and $\xoverline{W}(\operatorname{\mathbf{Aut}} F)$ is a Kan complex. As $i$ has the LLP with respect to $r$ it does so also for $q$, and hence $i$ is a trivial cofibration. This completes the proof of Lemma \ref{lem:2.3.8} and hence also of Theorem \ref{thm:2.3.3}.
+\end{proof}
+
+Combining Prop \ref{prop:2.3.2} with Prop \ref{prop:1.5.1} we obtain 
+
+\begin{corollary*}
+The anodyne extensions are precisely the injective maps in $\mathbf{Simp}$ which become isomorphisms in the homotopy category. 
+\end{corollary*}
+
+\begin{remark*}
+We have presented what we consider to be the next elementary proof of Theorem \ref{thm:2.3.3}. The problem is to characterize the weak equivalences in some way so that \ref{1.1.M5} becomes clear. We now present a list of different characterizations of the weak equivalences. Some of these may be used to give alternative proofs of \ref{1.1.M5} and will be useful later.
+\end{remark*}
+
+\begin{proposition}\label{prop:2.3.5}
+The following assertions are equivalent for a map $f \colon X \longrightarrow Y$ of simplicial sets:
+
+\begin{enumerate}[label=(\roman*)]
+    \item \label{item:2.3.4.1} $f$ is a weak equivalence (isomorphism in homotopy category).
+    \item \label{item:2.3.4.2} $[Y, E] \xrightarrow{\sim} [X, E]$ for all Kan complexes $E$. 
+    \item \label{item:2.3.4.3} $|X| \longrightarrow |Y|$ is a homotopy equivalence in $\underline T$.
+    \item \label{item:2.3.4.4} $\Ex^{\infty} X \longrightarrow \Ex^{\infty} Y$ is a homotopy equivalence in $\mathbf{Simp}$.
+    \item \label{item:2.3.4.5}$H^{0} (Y, S) \xrightarrow{\sim} H^{0} (X, S)$ for any set $S$, $H^{1} (Y, G) \xrightarrow{\sim} H^{1} (X, G)$ for any group $G$, and $H^{q} (Y, L) \xrightarrow{\sim} H^{q} (X, f^{\ast } \mathbf{L})$ for any local coefficient system $\mathbf{L}$ of abelian groups on $Y$ and $q \geq 0$.
+    \item \label{item:2.3.4.6} $\pi_{0} X \xrightarrow{\sim} \pi_0 Y$, $\pi_{1} (X, x) \xrightarrow{\sim} \pi_1 (Y, fx)$ for any $x \in X_0$, and \\$H^{q} (Y, L) \xrightarrow{\sim} H^{q} (X, f^{\ast } \mathbf{L})$ where $\mathbf{L}, q$ are as in \ref{item:2.3.4.5}. % let me know if this is wrong
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \ref{item:2.3.4.1} $\iff$ \ref{item:2.3.4.2} is Proposition \ref{prop:2.3.4}. \ref{item:2.3.4.2} $\iff$ \ref{item:2.3.4.3} $\iff$ \ref{item:2.3.4.4} are proved in \cite{kan_css_1957-1}. Here $X \longrightarrow \Ex^{\infty}X$ is the functorial embedding of $X$ into a Kan complex constructed by Kan.
+
+    \ref{item:2.3.4.5} $\iff$ \ref{item:2.3.4.6}. Here \[H^{0}(X, S) = \Hom (\pi _{0} X, S),\quad \quad H^{1} (X, G) = [X, \xoverline{W} (G)],\] and $\pi_1 (X, x)$ is the fundamental group of $X$ at $x$ calulated by the method of the maximal tree. The first assertion of \ref{item:2.3.4.5} and \ref{item:2.3.4.6} are equivalent and we may assume $X$ and $Y$ are connected. Let $x \in X_0$. Then $[X, \xoverline{W} (G)] = \Hom_{\mathbf{Grp}} (\pi_1 (X, x), G)_{G}$ where $G$ acts on a homomorphism $\Psi$ by $(g \cdot \Psi) (\lambda) = g \Psi (\lambda) g^{-1}$. In other words, $[X, \xoverline{W} (G)]$ is the set of homomorphisms from $\pi_1 (X,x)$ to $G$ in the category of groups up to inner automorphisms, so the second condition of \ref{item:2.3.4.5} means that $\pi_1 (X, x) \longrightarrow \pi_1 (Y, fx)$ is an isomorphism in this category. But this is clearly the same as $\pi_1 (X, x) \longrightarrow \pi_1 (Y, fx)$ being an isomorphism of groups, and so we see that the second conditions of \ref{item:2.3.4.5} and \ref{item:2.3.4.6} are equivalent. Thus \ref{item:2.3.4.5} and \ref{item:2.3.4.6} are equivalent.
+
+    \ref{item:2.3.4.3} $\implies$ \ref{item:2.3.4.6}. As $\pi_0 |X| = \pi_0 X$ we may assume that $X$ and $Y$ are connected. As $\pi_1 (|X|, x) = \pi_1 (X, x)$ we conclude that $\pi_1 (X, x) \xrightarrow{\sim} \pi_1 (Y, fx)$ for all $x \in X_0$. Let $x_0$ be a fixed 0-simplex of $X$, let $y_0 = f x_0$ and let $\pi = \pi_1 (X, x_0) \xrightarrow{\sim} \pi_1 (Y, y_0)$. Let $p \colon (\xtilde{X}, \xtilde{x_0}) \longrightarrow (X, x)$ (resp. $q \colon (\xtilde{Y}, \xtilde{y_0}) \longrightarrow (Y, y_0)$) be the universal coverings and $\xtilde{f} \colon \xtilde{X} \longrightarrow \xtilde{Y}$ be the unique map covering $f$ with $\xtilde{f} \xtilde{x_0} = \xtilde{y_0}$.
+
+    If $\mathbf{L}$ is a local coefficient system on $Y$, then there is a morphism of Cartan-Leray spectral sequences 
+\[\begin{tikzcd}
+	{E_2^{pq} = H^p (\pi, H^q(\xtilde{Y}, q^{\ast} \underline{L}))} && {H^{p+q} (Y, \mathbf{L})} \\\\
+	{E_2^{pq} = H^p (\pi, H^q(\xtilde{X}, p^{\ast}f \mathbf{L} ))} && {H^{p+q} (X, f^{\ast}\mathbf{L})}
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=1-1, to=3-1]
+	\arrow[Rightarrow, from=3-1, to=3-3]
+	\arrow[Rightarrow, from=1-1, to=1-3]
+\end{tikzcd}\]
+As $|\xtilde{X}|$ and $|\xtilde{Y}|$ are the universal coverings of $X$ and $Y$, \ref{item:2.3.4.3} $\implies |\xtilde{f}|$ is a homotopy equivalence. As $H^{\ast } (|\xtilde{X}|, A) = H^{\ast } (\xtilde{X}, A)$ for any abelian group $A$ we see that the map on the $E_2$ is an isomorphism and so \ref{item:2.3.4.6} is proved.
+
+\ref{item:2.3.4.6} $\implies$ \ref{item:2.3.4.3}. We may assume $X$ and $Y$ are connected and we let $\xtilde{X}, \xtilde{Y}, \pi $, etc., be as above. By a theorem of Whitehead it suffices to prove that \\$\pi_q (|X|, x_0) \xrightarrow{\sim} \pi_q (|Y|, y_0)$ for all $q$. For $q = 1$, this comes from \\$\pi_1 (|X|, x_0) = \pi_1 (X, x_0)$ and the similar assertion for $Y$. For $q> 1$ it suffices to prove $|\xtilde{f}|$ is a homotopy equivalence or equivalently, since $|\xtilde{X}|$ and $|\xtilde{Y}|$ are $1$-connected, that $H^{\ast }(\xtilde{Y}, A) \xrightarrow{\sim} H^{\ast } (\xtilde{X}, A)$ for any abelian group $A$. But the Leray spectral sequences for $p$ and $q$ degenerate giving a diagram 
+\[\begin{tikzcd}
+	{H^n (Y, q_{\ast}, A)} && {H^n (\xtilde{Y}, A)} \\ \\
+	{H^n (X, p_{\ast}, A)} && {H^n(\xtilde{X}, A)} 
+	\arrow["{f^{\ast}}", from=1-1, to=3-1]
+	\arrow["{\xtilde{f}^{\ast}}", from=1-3, to=3-3]
+	\arrow["\sim", from=1-3, to=1-1]
+	\arrow["\sim", from=3-1, to=3-3]
+\end{tikzcd}\]
+where $p_{\ast }A, q_{\ast }A$ are the local coefficient systems of the cohomology of the fiber, and where $f^{\ast }$ is the map on cohomology coming from $f^{\ast } (q_{\ast }A) = p_{\ast }A$. By \ref{item:2.3.4.6} $f^{\ast }$ is an isomorphism and so we are finished.
+\end{proof}
+
+
+\end{document}

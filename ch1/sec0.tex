@@ -1,0 +1,35 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Introduction}\label{sec:1.1.0}
+Chapter \ref{ch:1} is an attempt to define what is meant by a ``homotopy theory'' in a way sufficiently general for various applications. The basic definition is that of a \defemphi{model category} which is a category endowed with three distinguished families of maps called cofibrations, fibrations, and weak equivalences satisfying certain axioms, the most important being the following two:
+\begin{itemize}
+    \item[M1] Given a commutative solid arrow diagram
+    \begin{center}
+        \begin{tikzcd}
+            A \arrow[rr] \arrow[dd, "i"]      &  & X \arrow[dd, "p"] \\
+                                            &  &                   \\
+            B \arrow[rruu, dotted] \arrow[rr] &  & Y                
+        \end{tikzcd}
+    \end{center}
+    where $i$ is a cofibration, $p$ is a fibration, and either $i$ or $p$ is also a weak equivalence, there exists a dotted arrow such that the total diagram is commutative.
+    \item[M2] Any map $f$ may be factored $f = pi$ and $f = p'i'$ where $i, i'$ are cofibrations, where $p, p'$ are fibrations and where $p$ and $i'$ are also weak equivalences. It should be noticed that we do not assume
+    the existence of a path or cylinder functor; in fact the homotopy relation for maps may be recovered as follows: Call an object \defemphi{cofibrant}\index{fibrant!\indexline co} if the map $\emptyset \to X$ is a cofibration (hence in the category of simplicial groups the cofibrant objects are the free simplicial groups) and \defemphi{fibrant} if the map $X \to e$ is a fibration (hence in the category of simplicial sets the fibrant objects are the Kan complexes). Then two maps $f, g$ from a cofibrant object $A$ to a fibrant object $B$ are said to be \defemph{homotopic}\index{homotopy} if there exists a commutative diagram
+    \[\tag{I}\label{diag:1.0.1}
+        \begin{tikzcd}
+            A \vee A \arrow[rrdd, "i_0+i_1"] \arrow[rr, "f+g"] &  & B                                       \\
+                                                               &  &                                         \\
+            A \arrow[uu, "\id + \id"]                          &  & A' \arrow[ll, "\sigma"] \arrow[uu, "h" right]
+        \end{tikzcd}
+    \]
+    where $\vee$ denotes direct sum, $f + g$ is the map with components $f$ and $g$, and where $\sigma$ is a weak equivalence. 
+\end{itemize} 
+
+Given a model category $\mathbf{C}$, the \defemph{homotopy category}\index{homotopy!\indexline category} $\Ho \mathbf{C}$ is obtained from $\mathbf{C}$ by formally inverting all the weak equivalences. The resulting ``localization'' $\gamma : \mathbf{C} \to \Ho \mathbf{C}$ is in general not calculable by left or right fractions \cite{gabriel_calculus_1967} but is rather a mixture of both. The main result of \S\ref{sec:1.1} is that $\Ho \mathbf{C}$ is equivalent to the category $\pi {\mathbf{C}}_{cf}$ whose objects are the cofibrant and fibrant objects of $\mathbf{C}$ and whose morphisms are homotopy classes of maps in $\mathbf{C}$. If $\mathbf{C}$ is a pointed category then in \S\S\ref{sec:1.2}--\ref{sec:1.3} we construct the loop and suspension functors and the families of fibration and cofibration sequences in the homotopy category. If one defines a \defemphi{cylinder object} for a cofibrant object $A$ to be an object $A'$ together with a cofibration $i_0 + i_1$ and a weak equivalence $\sigma$ as in diagram \ref{diag:1.0.1}, then the constructions are the same as in the ordinary homotopy theory except that, since a cylinder object of $A$ is neither unique nor functorial in $A$, one has to be careful that things are well--defined. This is done by defining operations in two ways using the left (cofibration) structure and the right (fibration) structure, and showing that the two definitions coincide.
+
+The term ``model category'' is short for ``a category of models for a homotopy theory'', where the homotopy theory associated to a model category $\mathbf{C}$ is defined to be the homotopy category $\Ho \mathbf{C}$ with the extra structure defined in \S\ref{sec:1.2}-\ref{sec:1.3} on this category when $\mathbf{C}$ is pointed. The same homotopy theory may have several different models, e.g. ordinary homotopy theory with basepoint is (\cite{kan_homotopy_1958}, \cite{milnor_geometric_1957}) the homotopy theory of each of the following model categories: $0$--connected pointed topological spaces, reduced simplicial sets, and simplicial groups. In section \ref{sec:1.4} we present an abstract form of this result which asserts that two model categories have the same homotopy theory provided there are a pair of adjoint functors between the categories satisfying certain conditions.
+
+This definition of the homotopy theory associated a model category is obviously unsatisfactory. In effect, the loop and suspension functors are a kind of primary structure on $\Ho \mathbf{C}$, and the families of fibration and cofibration sequences are a kind of secondary structure since they determine the Toda bracket (see \S\ref{sec:1.3}) and are equivalent to the Toda bracket when $\Ho \mathbf{C}$ is additive. (This last remark is a result of Alex Heller.) Presumably there is higher order structure (\cite{gershenson_higher_1965}, \cite{spanier_higher_1963}) on the homotopy category which forms part of the homotopy theory of a model category, but we have not been able to find an inclusive general definition of this structure with the property that this structure is preserved when there are adjoint functors which establish an equivalence of homotopy theories.
+
+In section \ref{sec:1.5} we define a \defemphi{closed model category} which has the desirable property that a map is a weak equivalence if and only if it becomes an isomorphism in the homotopy category.
+\end{document}

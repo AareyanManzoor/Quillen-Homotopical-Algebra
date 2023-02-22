@@ -1,0 +1,123 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Homology and cohomology}\label{sec:2.5}
+
+If homotopical algebra is thought of as ``non-linear'' or ``non-additive'' homological algebra, then it is natural to ask what is the ``linearization'' or ``abelionaization'' of this non-linear situation. This leads to a uniform description of homology and cohomology for model categories and in the case of $s \mathbf A$ the resulting cohomology agrees with the cohomology constructed using suitable cotriples and Grothendieck topologies.
+
+
+Let $\mathbf C$ be a model category and let $\mathbf C_{ab}$ be the category of abelian group objects in $\mathbf C$. We assume that the abelionaization $X_{ab}$ of any object $X$ of $\mathbf C$ exists so that there are adjoint functors
+\begin{equation}\tag{1}\label{eqn:2.4.1}
+  \begin{tikzcd}[column sep=large] 
+    \mathbf C \rar["\ab", shift left] & \lar["i", shift left] \mathbf C_{ab} 
+  \end{tikzcd}
+\end{equation}
+where $i$ is the faith inclusion functor. We also assume that $\mathbf C_{ab}$ is a model category in such a way that these adjoint functors satisfy the conditions of the first part of \ref{thm:3}, so that there are adjoint functors 
+\begin{align} 
+  \begin{tikzcd}[column sep=large, ampersand replacement=\&] \label{eqn:2.4.2}
+   \Ho \mathbf C \rar["\mathbf L \ab", shift left] \& \lar["\mathbf R i", shift left] \mathbf \Ho  \mathbf C_{ab} \tag{2}
+  \end{tikzcd} \\
+[X, \mathbf Ri(A)] = [\mathbf L \ab(X), A]  \notag
+\end{align}
+Finally we shall assume that $\Ho \mathbf C_{ab}$ satisfies the following two condition:
+
+\begin{enumerate} 
+  \item [A.] The Adjunction map $\theta\colon A  \cong \Omega \Sigma A $ is an isomorphism for all objects $A$.
+  
+  \item [B.] If \[A' \varrightarrow{i} A \varrightarrow{j} A'' \varrightarrow{\delta} \Sigma A'\] is a cofibration sequence, then
+  \[\Omega\Sigma A' \varrightarrow{-i \cdot \theta^{-1}} A \varrightarrow{j} A'' \varrightarrow{\delta} \Sigma A\]
+  is a fibration sequence (Note that as $\Ho \mathbf C_{-ab}$ is additive the action\\ $F\times \Omega B \varrightarrow{m}F$ is determined by $\partial = m(0, \id ): \partial B \longrightarrow  F$ via the rule \\$m(\alpha, \lambda) = \alpha + \partial\lambda$ if $\alpha: T \longrightarrow  F$ and $\lambda:T \longrightarrow  \Omega B$). 
+\end{enumerate}
+
+These conditions hold for example if  $\mathbf C_{ab} = s \mathbf A$, where $\mathbf A$ is an abelian category with enough projectives and if $\mathbf C_{ab}$ is the model category of simplicial modules over a simplicial ring (see following section.)
+
+We define the \defemph{cohomology} groups of an object $X$ of $\Ho \mathbf C$ with coefficients an object $A$ of $\Ho \mathbf C_{ab}$ to be 
+\[ 
+  H_{M}^q(X,A) = [\mathbf L \ab (X), \Omega^{q+N}\Sigma^NA ]
+\] 
+where $N$ is an integer $\ge 0$ with $q+N\ge 0$. By (A) it does not matter what $N$ we choose. Suppose now that $\mathbf C$ is pointed. Then 
+\begin{align*}
+  H_{M}^{q} (\Sigma X, A) &= [\mathbf{L}\ab  (\Sigma X), \Omega^{q+N}\Sigma^NA] = [\Sigma \mathbf{L}\ab (X), \Omega^{q+N}\Sigma^N A]\\[0.5em]
+                          &= [\mathbf{L}\ab (X), \Omega^{q+N+1}\Sigma^N A] = H_{M}^{q+1} (X,A)
+\end{align*}
+Using this and the fact that $\mathbf{L}\ab $ preserves cofibration sequence, we find that if $X \longrightarrow  Y \longrightarrow  C,$ etc. is a cofibration sequence, then there is a long exact sequence
+\[ 
+  \cdots \longrightarrow  H_{M}^{q} (C,A) \longrightarrow  H_{M}^{q} (Y,A) \longrightarrow  H_{M}^{q}(X,A) \varrightarrow{\delta } H_{M}^{q+1} (C,A) \longrightarrow   \cdots
+\] 
+From (B) it follows that if \[A'\longrightarrow A\longrightarrow A' \longrightarrow \Sigma A'\]
+is a cofibration sequence in $\Ho \mathbf{C}_{ab}$ then there is a long exact sequence
+\[\cdots\longrightarrow  H_{M}^{q} (X,A') \longrightarrow  H_{M}^{q} (X,A) \longrightarrow  H_{M}^{q}(X,A'') \varrightarrow{\delta } H_{M}^{q+1} (X,A') \longrightarrow\cdots \]
+
+It is reasonable to call an object of $\Ho \mathbf{C}$ of the form $\mathbf{R} i(A)$ a \defemph{generalized Eilenberg-Maclane object} and to call $\mathbf{L}\ab (X)$ the \defemph{homology} of $X$. In effect
+\[ 
+  H_{M}^{0}(X,A) = [\mathbf{L}\ab (X),A]
+\] 
+is a universal coefficient theorem while 
+\[ 
+  H_{M}^{0} (X,A) = [X, \mathbf{R} i(A)]
+\] 
+is representability theorem for cohomology.
+
+\begin{examples} 
+   \begin{enumerate} 
+     \item $\mathbf{C} = \mathbf{Simp} $ so that $\mathbf{Simp}_{ab} = s(\mathbf{Ab})$ the category of simplicial abelian groups and $X_{ab} = \mathbb{Z}X$,the free abelian group functor applied dimension-wise to $X$. The assumption on $\mathbf{Simp}$ and $\mathbf S_{ab}$ hold and as every object of $\mathbf{Simp}$ is cofibrant $\mathbf L \ab (X) = X_{ab}.$ Hence 
+
+       \[ 
+          H_{M}^{\bullet} (X,K(R,0)) = H^\bullet (X,R),
+       \] 
+the usual cohomology of $X$ with values in the abelian group $R$. Also 
+       \[ 
+         \pi_{\bullet}(X_{ab}) = H_{\bullet}(X, \mathbb{Z})
+       \] 
+       which partially justifies calling $X_{ab}$ the homology of $X$.
+       
+
+     \item Let $\mathbf{C} = \mathbf{SimpGrp} $ so that $\mathbf{SimpGrp}_{ab} = s(\mathbf{Ab})$ and $G_{ab} = G / [G,G].$ 
+
+       Then $\mathbf L \ab(G) = G_{ab}$ if $G$ is a free simplicial group and so by a result of \cite{kan_hurewicz_1958} (See also (\ref{eq:2.6.16})) 
+             \[ 
+               H_{M}^{q} (G,K(R,0)) = 
+               \begin{cases} 
+                 0 & q <0 \\
+                  & \\
+                 H^{q+1}(\xoverline WG,R) & q \ge 0
+               \end{cases}
+             \] 
+             where $WG$ is the ``classifying space'' simplicial set of $G$. Also
+             \[ 
+               \pi_{q}(\mathbf{L}\ab (G)) = H_{q+1}(WG, \mathbb{Z}).
+             \] 
+             These formulas are seen to hold for any simplicial group $G$ since to calculate $\mathbf{L} \ab(G)$ we may replace $G$ by a free simplicial group.
+   \end{enumerate} 
+\end{examples}
+
+
+We now show how these model cohomology groups compare with other kinds of cohomology. In the following $\mathbf A$ denotes a category closed under finite projective limits, $X$ is an object of $\mathbf A,$ and $A$ is an abelian group object in $\mathbf A/X.$ We consider four definitions of cohomology of $X$ with values in $A.$ 
+
+\begin{enumerate} [label=(\arabic*)\quad]
+  \item Suppose that the effective epimorphisms of $\mathbf A$ are universal effective epimorphisms (which is the case if $\mathbf A$ has sufficiently many projectives-- Cor. to Prop. \ref{eq:2.4.2}). We define a Grothendieck topology on  $\mathbf A$ (\cite{artin_grothendieck_1962}) by defining a covering of an object $Y$ to be a family consisting of a single map $U \longrightarrow  Y$ which is an effective epimorphism. The induced topology on $\mathbf{A} / X$ is coarser than the canonical topology so the representable functor $h_{A}$ is a sheaf of abelian groups; hence sheaf cohomology groups, which we shall denote by $H_{GT}^{\bullet} (X,A)$, are defined. Thus $H_{GT}^{q} (X,A) = H^q(I' (X))$ where $I'$ is an injective resolution of  $h_{A}$ in the category of abelian sheaves on $X.$ 
+
+
+    \item Suppose that there are adjoint functors 
+      \begin{align} \label{eq:2.5.3}
+        \begin{tikzcd}[column sep = large, ampersand replacement = \&]
+          \mathbf{A} \rar["F", shift left] \& \lar["S", shift left] \mathbf{B} 
+          \end{tikzcd}  \notag \\[0.5em] 
+          \Hom_{\mathbf{A}}(FB,Y) &= \Hom_{\mathbf{B}}(B,SY) \tag{3}
+      \end{align}
+      Such that (i) $FSY \longrightarrow  Y$ is an effective epimorphisms for all $Y \in \Ob \mathbf{A}$, (ii) $FB$ is projective for all $B \in \Ob \mathbf{B} $. these adjoint functors define a cotriple (see \cite{barr_acyclic_1966}) and hence cohomology groups $H_{\cot}^{*}(X,A)$ defined by 
+      \[ 
+H_{\cot}^{*} (X,A) = H^{*}[h_{A}(C_\bullet(X))] 
+      \] 
+      where $C_\bullet(X)$ is the simplicial object of $\mathbf{A} / X$ with $C_{q}(X) = (FS)^{q+1}(X)$ with face and degeneracy operators coming from the adjunction maps\\ $\id \longrightarrow  SF,\, FS \longrightarrow  \id $. 
+
+    \item Suppose that $\mathbf A$ is closed under finite limits and has sufficiently many projective objects. Regarding $X$ as a constant simplicial object there exists by Prop \ref{prop:2.4.03} a trivial fibration $P_\bullet \longrightarrow  X$, Where $P_\bullet$ is cofibrant, which is unique up to homotopy over $X$. The group $H^q [h_{A}(P_\bullet)]$ is therefore independent of the choice of $P_\bullet$ and we denote it by $R^{q}h_{A}(X)$.
+
+
+      \item Suppose that $\mathbf A$ satisfies the conditions of theorem \ref{thm:2.4}, \S\ref{sec:2.4} that the abelianization functor $\ab: \mathbf{A} / X \longrightarrow  (\mathbf{A} / X)_{ab}$ exists, and that $(\mathbf{A} / X)_{ab}$ is an abelian category. Then the model category $\mathbf C = s (\mathbf{A} / X)$ satisfies the assumption made at the beginning of this section and hence cohomology groups $H_{M}^{\bullet} (X,A)$ are defined, where $X$ and $A$ are identified with constant simplicial objects.
+  \end{enumerate}
+
+
+
+
+\end{document}

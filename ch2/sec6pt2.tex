@@ -1,0 +1,156 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\begin{proof}
+(a) Construct recursively an exact sequence in $\mathbf{M}_R$ 
+\begin{equation}\tag{7}
+\label{eq:2.6.07}
+\cdots\longrightarrow P_1\longrightarrow P_0\longrightarrow X\longrightarrow 0
+\end{equation}
+by letting $X_0=X$, $P_q\longrightarrow X_q$ be the projective resolution of $X_q$, and \\$X_{q+1}=\ker(P_q\longrightarrow X_q)$. Then $\pi P_q=0$ for $q>0$ so $P_q\longrightarrow 0$ is a weak equivalence of cofibrant objects and hence a homotopy equivalence. Hence there is a map $h:P_q\otimes_{\mathbb{Z}}\mathbb{Z}\Delta(1)\longrightarrow P_q$ with $h(\id \otimes i_0)=\id $ and $h(\id \otimes i_1)=0$. Thus \[(P_q\otimes_RY)\otimes_{\mathbb{Z}}\mathbb{Z}\Delta(1)\varrightarrow{h\otimes\id }P_q\otimes_RY\]is a contracting homotopy of $P_q\otimes_RY$ and so $\pi(P_q\otimes_R Y)=0$. Think of the simplicial operators in (\ref{eq:2.6.07}) as being vertical and consider the double complex $N_{\bullet}^V(P_{\bullet}\otimes_RY)$ obtained by applying the normalization to the functor to the simplicial structure. Then $H_p^hH_q^v=0$ for $q>0$ and $=\pi_p(P_{0}\otimes_RY)$ if $q=0$. As the cofibrant simplicial $R$ module $P_q$ is a direct summand of a free simplicial $R$ module, $(P_q)_n$ is projective over $R_n$ for each $n$, and so in simplicial dimension $n$ (\ref{eq:2.6.07}) is a projective resolution of the $R_n$ module $X_n$. Hence \[H_q^hN_n^v(P_{\bullet}\otimes_RY)=N_n^vH_q^h(P_{\bullet}\otimes_RY)=N_n\Tor_q^{R_n}(X_n,Y_n),\]where we have used that $N$ is an exact functor from the simplicial abelian groups to chain complexes.
+
+Thus we obtain the spectral sequence
+\begin{equation}\tag{8}
+\label{eq:2.6.08}
+E_{pq}^2=\pi_p(\Tor_q^R(X,Y))\Longrightarrow\pi_{p+q}(P_{0}\otimes_RY)
+\end{equation}
+having the edge homomorphism $\pi_n(P_{0}\otimes_RY)\longrightarrow\pi_n(X\otimes_RY)$ induced by the map $P_{0}\longrightarrow X$. By repeating this procedure with $Y$ instead of $X$ we obtain a spectral sequence
+\begin{equation}\tag{9}
+\label{eq:2.6.09}
+E_{pq}^2=\pi_p(\Tor_q^R(X,Y))\Longrightarrow\pi_{p+q}(X\otimes_RQ_{0})
+\end{equation}
+where $Q_{0}\longrightarrow Y$ is a projective resolution of $Y$, whose edge homomorphism $\pi_n(X\otimes_RQ_{0})\longrightarrow\pi_n(X\otimes_RY)$ is induced by $v$. Substituting $P_{0}$ for $X$ in (\ref{eq:2.6.09}), it degenerates showing that $P_{0}\otimes_RQ_{0}\longrightarrow P_{0}\otimes_RY$ is a weak equivalence and hence that $\pi(X\overset{L}{\otimes}_RY)=\pi(P_{0}\otimes_RY)$. Substituting this into (\ref{eq:2.6.08}) we obtain the spectral sequence \ref{2.6.a} and the following fact which will be used later.
+
+\begin{corollary*}
+The edge homomorphism $\pi(X\overset{L}{\otimes}_RY)\longrightarrow\pi(X\otimes_RY)$ of spectral sequence \ref{2.6.a} is induced by the canonical map $X\overset{L}{\otimes}_RY\longrightarrow X\otimes_RY$. This map is a weak equivalence if $\Tor_q^{R_n}(X_n,Y_n)=0$ for $q>0$, $n\geq 0$.
+\end{corollary*}
+
+To prove \ref{2.6.a} is functorial let $R,X,Y\longrightarrow R',X',Y'$ be a map and suppose that a sequence (7)' corresponding to (\ref{eq:2.6.07}) has been constructed. As a map of simplicial sets, the maps $P'_q\longrightarrow X'_q$ are trivial fibrations as maps in $\mathbf{M}_{R^{op}}$. Hence we may construct a map $\theta$ from (\ref{eq:2.6.07}) to (7)' covering the given map $X\longrightarrow X'$ by inductively defining $\theta_q:P_q\longrightarrow P'_q$ by lifting in 
+\begin{equation}\tag{10}
+\label{eq:2.6.10}
+\begin{tikzcd}
+0\arrow[rr]\arrow[dd]&&P'_q\arrow[dd]\\ \\
+P_q\arrow[r]\arrow[dashed]{uurr}{\theta_q}&X_q\arrow{r}{\theta_{q-1}}&X_q'
+\end{tikzcd}\end{equation}
+We then obtain a map of the spectral sequence (\ref{eq:2.6.08}) into the corresponding one (8)' which is independent of the choice of $\theta$ because its $E^2$ term is clearly independent and the map $P_0\longrightarrow P_0'$ covering $X\longrightarrow X'$ is unique upto homotopy. Consequently there is a canonical map from spectral sequence \ref{2.6.a} to the corresponding one (a)' and this proves the functoriality of \ref{2.6.a} as well as its independence of the choices made for its construction.
+
+\ref{2.6.b} We need two lemmas.
+\begin{lemma}\label{lem:2.6.1}
+    Suppose that $P$ is a cofibrant right simplicial $R$ module such that $\pi_\bullet P$ is a free graded $\pi_\bullet R$ module. Then for any left simplicial $R$ module $Y$ the map
+    \[\pi_\bullet P \otimes_{\pi_\bullet R} \pi_\bullet Y\longrightarrow \pi_\bullet (P\otimes_R Y)\]
+    induced by $\wedge$ is an isomorphism.
+\end{lemma}
+\begin{lemma}\label{lem:2.6.2}
+    Suppose P is as in Lemma \ref{lem:2.6.1} and let $f:X\longrightarrow Y$ be a fibration in $\mathbf{M}_{R^{op}}$ such that $\pi_\bullet f:\pi_\bullet X\longrightarrow \pi_\bullet Y$ is surjective. Then given any map $u:P\longrightarrow Y$ there is a $v:P\longrightarrow X$ with $fv=u$.
+\end{lemma}
+\begin{proof}
+Let $RS^n = \Coker(R\otimes \mathbb{Z}\overset{\bullet}{\Delta(n)})$ $n\geq 1$ considered as a right simplicial $R$ module in the obvious way, let $t_n\in (RS^n)_n$ be the residue class of the element $1\otimes \id_{[n]}$, and let $u_n$ be the element of $\pi_n(RS^n)$ represented by $t_n$. We claim that
+\begin{enumerate}[label = \Alph*.]
+    \item $\pi(RS^n)$ is a free right graded $\pi R$ module generated by $u_n$.
+    \item The map $\pi(RS^n)\otimes_{\pi R}\pi Y\longrightarrow \pi(RS^n\otimes_R Y)$ induced by $\wedge$ is an isomorphism.
+\end{enumerate}
+Indeed there is an exact sequence of right simplicial $R$ modules
+\begin{equation}\label{eq:2.6.11}\tag{11}
+    0 \longrightarrow  RS^{n-1} \overset{i}{\longrightarrow } RD^{n} \overset{j}{\longrightarrow } RS^{n} \longrightarrow  0
+\end{equation}
+where $RD^{n} = \Coker (R \otimes \mathbb{Z} V (n, 0) \longrightarrow  R \otimes \mathbb{Z} \Delta (n))$, where $i$ is induced by $\tilde{\partial}_0 \colon \Delta (n-1) \longrightarrow  \Delta (n)$ and $j$ is the canonical surjection. Moreover $0 \longrightarrow  RD^{n}$ is a trivial cofibration because it is a cobase extension of the map \\$R \otimes \mathbb{Z} V(n, 0) \longrightarrow  R \otimes \mathbb{Z} \Delta (n)$, which is a trivial cofibration by \ref{SM7} since $R$ is cofibrant. Hence $RD^{n}$ is contractible and the long exact sequence in homotopy yields an isomorphism
+\[ 
+    \pi_q (RS^{n}) \varrightarrow[\sim]{\partial} 
+\begin{cases}
+\pi_{q-1} (RS^{n-1}) & q \geq 1 \\
+0 & q = 0 
+.\end{cases}
+.\]
+such that $\partial u_n = u_{n-1}$. By property 2 of $\wedge $ $\partial$ is an isomorphism \\$\pi (RS^{n}) \varrightarrow{\sim} \Sigma \pi (RS^{n-1})$ of right graded $\pi R$ modules, where if $M$ is a right graded module over a graded ring $S$, we defined $\Sigma M$ to be the right graded $R$ module with $(\Sigma M)_k = M_{k-1}$ and $(\Sigma m) s = \Sigma (ms)$; here if $m \in M_{k-1}$, $\Sigma m$ denotes $m$ as an delement of $(\Sigma M)_{k}$. A then follows by induction on $n$. To obtain B note that (\ref{eq:2.6.11}) splits in each dimension so it remains exact after tensoring with $Y$ over $R$. The resulting long exact homotopy sequence yields the bottom isomorphism in the square
+\[\begin{tikzcd}
+	{\pi (RS^n) \otimes_{\pi R} \pi Y} && {\Sigma \pi (RS^{n-1}) \otimes_{\pi R} \pi Y} \\\\
+	{\pi (RS^n \otimes_{R} Y)} && {\Sigma \pi (RS^{n-1} \otimes_{R} \pi Y)}
+	\arrow[from=1-1, to=3-1]
+	\arrow[from=1-3, to=3-3]
+	\arrow["\partial", from=3-1, to=3-3]
+	\arrow["\sim", draw=none, from=3-3, to=3-1]
+	\arrow["{\partial \otimes id}", from=1-1, to=1-3]
+\end{tikzcd}\]
+where the vertical arrows come from $\wedge $ and the diagram commutes by property 2 of $\wedge $. Induction on $n$ then proves B.
+
+If $P$ is as in Lemma \ref{lem:2.6.1} choose elements $x_1 \in P_{n_1}, i \in I$ whose representatives in $\pi P$ form a free basis over $\pi R$ and let $\Psi \colon \oplus RS^{n_i} \longrightarrow  P$ the map of right simplicial $R$ modules sending $t_{n_1}$ to $x_1$. By the assumption on $P$ and $A$ $\Psi $ is a weak equivalence hence a homotopy equivalence since both are cofibrant. Lemma \ref{lem:2.6.1} then reduces to the case $P = RS^{n}$ in which case it follows from B.
+
+To prove Lemma \ref{lem:2.6.2} we reduce by the covering homotopy theorem to the case $P = RS^{n}$, and we must show that $Z_n f \colon Z_n X \longrightarrow  Z_n Y$ is surjective where $Z_n$ denotes the group of $n$ cycles in the normalization. As $f$ is a fibration $N_j f$ is surjective $j > 0$ and as $\pi f$ is surjective one sees easily that $Zf$ is surjective. 
+\end{proof}
+
+To obtain \ref{2.6.b} construct an exact sequence 
+\begin{equation}\label{eq:2.6.12}\tag{12}
+    \longrightarrow  P_1 \longrightarrow  P_0 \longrightarrow  X \longrightarrow  0
+\end{equation}
+of right simplicial $R$ modules by setting $X_0 = X$, $X_{q+1} = \Ker(u_q \colon P_{q} \longrightarrow  X_{q})$ where $u_q$ is surjective, $\pi u_q$ is surjective, and $\pi P_q$ is a free graded right $\pi R$ module. $u_q$ may be obtained by choosing generators $\{ \alpha_1 \}$ for $\pi X_q$ over $\pi R$, letting $v \colon \bigoplus_i RS^{n_i} \longrightarrow  X_q$ be a map sending $t_{n_1}$ onto a representative for $\alpha_1$ and then factoring $v = u_q i$ where $u_q$ is a fibration and $i$ is a trivial fibration. If $Q \longrightarrow  Y$ is a projective resolution of $Y$, consider the double complex $N_{\bullet }^{V} (P_{\bullet } \otimes_R Q)$ where $v$ refers to the (vertical) simplicial structure. 
+By Lemma \ref{lem:2.6.1} $\pi (P_q \otimes_R Q) = \pi P_q \otimes_{\pi R} \pi Q$ and by the construction of (\ref{eq:2.6.12}), $\pi (P_{\bullet })$ is a free $\pi R$ resolution of $\pi X$. Thus 
+\[H_p^{h} H_q^{v} (N_{\bullet } (P_{\bullet } \otimes_R Q)) = H_p^{h} (\pi P_{\bullet } \otimes_{\pi R} \pi Q)_q = \Tor_p^{\pi R} (\pi X, \pi Q)_q.\] On the other hand, $Q$ is projective over $R$ in each dimension, hence 
+\[H_p^{v} H_q^{h} (N_{\bullet } (P_{\bullet } \otimes_R Q) = H_p^{v} N_{\bullet } H_q^{h} (P_{\bullet } \otimes_R Q) = 0\]
+if $q > 0$ and $\pi_p (X \otimes_R Q)$ if $q = 0$. As $\pi (X \otimes_R Q ) \overset{\sim}{\to}\pi (X \overset{L}{\otimes_R} Y)$ by the above corollary and $\pi (Q) = \pi (Y)$ we obtain spectral sequence \ref{2.6.b} as well as its independence of (\ref{eq:2.6.12}) may be proved in exactly the same was as for \ref{2.6.a}, except the lifting analogous to (\ref{eq:2.6.10}) is constructed via Lemma \ref{lem:2.6.2}. 
+
+\ref{2.6.c} These are derived by the Serre-Postnikov method. In effect we have (see Prop \ref{pro:2.6.01} (\ref{eq:2.6.04})) canonical exact sequences 
+\begin{equation}\label{eq:2.6.13}\tag{13}
+0 \longrightarrow  \Omega X \longrightarrow  \bigwedge X \longrightarrow  X \longrightarrow  \pi_0 X \longrightarrow  0
+\end{equation}
+in $\mathbf M_{R^{op}}$, where $\bigwedge X$ is contractible and where $\pi_0 X$ is short for the right simplicial $R$ module which is the constant simplicial abelian group $K(\pi_0, X, 0)$, and whose $R$ module comes via the augmentation $\varepsilon \colon R \longrightarrow  K (\pi_0 R, 0)$ from the map \\$\pi_0 X \otimes \pi_0 R \longrightarrow  \pi_0 X$ induced by $\wedge $. From the long exact homotopy sequence we have 
+\begin{equation}\label{eq:2.6.14}\tag{14}
+    \pi_q (X) \varrightarrow[\sim]{\partial} \pi_{q-1} (\Omega X) \quad q > 0
+\end{equation}
+where $\partial (\alpha \cdot \rho ) = (\partial \alpha)_{\rho }$ if $\rho  \in \pi R$. Hence substituting $\Omega^{k} X$ into we obtain exact sequences 
+\begin{equation}\label{eq:2.6.15}\tag{15}
+0 \longrightarrow  \Omega^{k+1} X \longrightarrow  \bigwedge \Omega^{k} X \longrightarrow  \Omega^{k} X \longrightarrow  \pi_k X \longrightarrow  0 \quad k \geq 0
+\end{equation}
+where $\pi_k X$ stands for the right simplicial $R$ module as described in the theorem. Letting $Q \longrightarrow  Y$ be a projective resolution of $Y$, $\otimes_R Q$ is exact and $\bigwedge \Omega^{k} X \otimes_R Q$ is contractible, hence from (\ref{eq:2.6.15}) we obtain exact sequences 
+\[ 
+    \longrightarrow  \pi_{n-1} (\Omega^{k+1} X \otimes_R Q) \longrightarrow  \pi_n (\Omega^{k} X \otimes_R Q) \longrightarrow  \pi_n (\pi_k X \otimes_R Q) \longrightarrow  \pi_{n-2} (\Omega^{k+1} X \otimes_R Q) \longrightarrow  \ldots
+.\]
+for $k \geq 0$. By the corollary $-\otimes_R Q$ may be replaced by $-\overset{L}{\otimes_R} Y$ and so we obtain an exact couple $(D_{pq}^2, E_{pq}^2)$ with $E_{pq}^2 = \pi_p (\pi_q X \overset{L}{\otimes_R} Y)$ and $D_{pq}^2 = \pi_p (\Omega^{q} X \overset{L}{\otimes_R} Y)$ and hence the spectral sequence \ref{2.6.c}. It is clearly canonical and functorial since the only only choice made was that of $Q$ which is unique and functorial up to homotopy. Spectral sequence \ref{2.6.d} is proved similarly. There is no sign trouble from the fact that $\partial \colon \pi_q Y \longrightarrow  \pi_{q-1} (\Omega Y)$ satisfies $\partial (\rho \alpha) = (-1)^{k} \rho \cdot \partial \alpha$ if $\rho \in \pi_k R$ because only $k = 0$ occurs when we consider $\pi_k Y$ as a left simplicial $R$ module. Theorem \ref{thm:2.6} is now proved.\end{proof}
+
+\defemph{Applications to simplicial groups.} Let $G$ be a simplicial group. If $M$ is a simplicial $G$ module we call $H_{\bullet } (G, M) = \pi (\mathbb{Z} \overset{L}{\otimes_{\mathbb{Z}G}} M )$ the \defemph{homology} of $G$ with coefficients in $M$. Here $\mathbb{Z}$ is short for $K(\mathbb{Z}, 0)$ with trivial $G$ action. To calculate the homology we choose a projective resolutive of $\mathbb{Z}$ as a right $\mathbb{Z} G$ module, e.g. $\mathbb{Z} W G$ where $WG \longrightarrow  \xoverline{W} G$ is the universal principal $G$ bundle, whence $H(G, M) = \pi (\mathbb{Z} WG \otimes_{\mathbb{Z}G} M)$. If $M$ is an abelian group on which $\pi_0 G$ acts and we consider $M$ as a constant simplicial $G$ module, then it follows that $H_{\bullet }(G, M)$ is the homology of the simplicial set $\xoverline{W} G$ with values in the local coefficient system defined by $M$. In particular when $G$ is a constant simplicial group and $M$ is a $G$ module $H(G,M)$ in the above sense coincides with the ordinary group homology of $G$ with values in $M$.
+
+If $F$ is a free group, then 
+\[ 
+\Tor_q^{\mathbb{Z}F} (\mathbb{Z}, \mathbb{Z}) = 
+\begin{cases}
+\mathbb{Z} & q = 0\\
+F_{ab} & q = 1\\
+0 & q>=2 
+.\end{cases}
+.\]
+hence if $G$ is a simplicial group which is free in each dimension spectral sequence \ref{2.6.a} degenerates giving 
+\begin{equation}\label{eq:2.6.16}\tag{16}
+H_n (G, \mathbb{Z}) = \begin{cases}
+\mathbb{Z} & n=0\\
+\pi_{n-1} (G_{ab}) & n > 0
+.\end{cases}
+\end{equation}
+which is a formula due to \cite{kan_css_1957} when $G$ is a free simplicial group.
+
+Let $f \colon G \longrightarrow  H$ be a weak equivalence of simplicial groups. Then $f$ is a weak equivalence in $\mathbf{Simp}_f$ and as every object of $\mathbf{Simp}$ is cofibrant $f$ is a homotopy equivalence in $\mathbf{Simp}$. Thus $\mathbb{Z}G \longrightarrow  \mathbb{Z}H$ is a homotopy equivalence of simplicial abelian groups and so $\pi \mathbb{Z}G \overset{\sim}{\to}\pi \mathbb{Z}H$. From spectral sequence \ref{2.6.b} we deduce that $H_{\bullet } (G, \mathbb{Z}) \overset{\sim}{\to}H_{\bullet } (H, \mathbb{Z})$ which shows that homology is a weak homotopy invariant. 
+
+Suppose now that \[1 \longrightarrow  K \longrightarrow  G \longrightarrow  H \longrightarrow  1\]
+is an exact sequence of simplicial groups and that $M$ is a simplicial $G$ module. Let $P \longrightarrow  M$ be a projective resolution of $M$ as on left $\mathbb{Z}G$ module. Then 
+\[ 
+\mathbb{Z} \otimes_{\mathbb{Z} G} M \overset{\sim}{\to}\mathbb{Z} \otimes_{\mathbb{Z}G} \overset{\sim}{\to}\mathbb{Z} \otimes_{\mathbb{Z}H} (\mathbb{Z}H \otimes_{\mathbb{Z}G}P)
+.\]
+and 
+\[ 
+\pi_q (\mathbb{Z}H \otimes_{\mathbb{Z}G}P) \overset{\sim}{\to}\pi_q (\mathbb{Z} \otimes_{\mathbb{Z}K}P) = H_q (K, M)
+.\]
+Substituting $R = \mathbb{Z}H, X = \mathbb{Z}, Y = \mathbb{Z} \otimes_{\mathbb{Z}K} P$ in spectral sequence \ref{2.6.d} we obtain a spectral sequence 
+\begin{equation}\label{eq:2.6.17}\tag{17}
+E_{pq}^2 = H_p (H, H_q(K, M)) \implies H_{p+q} (G, M)
+\end{equation}
+which generalizes the Hoschild-Serre spectral sequence for group homology and the Serre spectral sequence for the fibration $\xoverline{W}K \longrightarrow  \xoverline{W}G \longrightarrow  \xoverline{W} H$.
+
+Spectral sequence \ref{2.6.a} with $R = \mathbb{Z}G, X = \mathbb{Z}, Y = \mathbb{Z}$ has the edge homomorphism
+\[ 
+H_n (G, \mathbb{Z}) \longrightarrow  \pi_{n-1} (G_{ab}) \quad n > 0
+.\]
+which is an isomorphism for $n = 1$ in general and for all $n$ if $G$ is free. So we obtain Poincare's theorem 
+\[ 
+H_1 (G, \mathbb{Z}) = (\pi_0 G)_{ab}
+.\]
+Now by the method of \cite{serre_groupes_1953} it is possible to start from this fact and the spectral sequence (\ref{eq:2.6.17}) and prove directly the Hurewicz and Whitehead theorems for simplicial groups. We leave the details to the reader.
+
+\end{document}

@@ -1,0 +1,38 @@
+Hello everyone, this is where to claim sections. We plan to get the first draft done by september 7, please pick your sections accordingly. Pick one section at a time, if you complete your section then you can indicate it and pick another section.
+
+EDIT: date extended, lets try september 17.
+
+pick a section example:
+``ch 1 (3-12): Aareyan ''
+done section example:
+``ch 1 (3-12): Aareyan %done'' 
+Feel free to ask for help with sections in this document and also on the discord.
+
+There is a latex scan in mathpix scan.tex, and the work of an older group in the folder tex from old group. Feel free to use these to aid your work.
+
+Please READ THE STYLE GUIDE and the preambles before starting any typing.
+(we are using the pdf page number as the original book resets page number at each section)
+
+ch1:
+  sec 0     (07-10): George %done bar minor things
+  sec 1 pt 1(11-19): fourier-deligne %finished by Aareyan
+  sec 1 pt 2(20-27): George %done bar minor things
+  sec 2     (28-39): Celeste %done, labels death  
+  sec 3 pt 1(40-48): zxcvly %done except need to do labels and refs
+  sec 3 pt 2(49-56): Grisha T%done mod proofreading
+  sec 4     (57-65): Nathan %finished by aareyan
+  sec 5     (66-71): George % done
+
+ch2:
+  sec 0     (72-74): Joe % done
+  sec 1     (75-85): Joe % done
+  sec 2     (86-94): Celeste
+  sec 3 pt 1(95-105): George
+  sec 3 pt 2(106-116): eve % need proofreading/some indexing w 3pt1 otherwise done
+  sec 4     (117-128): Joe % done except for references to axioms like SM7 etc
+  sec 5 pt 1(129-135): Yohan % done mod proofreading 
+  sec 5 pt 2(136-143): illum % done
+  sec 6 pt 1(144-152): Manan % done mod proofreading
+  sec 6 pt 2(153-161): eve % done
+
+names for credit: Aareyan Manzoor, Jonas Hardt, Evelyn Koo, Yohan Wittgenstein, Grisha Taroyan

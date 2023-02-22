@@ -1,0 +1,27 @@
+%under construction, please don't start TeXing before this is up
+
+Carefully read the preamble/operators[preamble].tex. This contains everything we have macro'd and we will require the usage of said macros to ensure that things are easier to change globally.
+
+use `` '' for quotations.
+
+always use \[\] for displaymode instead of $$ $$
+
+don't use \left \right, use \bigl \Bigl \biggl \Biggl for the correct sizes of left delimiters, and same for right but \bigr \Bigr \biggr \Biggr.
+
+Use \mathbb for R and C.
+
+Use \bigwedge for exterior powers. Use \otimes for tensor and \oplus for internal whitney sums.
+
+The bib is filled in, use \cite{} to put in the appropriate citations.
+
+The original book has a lot of things inline that should not be. Use your judgement here to make things that look awkward inline into display mode. I think a good rule for this is, if the equation has 2 or more equals (or > or < etc), then it probably should be display mode. If there are a lot of fractions then that is also a good thing to display mode.
+
+Use the theorem etc environments as written in preamble/environment.tex
+
+After each theorem/lemma etc, label it. The way we are going to do it is \label{thm/lem/etc:x.x.xx}, i.e lemma 3 in chapter 1 section 2 is thm:1.2.03.
+
+use \defemph when things are emphasized in the original text.
+
+use \footnote{} for footnotes.
+
+Two extra lines of space between theorem environments (so theorem, definition, proposition, lemma, corollary), one extra space for a new line in the pdf. Basically put two extra lines of space when it's a new part in the pdf and put one extra line when it's just a new line in the pdf. Don't indent the within the theorem environments, do indent the tikzcd and enumerate. Have one extra line of space between each \item in enumerate. Indent with four spaces. (this is for readability and making proofreading easy, this is not strict)

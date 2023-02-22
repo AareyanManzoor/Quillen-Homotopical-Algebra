@@ -1,0 +1,250 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Simplicial categories}\label{sec:2.1}
+$\mathbf{Simp}$ will denote the category of (semi-) simplicial sets (see \cite{gabriel_calculus_1967}).
+
+\begin{definition}
+\label{def:2.1.01}
+A \defemph{simplicial category} is a category $\mathbf C$ endowed with the following structure:
+\begin{enumerate}[(i)]
+    \item\label{def:2.1.01_i} a functor $X,Y \mapsto \UHom_{\mathbf C}(X,Y)$ from $\mathbf C^{op} \times \mathbf C$ to $\mathbf{Simp}$,
+    
+    \item\label{def:2.1.01_ii} maps in $\mathbf{Simp}$
+    \begin{align*}
+        \UHom_{\mathbf C}(X,Y) \times \UHom_{\mathbf C}(Y,Z) &\longrightarrow \UHom_{\mathbf C}(X,Z)\\
+        f,g &\mapsto g \circ f
+    \end{align*}
+    called \defemphi{composition} defined for each triple $X,Y,Z$ of objects of $\mathbf C$,
+    
+    \item\label{def:2.1.01_iii} an isomorphism 
+    \begin{align*}
+        \Hom_{\mathbf C}(X,Y) &\varrightarrow \sim \UHom_{\mathbf C}(X,Y)_0 \\
+        u &\mapsto \xtilde u
+    \end{align*}
+    of functors from $\mathbf C^{op} \times \mathbf C$ to $\mathbf{Set}$. %How are we denoting the category of sets?
+\end{enumerate}
+This structure is subject to the following two conditions: 
+\begin{enumerate}[label = (\arabic*)]
+    \item If $f \in \UHom_{\mathbf C}(X,Y)_n$, $g \in \UHom_{\mathbf C}(Y,Z)_n$ and $h \in \UHom_{\mathbf C}(Z, W)_n$, then $(h \circ g) \circ f = h \circ (g \circ f)$. 
+    
+    \item If $u \in \Hom_{\mathbf C}(X, Y)$ and $f \in \UHom_{\mathbf C}(Y,Z)$, then $f \circ s^n_0 \xtilde u = \UHom_{\mathbf C}(u, Z)_n(f)$. Also $s^n_0 \xtilde U \circ g = \UHom_{\mathbf C}(W, u)_n(g)$ if $g \in \UHom_{\mathbf C}(W, X)_n$. 
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Let $\mathbf C_1$ and $\mathbf C_2$ be simplicial categories. By a \defemphi{simplicial functor} $F \colon \mathbf C_1 \longrightarrow \mathbf C_2$ we mean a functor $F$ from $\mathbf C_1$ to $\mathbf C_2$ together with maps $\UHom_{\mathbf C_1} (X,Y) \longrightarrow \UHom_{\mathbf C_2}(FX,FY)$, denoted $f \mapsto F(f)$, such that \\$F(f \circ g) = F(f) \circ F(g)$ and $F(\xtilde u) = \xtilde{F(u)}$.
+\end{definition}
+
+\begin{example*}
+If $X$ and $Y$ are simplicial sets, let $\UHom_{\mathbf{Simp}}(X,Y)$ or simply $\UHom(X,Y)$ be the ``function complex'' simplicial set of maps from $X$ to $Y$. There is a canonical ``evaluation map''
+\begin{equation}\tag{1}\label{eq:2.1.1}
+    \ev \colon X \times \UHom(X,Y) \longrightarrow Y
+\end{equation}
+giving rise to isomorphisms
+\begin{equation}\tag{2}
+\label{eq:2.1.02}
+    \Hom(K, \UHom(X,Y)) \varrightarrow[\sim]{\#} \Hom(X \times K, Y)
+\end{equation}
+for all $K \in \Ob \mathbf{Simp}$, where $\#(u) = \ev  \circ (\id_x \times u)$. The map 
+\[X \times \UHom(X,Y) \times \UHom(Y,Z) \varrightarrow{\ev \times \id} Y \times\UHom(Y, Z) \varrightarrow{\ev} Z
+\]
+thereby determines a composition map \ref{def:2.1.01_ii}, while taking $K=\Delta(0)$, the final object of $\mathbf{Simp}$, in (\ref{eq:2.1.02}) yields an isomorphism \ref{def:2.1.01_iii}. It is easily seen that $\mathbf{Simp}$ is a simplicial category. 
+
+If $X$ is a fixed object of $\mathbf{Simp}$ then the functor $Y \mapsto \UHom(X, Y)$ is a simplicial functor $h^X$, where $h^X \colon \UHom(Y,Z) \longrightarrow \UHom(\UHom(X,Y), \UHom(X,Z))$ is given by $\#(h^X) =$ composition.
+\end{example*}
+
+In the following $\mathbf C$ denotes a simplicial category. When convenient we will identify $\Hom_{\mathbf C}(X,Y)$ with $\UHom_{\mathbf C}(X,Y)_0$ and drop the ``$\sim$'' notation. Also we will often write $\UHom(X,Y)$ instead of $\UHom_{\mathbf C}(X,Y)$. 
+
+\begin{definition}\label{def:2.1.3}
+Let $X \in \Ob \mathbf{Simp}$. By $X \otimes K$ we shall denote an object of $\mathbf C$ with a distinguished map $\alpha \colon K \longrightarrow \UHom_{\mathbf C}(X, X \otimes K)$ such that 
+\begin{equation}\tag{3}
+\label{eq:2.1.03}
+    \phi \colon \UHom_{\mathbf C} (X \otimes K, Y) \varrightarrow{\sim} \UHom_{\mathbf{Simp}}(K, \UHom_{\mathbf C}(X, Y))
+\end{equation}
+for all $Y \in \Ob \mathbf C$, where $\#(\phi)$ is the map 
+\[
+    K \times \UHom (X \otimes K, Y) \varrightarrow{\alpha \times \id} \UHom(X, X \otimes K) \times \UHom(X \otimes K, Y) \varrightarrow \circ \UHom(X,Y).
+\]
+By $X^K$ we denote an object of $\mathbf C$ with a map $\beta \colon K \longrightarrow \UHom_{\mathbf C}(X^K, X)$ such that 
+\begin{equation}\tag{4}
+\label{eq:2.1.04}
+    \psi \colon \UHom_{\mathbf C}(Y, X^K) \varrightarrow \sim \UHom_{\mathbf{Simp}}(K, \UHom_{\mathbf C}(Y,X))
+\end{equation}
+for all $Y \in \Ob \mathbf C$, where $\#(\psi)$ is the composite
+\[
+    K \times \UHom(Y, X^K) \varrightarrow{(\pr_2, \beta \pr_1)} \UHom(Y, X^K) \times \UHom(X^K, X) \varrightarrow \circ \UHom(Y,X).
+\]
+\end{definition}
+
+\begin{example*}
+If $\mathbf C = \mathbf{Simp}$, then $X \times K$ together with the map \\$\alpha \colon K \longrightarrow \UHom(X, X\times K)$ such that $\#(\alpha) = \id_{X \times K}$ is an object $X \otimes K$. $\UHom(K, X)$ with the map $\beta \colon K \longrightarrow \UHom(\UHom(K,X), X)$ such that $\#\beta = $ the composite 
+\[
+    \UHom(K, X) \times K \varrightarrow{(\pr_2, \pr_1)} K \times \UHom(K, X) \varrightarrow{\ev} X
+\]
+is an object $X^K$.
+\end{example*}
+
+\begin{proposition}
+\label{prop:2.1.01}
+If $X \in \Ob \mathbf C$ and $K, L \in \Ob \mathbf{Simp}$, then there are canonical isomorphisms 
+\begin{equation}
+\label{eq:2.1.05}\tag{5}
+    X \otimes ( X \times L) \simeq (X \otimes K) \otimes L
+    \quad
+    (X^K)^L \simeq X^{K \times L}
+\end{equation}
+when all the objects are defined.
+\end{proposition}
+\begin{proof}
+\begin{align*}
+    \Hom(X \otimes (K \times L), Y) 
+    &\simeq \Hom(K \times L, \UHom(X, Y))
+    \\&\simeq \Hom(L, \UHom(K, \UHom(X, Y)))
+    \\&\simeq \Hom(L, \UHom(X \otimes K, Y)) 
+    \\&\simeq \Hom((X \otimes K) \otimes L, Y).
+\end{align*}
+This yields the first isomorphism; the second is proved similarly.
+\end{proof}
+
+\begin{remarks*}\phantom{}
+\begin{enumerate}
+    \item The degree-0 part of (\ref{eq:2.1.03}) yields the formula 
+    \begin{equation}\tag{6}
+    \label{eq:2.1.06}
+        \Hom_{\mathbf C}(X \otimes K, Y) \simeq \Hom_{\mathbf{Simp}}(K, \UHom_{\mathbf C}(X, Y)).
+    \end{equation}
+    The difference between (\ref{eq:2.1.06}) and (\ref{eq:2.1.03}) is roughly the first isomorphism of (\ref{eq:2.1.05}) as on sees by analyzing the proof of (\ref{eq:2.1.05}). In practice (see Prop. \ref{prop:2.1.02} below) one defines an operation $X \otimes K$ satisfying (\ref{eq:2.1.06}) and (\ref{eq:2.1.05}) and then proves (\ref{eq:2.1.03}) by inverting the proof of (\ref{eq:2.1.05}).
+    \item The objects $X \otimes K$ and $X^K$ have the following interpretation whose details we leave to the reader. The functor $Y \mapsto \UHom(X, Y)$ is a simplicial functor $h^X$ from $\mathbf C$ to $\mathbf{Simp}$ in a natural way. Call a simplicial functor $F \colon \mathbf C \longrightarrow \mathbf{Simp}$ \defemphi{representable} if it is isomorphic to $h^X$ for some $X \in \Ob \mathbf C$. (Yoneda's lemma holds: $\UHom_{\mathbf F}(h^X, F) \simeq F(X)$ where $\mathbf F$ is the simplicial category of simplicial functors from $\mathbf C$ to $\mathbf{Simp}$.) Then $X \otimes K$ represents the simplicial functor $Y \mapsto \UHom(K, \UHom(X, Y))$.
+\end{enumerate}
+\end{remarks*}
+
+Let $\pi_0(K)$ be the set of components of the simplicial set $K$ so that we have adjoint functors 
+\begin{equation}\tag{7}
+\label{eq:2.1.07}
+    \Hom_{\mathbf{Simp}}(K, K(S, 0)) \simeq \Hom_{\mathbf{Set}} (\pi_0(K), S)
+\end{equation}
+where if $S$ is a set $K(S, 0)$ denotes the constant simplicial set which is $S$ in each dimension and has all simplicial operators $= \id_S$. If $x, y \in K_0$ we say that $x$ is \defemphi{strictly homotopic}\index{homotopy!\indexline strict} to $y$ if there is a $z$ in $K_1$ with $d_1 z = x$ and $d_0 z = y$ and that $x$ is \defemph{homotopic}\index{homotopy} to $y$ if $x$ and $y$ are equivalent with respect to the equivalence relation generated by the relation ``is strictly homotopic to''. $\pi_0(K)$ is the quotient of $K_0$ by the relation ``is homotopic to'' and hence 
+\begin{equation}\tag{8}
+\label{eq:2.1.08}
+    \pi_0(K \times L) \varrightarrow \sim \pi_0(K) \times \pi_0(L).
+\end{equation}
+
+Let $J$ denote a \defemphi{generalized unit interval}, that is, a simplicial set which is a string of copies of $\Delta(1)$ joined end to end. Let $\{0\} \subset J$ and $\{1\} \subset J$ be the subcomplexes generated by the first and last vertices of $J$. A typical $J$ may be pictured 
+\[
+\begin{tikzcd}
+    \stackrel0. 
+    \arrow[r]
+    &
+    {}
+    &
+    {}
+    \arrow[l]
+    \arrow[r]
+    &
+    {}
+    \arrow[r]
+    &
+    \stackrel1.
+\end{tikzcd}
+\]
+and it is clear that two simplices $x$ and $y$ of $K$ are homotopic if there exists a generalized unit interval $J$ and a map $u \colon J \longrightarrow K$ with $u(0) = x$ and $u(1) = y$. 
+
+\begin{definition}
+\label{def:2.1.04}
+Let $X$, $Y$ be two objects of $\mathbf C$ and $f$, $g$ two maps from $X$ to $Y$. We say that $f$ is \defemphi{strictly homotopic}\index{homotopy!\indexline strict} (resp.\ \defemph{homotopic}) to $g$ if this is the case when $f$ and $g$ are regarded as $0$-simplices of $\UHom(X,Y)$. By a \defemph{strict homotopy} (resp.\ \defemph{homotopy}) from $f$ to $g$ we mean an element $h \in \UHom(X,Y)_1$ with $d_1 h = f$ and $d_0 h = g$ (resp.\ a map $u \colon J \longrightarrow \UHom(X, Y)$ with $u(0) = f$ and $u(1) = g$). Let $\pi_0(X, Y) = \pi_0\UHom(X,Y)$ be the homotopy classes of maps from $X$ to $Y$. We define the category $\pi_0\mathbf C$ to be the category with the same objects as $\mathbf C$, with $\Hom_{\pi_0\mathbf C} (X, Y) = \pi_0(X,Y)$, and with composition induced from the composition in $\mathbf C$ (this is legitimate by (\ref{eq:2.1.08})).
+\end{definition}
+
+When objects $X \otimes K$ and $X^K$ exist in $\mathbf C$, then a homotopy from $f$ to $g$ is the same as a map $H \colon X \otimes J \longrightarrow Y$ with $Hi_0 = f$ and $Hi_1 = g$. Here $J$ is a generalized unit interval and $i_e \colon X \longrightarrow X \otimes J$ denotes the map induced by the 0-simplex $e$ of $J$ where $e = 0$ or $1$. The homotopy may also be identified with a map $H' \colon Y \longrightarrow Y^J$ with $j_0H' = f$ and $j_1H' = g$ where $j_e \colon X^J \longrightarrow X$ is induced by $e \in J_0$. The reader will note that we have changed notation from $\partial$, $d$ of Ch. \ref{ch:1} to $i$, $j$. This is because $d_0$ corresponds to $i_1$. However we will retain the notation $s \colon X \longrightarrow X^J$ and $\sigma \colon X \otimes J \longrightarrow X$ to denote the \defemphi{constant homotopy}\index{homotopy!\indexline constant} of $\id_X$. These are the maps induced by the unique map $J \longrightarrow \Delta(0)$. 
+
+Let $\mathbf A$ be a category and let $s\mathbf A$ be the category of simplicial objects over $\mathbf A$, that is, contravariant functors $\mathbf \Delta \longrightarrow \mathbf A$, % I'm using \mathbf \Delta where Quillen uses a double stroke Delta because I don't yet know how to do that.
+where $\mathbf \Delta$ is the category having for objects the ordered sets $[n] = \{0, 1, \dots, n\}$ for each integer $n \geq 0$, and where a map $\phi \colon [p] \longrightarrow [q]$ in $\mathbf \Delta$ is a (weakly) monotone map. If $X$ is an object of $s\mathbf A$, we write $X_n$ instead of $X[n]$ and $\phi^*_X$ (or simply $\phi^*$) for $X(\phi)$ when $\phi$ is a map in $\mathbf \Delta$. If $X$, $Y$ are objects of $s\mathbf A$ and if $K$ is a simplicial set, then $([\theta], [\beta])$ %I'm not confident these are actually the letters written
+a map $f \colon X \times K \longrightarrow Y$ is defined to be a collection of maps $f(\sigma) \colon X_q \longrightarrow Y_q$, one for each $q \geq 0$ and $\sigma \in K_q$, such that $\phi^*_Yf(\sigma) = f(\phi^*_K \sigma) \phi^*_X$ for any map $\phi$ in $\mathbf \Delta$. $X \times K$ is not to be understood as an object of $s\mathbf A$ and $f$ is not a morphism in a category. Letting $\Map(X \times K, Y)$ be the set of maps $f \colon X \times K \longrightarrow Y$ we obtain a functor \[(s\mathbf A)^{op} \times \mathbf{Simp}^{op}  \times (s \mathbf A) \longrightarrow \mathbf{Set}\] 
+and hence a functor $X,Y \mapsto \UHom_{s\mathbf A}(X, Y)$ from $(s\mathbf A)^{op} \times (s\mathbf A)$ to $\mathbf{Simp}$ given by \[\UHom_{s\mathbf A} (X, Y)_n = \Map(X \times \Delta(n), Y)\] with simplicial operator $\phi^* = \Map(X \times \xtilde \phi, Y)$. Here $\Delta(n)$ is the ``standard $n$-simplex'' simplicial set, which is the functor $\mathbf \Delta^{op} \longrightarrow \mathbf{Set}$ represented by $[n]$, and for any simplicial set $K$ and $\sigma \in K_n$ we let $\xtilde \sigma \colon \Delta(n) \longrightarrow K$ be the unique map in $\mathbf{Simp}$ with $\xtilde \sigma(\id_{[n]}) = \sigma$.
+
+If $X, Y, Z \in \Ob s\mathbf A$ and $K$ is a simplicial set, then we map define the composite $g \circ f$ of two maps $f \colon X \times K \longrightarrow Y$ and $g \colon Y \times K \longrightarrow Z$ by $(g \circ f)(\sigma) = g(\sigma) f(\sigma)$. This yields a composition operations as in \ref{def:2.1.01_ii} of Def.\ \ref{def:2.1.01}, and \ref{def:2.1.01_iii} comes from the fact that $\Delta(0)_q$ consists of exactly one element for each $q$. It is clear that $s\mathbf A$ thereby becomes a simplicial category. Also if the functor $F \colon \mathbf A \longrightarrow \mathbf B$ is extended degree-wise to $sF \colon s\mathbf A \longrightarrow s \mathbf B$, then $sF$ is a simplicial functor where if $f \colon X \times K \longrightarrow Y$ we let \[(sF)(f) \colon F(X) \times K \longrightarrow F(Y),\quad [(sF)(f)](\sigma) = F(f(\sigma)).\]
+
+Recall that a simplicial set is said to be \defemph{finite}\index{simplicial set!\indexline finite}\index{finite simplicial set} if it has only finitely many non-degenerate simplices. A finite simplicial set is always a simplicial finite set, i.e.\ a simplicial object over the category of finite sets, but not conversely.
+
+\begin{proposition}
+\label{prop:2.1.02}
+Let $\mathbf A$ be a category and let $X$ be a simplicial object over $\mathbf A$. If $\mathbf A$ is closed under (finite) direct sums, then $X \otimes K$ exists in $s\mathbf A$ for every simplicial (finite) set $K$. If $\mathbf A$ is closed under (finite) projective limits, then $X^K$ exists for every (finite) simplicial set $K$.
+\end{proposition}
+
+\begin{proof}
+Let \[(X \mathbf \boxtimes K)_n = \bigvee_{\sigma \in K_n} X_n\quad\text{with}\quad \phi^*_{X \mathbf \boxtimes K} = \sum_\sigma \In_{(\phi^*_K\sigma)}\phi^*_X.\] Here $\bigvee_{i \in I} X_i$ denotes the direct sum of an indexed family $\{X_i; i \in I\}$ of objects of $\mathbf A$, $\In_i \colon X_i \longrightarrow \bigvee X_i$ is the injection of the $i$th component, and $\sum f_i \colon \bigvee X_i \longrightarrow Y$ is the unique map with $(\sum f_i) \In_j = f_j$ for all $j \in I$ if $\{f_i \colon X_i \longrightarrow Y, i \in I\}$ is a family of maps in $\mathbf A$. These direct sums exist by the assumptions on $\mathbf A$ and $K$. Let $\xi \colon X \times K \longrightarrow X \mathbf \boxtimes K$ be given by $\xi(\sigma) = \In_\sigma$. Finally let \[\ev' \colon X \times \UHom_{s\mathbf A} (X, Y) \longrightarrow Y, \quad \ev'(f_n) = f_n(\id_{[n]}) \colon X_n \longrightarrow Y_n.\] Then there are isomorphisms 
+\[
+\Hom_{\mathbf{Simp}}(K, \UHom_{s\mathbf A}(X, Y)) \varrightarrow[\sim]{\#'} \Map(X \times K, Y) \xleftarrow[\sim]{\xi^*} \Hom_{s\mathbf A}(X \mathbf \boxtimes K, Y)
+\]
+where $\#'$ is induced by $\ev'$ and $\xi^*$ by $\xi$. Letting $\# = (\xi^*)^{-1} \circ (\#')$ it is clear that $\#$ is functorial as $X$, $Y$ run over $s\mathbf A$ and $K$ varies over the category of simplicial (finite) sets. If $L$ is another simplicial (finite) set, then there is a canonical isomorphism
+\[
+\theta \colon X \mathbf \boxtimes (K \times L) \varrightarrow{\sim} (X \mathbf \boxtimes K) \mathbf \boxtimes L
+\]
+given by 
+\[
+\theta_n = \sum_{(\sigma, \tau) \in (K \times L)_n} \In_\tau \In_\sigma.
+\]
+
+Now if $\alpha \colon K \longrightarrow \UHom(X, X \mathbf \boxtimes K)$ is given by $\#(\alpha) = \id_{X \mathbf \boxtimes K}$, then $X \mathbf \boxtimes K$ with $\alpha$ is an object $X \otimes K$. In effect letting $\phi$ be the map (\ref{eq:2.1.03}) determined by $\alpha$, we have the diagram
+\[
+\begin{tikzcd}
+    {\Hom(L, \UHom(X \mathbf \boxtimes K, Y))}
+    \arrow[r, "\phi^*"]
+    \arrow[dd, "\#"', "\sim"]
+    &
+    {\Hom(L, \UHom(K, \UHom(X, Y)))}
+    \arrow[d, "\#"', "\sim"]
+    \\&
+    {\Hom(K \times L, \UHom(X, Y))}
+    \arrow[d, "\#"', "\sim"]
+    \\
+    {\Hom((X \mathbf \boxtimes K) \mathbf \boxtimes L, Y)}
+    &
+    {\Hom(X \mathbf \boxtimes (K \times L), Y)}
+    \arrow[l, "\theta^*"', "\sim"]
+\end{tikzcd}
+\]
+which may be shown to be commutative by a straightforward analysis of the definitions. Taking $L = \Delta(n)$ for each $n$ we see that $\phi$ is an isomorphism and hence the first part of the proposition is proved.
+
+Let $\mathbf A'$ be the category of functors $\mathbf A^{op} \longrightarrow \mathbf{Set}$ and let $X \mapsto hX$ be the canonical fully faithful functor (this forces us to leave the haven of our universe). Denoting the degree-wise extension of $h$ by $h \colon s\mathbf A \longrightarrow s\mathbf A'$, one sees that 
+\[
+\Map_{s\mathbf A}(X, Y) \simeq \Map_{s\mathbf A}(hX \times K, hY),
+\]
+so
+\begin{equation}\tag{9}
+\label{eq:2.1.09}
+    \UHom_{s\mathbf A}(X, Y) \simeq \UHom_{s\mathbf A'}(hX, hY)
+\end{equation}
+and $h$ is a ``fully faithful'' simplicial functor. Now if $F \in \Ob s\mathbf A'$, then $F^K$ exists and is given by $F^K(A) = F(A)^K$ for all $A \in \Ob\mathbf A$, where we have identified $s\mathbf A'$ with the category of functors $\mathbf A^{op} \longrightarrow \mathbf{Simp}$ in the natural way. One sees immediately from (\ref{eq:2.1.09}) that $X^K$ exists if and only if $(hX)^K$ is isomorphic to $hZ$ for some $Z \in \Ob s\mathbf A$, or equivalently if $[(hX)^K]_n$ is a representable functor for each $n$. There is a cokernel diagram in $\mathbf{Simp}$ 
+\[
+\begin{tikzcd}
+    \displaystyle\bigvee_{j \in J} \Delta(q_j) 
+    \arrow[r, shift left = 1]
+    \arrow[r, shift right = 1]
+    &
+    \displaystyle\bigvee_{i \in I} \Delta(p_i)
+    \arrow[r]
+    &
+    K \times \Delta(n)
+\end{tikzcd}
+\]
+where if $K$ is finite so is $K \times \Delta(n)$ and hence $I$ and $J$ are finite sets. But the functor 
+\begin{align*}
+    A \mapsto [(hX)^K]_n(A)
+    &= \Hom_{\mathbf{Simp}} (K \times \Delta(n), hX(A))
+    \\&= \Ker\Bigl\{\prod_I hX_{p_i} (A) \rightrightarrows \prod_J hX_{q_j}(A)\Bigr\}
+    \\&= h\Ker\Bigl\{\prod_I hX_{p_i} \rightrightarrows \prod_J hX_{q_j}\Bigr\}(A)
+\end{align*}
+is representable by the assumptions made on $\mathbf A$.
+\end{proof}
+
+\begin{corollary*}
+If $F \colon \mathbf A \longrightarrow \mathbf B$ commutes with (finite) direct sums (resp.\ projective limits), then $F(X) \otimes K \varrightarrow \sim F(X \otimes K)$ for all $X \in \Ob s\mathbf A$ and simplicial (finite) sets $K$ (resp.\ $F(X^K) \varrightarrow \sim F(X)^K$ for all $X$ and (finite) simplicial sets $K$).
+\end{corollary*}
+
+This is immediate from the formulas for $X \otimes K$ and $X^K$ obtained in the proof of Prop.\ \ref{prop:2.1.02}.
+
+\begin{remark*}
+The corollary implies that if $G$ is a simplicial group then the underlying simplicial set of $G^K$ is (underlying simplicial set of $G$)$^K$, and similarly for any other algebraic species.
+\end{remark*}
+\end{document}

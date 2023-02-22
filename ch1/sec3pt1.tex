@@ -1,0 +1,289 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Fibration and Cofibration Sequences}\label{sec:1.3}
+
+In this section we develop another part of the extra structure on $\Ho \cat{C}$, namely the long exact sequences for fibrations and cofibrations and the Toda bracket operation.
+
+$\cat{C}$ denotes a fixed pointed model category in the following.
+
+Let $p:E \longrightarrow B$ be a fibration where $B$ is fibrant and let $i:F \longrightarrow E$ be the inclusion of the fibre of $p$ into $E$.  $F$ and $E$ are fibrant by \ref{1.1.M3}.  Let \[ B \varrightarrow{s^B} B^I \varrightarrow{(d_0^B,d_1^B)} B \times B \] be a factorization of $\Delta_B$ into a weak equivalence followed by a fibration.  We shall construct an object $E^I$ which is nicely related to $B^I$.
+
+Let $E \times_B B^I$ (resp. $B^I \times_B E$) denote the fibre product of $p:E \longrightarrow B$ and $d^B_0:B^I \longrightarrow B$ (resp. $d_1^B:B^I \longrightarrow B$), and let the fibre product sign $\times_B B^I$ to the left (resp. $B^I \times_B$ to the right) of $B^I$ denote fibre products with $d_0^B$ (resp. $d_1^B$) in what follows.  Let \[E \varrightarrow{s^E} E^I \varrightarrow{(d_0^E,p^I,d_1^E)} E \times_B B^I \times_B E\] be a factorization of ($\id_E, s^B p, \id_E$) into a weak equivalence followed by a fibration.  The notation $E^I, s^E,$ etc. is justified because $s^E$ is a weak equivalence and $(d_0^E, d_1^E)$ is a fibration by \ref{1.1.M3} since it is the composition of $(d_0^E, p^I, d_1^E)$ and $(\pr_1, \pr_3) : E \times_B B^I \times_B E \longrightarrow E \times E$, which is the base extension of $(d_0^B,d_1^B)$ by $p \times p$.  A similar argument shows that $(d_0^E,p^I):E^I \longrightarrow E \times_B B^I$ and $(p^I,d_1^E)$ are fibrations.
+
+The map $\pr_1:E \times_B B^I \longrightarrow E$ is the base extension of $d_0^B$ by $p$ and hence is a trivial fibration by \ref{1.1.M3} and \ref{1.1.M4}.  Hence by \ref{1.1.M5} the fibration\\ $(d_0^E,p^I):E^I \longrightarrow E \times_B B^I$ is trivial since $\id_E = \pr_1 \circ (d_0^E,p^I) \circ s_E$.  The diagram
+\[\tag{1}\label{diag:1.3.1}\begin{tikzcd}
+    F \times_E E^I \times_E F && E^I \\ \\
+    F \times \Omega B && E \times_B B^I
+    \arrow["\pi", from=1-1, to=3-1]
+    \arrow["{(d_0, p^I)}", from=1-3, to=3-3]
+    \arrow["\pr_2", hookrightarrow, from=1-1, to=1-3]
+    \arrow["i \times j", hookrightarrow, from=3-1, to=3-3]
+\end{tikzcd}\]
+is Cartesian where $\pi = (\pr_1, j^{-1}p^I\pr_2)$ and where $j:\Omega B \longhookrightarrow B^I$ is as in \S\ref{sec:1.2} the fiber of $(d_0^B,d_1^B)$.  Here we are using the following convention which will be used many times in this section.
+
+\begin{conv}
+If $a:X \longrightarrow Y$ is a monomorphism in a category and $\beta:Z\longrightarrow Y$ is a map, then by $\alpha^{-1}\beta$ we mean the unique map $\gamma:Z \longrightarrow X$ with $\alpha \circ \gamma = \beta$, if such a map exists.
+\end{conv}
+
+Returning to the cartesian diagram (\ref{diag:1.3.1}) we have that $\pi$ is a trivial fibration by \ref{1.1.M4} and hence in $\Ho \cat{C}$ (in fact in $\Ho \cat{C}_f$) there is a map
+\[\tag{2}\label{eq:1.3.2}
+m:F \times \Omega B \longrightarrow F
+\]
+
+given by the composition $F \times \Omega B \varrightarrow{\gamma(\pi)^{-1}} F \times_E E^I \times_E F \varrightarrow{\gamma(\pr_3)}F$.
+
+\begin{proposition}\label{prop:1.3.1}
+The map $m$ is independent of the choice of $P^I:E^I \longrightarrow B^I$ and is a right action of the group object $\Omega B$ on $F$ in $\Ho \cat{C}$.
+\end{proposition}
+
+We first show that $m$ may be defined in another way.
+
+Recall that $[X,Y] = \Hom_{\Ho \cat{C}}(X,Y)$ and $[X,Y]_1= [\sum X,Y] = [X, \Omega Y]$ where these are the same respectively as $\pi(X,Y)$ and $\pi_1(X,Y)$ if $X$ and cofibrant and $Y$ is fibrant.
+
+\begin{proposition}\label{prop:1.3.2}
+Let A be cofibrant and let the map\\ $m_*:[A,F]\times[A,\Omega B] \longrightarrow [A,F]$ be denoted by $\alpha, \lambda \longrightarrow \alpha \cdot \lambda$.  If $\alpha \in [A,F]$ is represented by $u:A \longrightarrow F$, if $\lambda \in [A,\Omega B] = [A,B]_1$ is represented by $h:A \times I \longrightarrow B$ with $h(\partial_0 + \partial_1) = 0$, and if $h'$ is a dotted arrow in
+
+\[\tag{3}\label{diag:1.3.3}\begin{tikzcd}
+    A && E \\ \\
+    A \times I && B
+    \arrow["\partial_0", from=1-1, to=3-1]
+    \arrow["p", from=1-3, to=3-3]
+    \arrow["iu", from=1-1, to=1-3]
+    \arrow["h", from=3-1, to=3-3]
+    \arrow["h'", dashed, from=3-1, to=1-3]
+\end{tikzcd}\]
+
+then $\alpha \cdot \gamma $ is represented by $i^{-1}h'\partial_1:A \longrightarrow F$.
+\end{proposition}
+
+\begin{proof}
+    Let $H:A\times I \longrightarrow B^I$ be a correspondence of $h$ with $k:A \longrightarrow B^I$.  Let $K$ be a lifting in
+\[\begin{tikzcd}
+    A && E^I \\ \\
+    A \times I && E \times_B B^I
+    \arrow["\partial_1", from=1-1, to=3-1]
+    \arrow["{(d_0^E,p^I)}", from=1-3, to=3-3]
+    \arrow["s_Eh'\partial_1", from=1-1, to=1-3]
+    \arrow["{(h',H)}", from=3-1, to=3-3]
+    \arrow["K", dashed, from=3-1, to=1-3]
+\end{tikzcd}\]
+Picture:
+\[\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-2, 1.5) {};
+		\node [style=none] (1) at (-2, -1.5) {};
+		\node [style=none, label={below:$0$}] (2) at (-5, -1.5) {};
+		\node [style=none, label={above:$0$}] (3) at (-5, 1.5) {};
+		\node [style=none, label={above:$d_1K\partial_0$}] (4) at (2, 1.5) {};
+		\node [style=none, label={below:$iu$}] (5) at (2, -1.5) {};
+		\node [style=none, label={below:$h'\partial_1$}] (6) at (5, -1.5) {};
+		\node [style=none, label={above:$h'\partial_1$}] (7) at (5, 1.5) {};
+		\node [style=none] (8) at (-1, 0) {};
+		\node [style=none, label={above:$p^I$}] (9) at (0, 0) {};
+		\node [style=none] (10) at (1, 0) {};
+		\node [style=none] (11) at (-3.5, 0) {$H$};
+		\node [style=none] (12) at (3.5, 0) {$K$};
+		\node [style=none, label={above:$0\sigma$}] (13) at (-3.5, 1.5) {};
+		\node [style=none, label={above:$d_1K$}] (14) at (3.5, 1.5) {};
+		\node [style=none, label={left:$K\partial_0\!\!$}] (15) at (2, 0) {};
+		\node [style=none, label={below:$h'$}] (16) at (3.5, -1.5) {};
+		\node [style=none, label={right:$s^Eh'\partial_1$}] (17) at (5, 0) {};
+		\node [style=none] (18) at (-5, 0) {};
+		\node [style=none, label={below:$h$}] (19) at (-3.5, -1.5) {};
+		\node [style=none, label={right:$\!\!s^B0$}] (20) at (-2, 0) {};
+		\node [style=none] (21) at (-5, 0) {};
+		\node [style=none, label={left:$k$}] (22) at (-5, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (3.center) to (0.center);
+		\draw (0.center) to (1.center);
+		\draw (1.center) to (2.center);
+		\draw (2.center) to (3.center);
+		\draw (4.center) to (5.center);
+		\draw (5.center) to (6.center);
+		\draw (6.center) to (7.center);
+		\draw (7.center) to (4.center);
+		\draw [stealth-](8.center) to (10.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\]
+Now $K\partial_0:A \longrightarrow E^I$ induces a map $K\partial_0:A \longrightarrow F \times_E E^I \times_E F$ such that $\pi K \partial_0 = (u,j^{-1}k)$ (see (1)) and hence by the definition of $m$ we have that $\alpha \cdot \lambda$ is represented by $i^{-1}d^E_1 K \partial_0:A \longrightarrow F$.  But $i^{-1}d^E_1 K:A \times I \longrightarrow F$ is a homotopy from $i^{-1}d^E_1 K\partial_0$ to $i^{-1}h'\partial_1$ and this proves the Proposition.
+\end{proof}
+
+\begin{proof}[Proof of Prop. \ref{prop:1.3.1}]  Diagram (\ref{diag:1.3.3}) is clearly independent of $p^I$ so $m$ is independent of $p^I$ by Prop \ref{prop:1.3.2}.  On the other hand, let $\alpha, \lambda, u, h, h'$ be as in Prop \ref{prop:1.3.2}, let $\lambda_1 \in [A,B]_1$ be represented by $h_1:A\times I \longrightarrow B$ and let $h_1'$ be a dotted arrow in the first diagram
+\[
+\begin{tikzcd}
+    A \arrow[rr, "h'\partial_1"] \arrow[dd, swap, "\partial_0"]
+        && E \arrow[dd,"p"]
+            && A \arrow[dd, swap, "\partial'_0"] \arrow[rr,"iu"]
+                && E \arrow[dd,"p"] \\ \\
+    A \times I \arrow[rruu, dashed, "h'_1"] \arrow[rr,"h"]
+        && B
+            && A \times I' \arrow[rruu, dashed, "h'\cdot h'_1"] \arrow[rr, "h \cdot h_1"]
+                 && B
+\end{tikzcd}
+\]
+so that $i^{-1}h'_1\partial_1$ represents $(\alpha \cdot \lambda) \cdot \lambda_1$ by Prop. \ref{prop:1.3.2}.  As the composite homotopy $h \cdot h_1$ represents $\lambda \cdot \lambda_1$, the second diagram and Prop. \ref{prop:1.3.2} show that $i^{-1}(h' \cdot h'_1)\partial'_1$ represents $\alpha \cdot (\lambda \cdot \lambda_1)$.  But $(h' \cdot h'_1) \partial'_1 = h'_1\partial_1$ hence $(\alpha \cdot \lambda) \cdot \lambda_1 = \alpha \cdot (\lambda \cdot \lambda_1)$ and $m$ is an action as claimed.
+
+\end{proof}
+
+\begin{definition}
+    By a \defemphi{fibration sequence} in $\Ho\cat{C}$ we mean a diagram in $\Ho\cat{C}$ of the form \[  X \longrightarrow Y \longrightarrow Z \hspace{20pt} X \times \Omega Z \longrightarrow X  \] which for some fibration $p:E \longrightarrow B$ in $\cat{C}_f$ is isomorphic to the diagram
+
+\[\tag{4}\label{eq:1.3.4}  F \varrightarrow{i} E \varrightarrow{p} B \hspace{20pt} F \times \Omega B \varrightarrow{m} F\] constructed above.
+
+\end{definition}
+
+\begin{remark}
+    By dualizing the above construction one may construct a diagram \[A \longrightarrow X \longrightarrow C \hspace{20pt} C \longrightarrow C \vee \Sigma A\] starting from a cofibration $u$ in $\cat{C}_c$, where $v:X \longrightarrow C$ is the cofibre of $u$ and $n$ is a right co-action of the cogroup $\Sigma A$ on $C$, and define the notion of a \defemphi{cofibration sequence} in $\Ho\cat{C}$.
+\end{remark}
+
+\begin{proposition}\label{prop:1.3.3}
+    If (\ref{eq:1.3.4}) is a fibration sequence so is \[\tag{5}\label{eq:1.3.5} \Omega B \varrightarrow{\partial} F \varrightarrow{i} E \hspace{20pt} \Omega B \times \Omega E \varrightarrow{n} \Omega B\] where $\partial$ is the composition $\Omega B \varrightarrow{0, \id} F \times \Omega B \varrightarrow{m} F$ and where \\$n_*:[A,\Omega B]\times [A, \Omega E] \longrightarrow [A \Omega B]$ is given by $(\lambda, u)\longrightarrow((\Omega p)_* u)^{-1} \cdot \lambda$.
+\end{proposition}
+
+\begin{proof}
+    We may assume that (\ref{eq:1.3.4}) is the sequence constructed above from a fibration $p$.  Let $p^I:E^I \longrightarrow B^I$ be as in the definition of $m$.  Then\\ $\pr_1:E \times_B B^I \times_B(*) \longrightarrow E$ is the base extension of $(d^B_0,d^B_1)$ by\\ $(p,0):E \longrightarrow B \times B$ and hence is a fibration; so we get a fibration sequence
+%In the pdf page 3.10 is here.  I put that in sec3pt2.
+\[\tag{6}\label{eq:1.3.6}
+\Omega B \varrightarrow{(0,j,0)} E \times_B B \times_B (*) \varrightarrow{\pr_1} E \hspace{8pt} \Omega B \times \Omega E \varrightarrow{n} \Omega B.
+\]    
+We calculate $n$ by Proposition \ref{prop:1.3.2};  let $\lambda \in [A,\Omega B]$ be represented by\\ $u:A \longrightarrow \Omega B$, let $\mu \in [A, \Omega E]$ be represented by $h:A \times I \longrightarrow E$ and let $(h,H,0)$ be a lifting in
+\[
+\begin{tikzpicture}
+    \begin{scope}[xshift=-20cm]
+        \begin{tikzcd}
+    A \arrow[rr,"{(0,ju,0)}"] \arrow[dd,"\partial_0"]
+        && E \times_B B^I \times_B (*) \arrow[dd,"\pr_1"]
+            \\ \\
+    A\times I \arrow[rruu, swap, dashed, "{(h,H,0)}"] \arrow[rr,"h"]
+        && E 
+\end{tikzcd}
+    \end{scope}
+    \begin{scope}[xshift=8cm]
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1, -1) {};
+		\node [style=none] (1) at (-1, 1) {};
+		\node [style=none] (2) at (1, 1) {};
+		\node [style=none] (3) at (1, -1) {};
+		\node [style=none, label={below:$ph$}] (4) at (0, -1) {};
+		\node [style=none, label={above:$0\sigma$}] (5) at (0, 1) {};
+		\node [style=none, label={left:$ju$}] (6) at (-1, 0) {};
+		\node [style=none, label={right:$H\partial_1$}] (7) at (1, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (0.center);
+		\draw (0.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (2.center) to (1.center);
+	\end{pgfonlayer}
+    \end{scope}
+\end{tikzpicture}
+\]
+where $H:A\times I \longrightarrow B^I$ is pictured at the right.  By Prop. \ref{prop:1.3.2}, $j^{-1} H \partial_1$ represents $n_*(\lambda,\mu)$ in $[A,\Omega B]$.  Letting $H':A \times I \longrightarrow B^I$ be a correspondence of $H\partial_1$ with $h':A \times I \longrightarrow B$, we obtain the correspondence
+\[
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1.5, -1.5) {};
+		\node [style=none] (1) at (-1.5, 1.5) {};
+		\node [style=none] (2) at (1.5, 1.5) {};
+		\node [style=none] (3) at (1.5, -1.5) {};
+		\node [style=none, label={below:$ph$}] (4) at (0, -1.5) {};
+		\node [style=none, label={above:$0\sigma$}] (5) at (0, 1.5) {};
+		\node [style=none, label={left:$ju$}] (6) at (-1.5, 0) {};
+		\node [style=none] (7) at (1.5, 0) {};
+		\node [style=none, label={right:$s^B0$}] (8) at (4.5, 0) {};
+		\node [style=none] (9) at (4.5, 1.5) {};
+		\node [style=none] (10) at (4.5, -1.5) {};
+		\node [style=none, label={below:$h'$}] (11) at (3, -1.5) {};
+		\node [style=none, label={above:$0\sigma$}] (12) at (3, 1.5) {};
+		\node [style=none] (13) at (0, 0) {$H$};
+		\node [style=none] (14) at (3, 0) {$H'$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (0.center);
+		\draw (0.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (2.center) to (1.center);
+		\draw (2.center) to (9.center);
+		\draw (9.center) to (10.center);
+		\draw (10.center) to (3.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\]
+ of $ju$ with $ph\cdot h'$, which shows that \[\lambda = (\Omega p)_* \mu \cdot n_* (\lambda, \mu)\quad \text{or}\quad n_*(\lambda,\mu) = [(\Omega p)_* \mu]^{-1}\cdot \lambda.\]  Thus the map $n$ in (\ref{eq:1.3.6}) is the same as that in (\ref{eq:1.3.5}).
+
+ The map $f \varrightarrow{(i,0,0)} E \times_B B^I \times_B (*)$ is a weak equivalence by M5 since it may be factored $F \varrightarrow{(s^Ei,\id)} E^I\times_E F = E^I \times_B(*) \longrightarrow E \times_B B^I \times_B(*)$ where the second map is a trivial fibration (base extension of $E^I \varrightarrow{(d^E_0,p^I)} E \times_B B^I$ and where the first map is a section of the trivial fibration $E^I \times_E F \varrightarrow{\pr_2} F$ (base extension of $d^E_1$.)  We shall show that the diagram in $\Ho \cat{C}$
+\[\tag{7}\label{diag:1.3.7}
+\begin{tikzcd}
+    \phantom{1} & \Omega B \arrow[dl, swap, "\partial"] \arrow[dr, "{(0,j,0)}"] \\
+    F \arrow[rr,"{(i,0,0)}"] & & E \times_B B^I \times_B (*)
+\end{tikzcd}
+\]
+commutes.  Let $\lambda \in [A,\Omega B]$  be represented by $k:A \longrightarrow B^I$ and let\\ $H:A \times I \longrightarrow B^I$ be a correspondence of $k$ with $h$.  Then $\partial_* \alpha = 0 \cdot \alpha$ is represented by $i^{-1}h'\partial_1:A \longrightarrow F$ where $h'$ is the dotted arrow in
+\[
+\begin{tikzcd}
+    A \arrow[dd, "\partial_0"] \arrow[rr, "0"]
+        && E \arrow[dd,"p"] \\ \\
+    A \times I \arrow[rruu, dashed, "h'"] \arrow[rr,"h"]
+        && B 
+\end{tikzcd}
+\]
+So $(i,0,0)_*\partial_*\lambda$ is represented by \[A \varrightarrow{(h'\partial_1,0,0)} E \times_B B^I \times_B (*),\]
+$(0,j,0)_*\lambda$ is represented by $A \varrightarrow{(0,k,0)} E \times_B B^I \times_B (*)$, and
+\[(h',H,0):A^{\times I} \longrightarrow E \times_B B^I \times_B (*)\] is a left homotopy between these maps, showing that the triangle (\ref{diag:1.3.7}) commutes in $\Ho \cat{C}$.  As $\pr_1 \circ (i,0,0) = i$ we see that $\id_{\Omega B}, (i,0,0)$, and $\id_E$ give as isomorphism of (\ref{eq:1.3.5}) with the fibration sequence (\ref{eq:1.3.6}), and so by definition (\ref{eq:1.3.5}) is a fibration sequence.
+\end{proof}
+
+\begin{proposition} \label{prop:1.3.4}
+    Let (\ref{eq:1.3.4}) be a fibration sequence in $\Ho \cat{C}$, let $\partial : \Omega B \longrightarrow F$ be defined as in Propostion \ref{prop:1.3.3} and let A be any object of $\Ho \cat{C}$.  Then the sequence
+\[
+\begin{tikzcd}
+    \dots \arrow[r]
+        & {[A, \Omega^{q+1}B]} \arrow[r, "(\Omega^q\partial)_*"]
+            & {[A, \Omega^q F]} \arrow[r, "(\Omega^q i)_*"]
+                & {[A, \Omega^q E]} \arrow[r, "(\Omega^q p)_*"]
+                    & \dots \\
+    \dots \arrow[r]
+        & {[A, \Omega E]} \arrow[r, "(\Omega p)_*"]
+            & {[A, \Omega B]} \arrow[r, "(\partial_*)"]
+                & {[A, F]} \arrow[r, "i_*"]
+                    & {[A, E]} \arrow[r, "p_*"]
+                        & {[A,B]} \\
+\end{tikzcd}
+\]
+is exact in the following sense:
+\begin{enumerate}[label=(\roman*)]
+  \item $(p_*)^{-1}\{0\} = \Image i_*$
+  \item $i_*\partial_* = 0$ and $i_* \alpha_1 = i_*\alpha_2 \iff \alpha_2 = \alpha_1 \cdot \lambda $ for some $\lambda \in [A, \Omega B]$
+  \item $\partial_* (\Omega i)_* = 0$ and $\partial_* \lambda_1 = \partial_* \lambda_2 \iff \lambda_2 = (\Omega p)_* \mu \cdot \lambda_1$ for some $\mu \in [A, \Omega E]$
+  \item The sequence of group homomorphisms from $[A, \Omega E]$ to the left is exact in the usual sense.
+\end{enumerate}
+
+\end{proposition}
+
+The dual proposition for cofibration sequences is
+
+\begin{customprop}{1.3.4'} \label{prop:1.3.4'}
+    Let \[A \varrightarrow{u} X \varrightarrow{v} C \quad\quad C \varrightarrow{n} C \wedge \sum A\] 
+    be a cofibration sequence in $\Ho \cat{C}$ and let $\partial:C \longrightarrow \sum A$ be $(\id_C + 0) \circ n$.  If $B$ is any object in $\Ho \cat{C}$, then the sequence
+    \[
+    \begin{tikzcd}
+    \arrow[r,"(\sum v)^*"] & {[\sum X, B]} \arrow[r,"(\sum u)^*"] & {[\sum A, B]} \arrow[r,"\partial^*"]
+        & {[C,B]} \arrow[r,"v^*"] & {[X,B]} \arrow[r,"u^*"] & {[A,B]} \\
+    \end{tikzcd}
+    \]
+    is exact in the sense that (i) - (iv) hold with $i_*, p_*, \partial_*$ replaced by $v^*,u^*,\partial^*$ and where the $\cdot$ in (ii) refers to the right action $n^*:[C,B] \times [\sum A, B] \longrightarrow [C,B]$.
+    \end{customprop}
+
+\begin{proof}[Proof if Prop. \ref{prop:1.3.4}]
+    We may assume (\ref{eq:1.3.4}) is the sequence constructed from the fibration $p$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Clearly $pi=0$.  If $p_*\alpha = 0$ represennt $\alpha$ by $u:A \longrightarrow E$, let $h:A \times I \longrightarrow B$ be such that $h\partial_0 = pu, \,h\partial = 0$.  By the covering homotopy theorem (dual of Corrolary of Lemma \ref{lem:1.1.2}) we may cover $h$ by $k:A \times I \longrightarrow E$ with $\partial_0 k=u$.  Then if $\beta$ is represented by $i^{-1}k\partial_1$ we have $i_*\beta = \alpha$.
+        \item With the notation of Prop. \ref{prop:1.3.2}, we have that $h'$ is a homotopy from $iu$ which represents $i_*\alpha$ to $h'\partial_1$ which represents $i_*(\alpha \cdot \lambda)$.  Hence $i_*(\alpha \cdot \lambda) = i_* \alpha$ and in particular \[i_*\partial_*\lambda = i_*(0\cdot \lambda) = i_*0 = 0,\] so $i_*\partial_* = 0$.  Conversely given $\alpha_1 \alpha_2$ with $i_*\alpha_1 = i_*\alpha_2$, represent $\alpha_1$ by $u_i, i = 1,2$, let $h:A \times I \longrightarrow E$ be such that $h\partial_0 = iu_1 , \,h\partial_1 = iu_2$ whence if $\lambda$ is the class of $ph, \alpha_1 \cdot \lambda = \alpha_2$ by Prop \ref{prop:1.3.2}.
+        \item follows from (ii) and Proposition \ref{prop:1.3.3}
+        \item follows by repeated use of Proposition \ref{diag:1.3.3}. 
+    \end{enumerate}
+\end{proof}
+
+\end{document}

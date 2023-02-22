@@ -1,0 +1,23 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Introduction}\label{sec:2.0}
+The first four sections of Chapter II give some examples of model categories. In \S\ref{sec:2.3} it is shown how the categories of topological spaces, simplicial groups, and simplicial sets form model categories, and in \S\ref{sec:2.4} this result is extended to the category $s\mathbf A$ of simplicial objects over a category $\mathbf A$, where $\mathbf A$ is a category closed under finite limits having sufficiently many projective objects and satisfying one of the following additional assumptions: 
+\begin{enumerate}[label = (\roman*)]
+    \item $\mathbf A$ has sufficiently many cogroup objects,
+    \item $\mathbf A$ is closed under arbitrary inductive limits and has a set of small projective generators. 
+\end{enumerate}
+The proofs for topological spaces, simplicial groups, and $s \mathbf A$ when $\mathbf A$ satisfies (ii) are similar and fairly simple, since every object in the model category is fibrant. For simplicial sets we were unable to find a really elementary proof; the argument given, which we think is the simplest, uses the classification theory of minimal fibrations \cite{barratt_semisimplicial_1959}. It is possible to give another argument using the functor $\Ex^\infty$ of Kan \cite{kan_css_1957}and a variant of this argument is used for $s\mathbf A$ in case (ii). 
+
+All of these categories are what we call \defemphi{simplicial categories}, i.e.\ categories $\mathbf C$ endowed with a simplicial set ``function complex'' $\UHom_{\mathbf C}(X, Y)$ for each pair of objects $X$ and $Y$ satisfying suitable conditions. In \S\ref{sec:2.1} we define simplicial categories and the generalized path and cylinder functors $X,\,\,K \mapsto X \otimes K$, $\,Y,\,\,K \mapsto Y^K$, $K$ a simplicial set , by the formulas 
+\[
+\UHom_{\mathbf S}(K \UHom_{s\mathbf A}(X,Y))=\UHom_{s\mathbf{A}}(X \otimes K, Y) = \UHom_{s\mathbf A} (X, Y^K)
+\]
+where $\mathbf S$ is the category of simplicial sets. In \S\ref{sec:2.2} we define \defemphi{closed simplicial model category} which is a category having the structures of a simplicial category and a closed model category compatibly related. All the examples of Chapter \ref{ch:2} are closed simplicial model categories; moreover, for these model categories there are canonically adjoint path and cylinder functors, so much of the work of the first chapter simplifies considerably (see \cite{kan_css_1957-1}). However, there are certain categories of differential graded algebras that do not seem to have natural simplicial structures but which are model categories, which is the main reason for the generality in Chapter \ref{ch:1}.
+
+In \S\ref{sec:2.5} we show under suitable assumptions how homology and cohomology for model categories may be defined using abelian group objects and the abelianization functor. In particular, we define cohomology groups of an object $X$ with values in an abelian group object $A$ of a model category $\mathbf C$. When $\mathbf C$ is the category of simplicial objects in a category $\mathbf A$ and $X$ and $A$ are constant simplicial objects, we show that these cohomology groups are equivalent to those obtained from suitable cotriples and Grothendieck sheaves. We also indicate how this cohomology gives a cohomology theory for arbitrary universal algebras coinciding up to a dimension shift with usual cohomology in the case of groups, and Lie algebras and associative algebras over a field.
+
+In \S\ref{sec:2.6} we show that the category of simplicial modules over a simplicial ring forms a model category and use this to derive several Kunneth spectral sequences which will be used in later applications.
+
+The present framework for homotopical algebra is not the most general that can be imagined. We have restricted ourselves to categories $\mathbf A$ closed under finite limits and having sufficiently many projective objects. The sheaf cohomology of Grothendieck is defined much more generally and Artin--Mazur \cite{artin_homotopy_1967} have shown in the case of the etale topology for preschemes that it gives rise to an analogue of ordinary homotopy theory using pro-objects in a homotopy category. It would also be nice to weaken the hypothesis that finite limits exist on a model category so the category of 2-connected pointed topological spaces would become a model category. Finally further generalization might eliminate the following inadequacy of this theory, that although derived functors may be defined for any category $\mathbf A$ with finite limits and enough projectives, the category $s\mathbf A$ does not form a model category without additional assumptions.
+\end{document}

@@ -1,0 +1,138 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Equivalences of homotopy theories}\label{sec:1.4}
+
+We begin with some general categorical considerations.
+\begin{definition}\label{def:1.4.1}
+Let $\gamma : \mathbf{A} \longrightarrow  \mathbf{A}'$ and $F : \mathbf{A} \longrightarrow  \mathbf{B}$ be two functors. By the \defemphi{left-derived functor} of $F$ with respect to $\gamma$ we mean a functor $L^\gamma F: \mathbf{A}' \longrightarrow  \mathbf{B}$ with a natural transformation $\varepsilon : L^\gamma F \circ \gamma \longrightarrow  F$ having the following universal property: Given any $G : \mathbf{A}' \longrightarrow  \mathbf{B}$ and natural transformation $\zeta : G \circ \gamma \longrightarrow  F$ there is a unique natural transformation $\Theta : G \longrightarrow  L^\gamma F$ such that
+\[\tag{1}\label{diag:1.4.1}
+\begin{tikzcd}
+    G\circ \gamma \arrow[dd,"\Theta\ast \gamma"] \arrow[dr,"\zeta"] & \\
+    & F \\
+    L^\gamma F \circ \gamma \arrow[ur,"\varepsilon"] & 
+\end{tikzcd}
+\]
+commutes.
+\end{definition}
+\begin{remark*}
+\begin{enumerate}
+\item $L^\gamma F$ is the functor from $\mathbf{A}'$ to $\mathbf{B}$ such that $L^\gamma F \circ \gamma$ is closest to $F$ from the left. Similarly we may define the \defemphi{right-derived functor} of $F$ with respect to $\gamma$ to be ``the'' functor $R^\gamma F : \mathbf{A}' \longrightarrow  \mathbf{B}$ with a natural transformation $\eta:F \longrightarrow  R^\gamma F \circ \gamma$ which is closest to $F$ from the right.
+\item The terminology left-derived functor comes from Verdier's treatment of homological algebra\cite{verdier_categories_nodate}. In that case $\mathbf{A}$ is the category $K(A)$, where $A$ is an abelian category, $\gamma$ is the localization $K(A) \longrightarrow  D(A)$, $F: K(A)\longrightarrow  \mathbf{B}$ is a cohomological functor from $K(A)$ to an abelian category $\mathbf{B}$ and $L^\gamma F$, $R^\gamma F$ are what Verdier calls the left and right  derived functors of $F$.
+\item We shall be concerned only with the case where $\mathbf{A}$ is a model category $\mathbf{C}$ and $\gamma$ is the localization functor $\gamma : \mathbf{C} \longrightarrow  \Ho \mathbf{C}$. In this case we will write just $LF$.
+\item If $\mathbf{C}$ is a model category and $F:\mathbf{C} \longrightarrow  \mathbf{B}$ is a functor then it is clear that $\varepsilon : LF \circ \gamma \longrightarrow  F$ is an isomorphism if and only if $F$ carries weak equivalences in $\mathbf{C}$ into isomorphisms in $\mathbf{B}$. In this case we may assume that $LF$ is induced by $F$ in the sense that $LF$ is the unique functor $\Ho \mathbf{C}\longrightarrow  \mathbf{B} $ with $LF\circ \gamma = F$. Moreover $RF=LF$.
+    
+
+\end{enumerate}
+\end{remark*}
+\begin{proposition}
+\label{prop:1.4.1}
+Let $F:\mathbf{C} \longrightarrow  \mathbf{B}$ be a functor where $\mathbf{C}$ is a model category. Suppose that $F$ carries weak equivalences in $\mathbf{C}_C$ into isomorphisms in $\mathbf{B}$. Then $LF: \Ho \mathbf{C} \longrightarrow  \mathbf{B}$ exists. Furthermore $\varepsilon(X):LF(X)\longrightarrow  F(X)$ is an isomorphism if $X$ is cofibrant.
+\end{proposition}
+\begin{proof}
+    Let $X \longrightarrow  Q(X)$, $f\longrightarrow  Q(f)$, $p_X:Q(X)\longrightarrow (X)$ be as in the proof of theorem \ref{thm:1}, so that $Q$ induces a well-defined functor $\xoverline{Q}:\mathbf{C} \longrightarrow  \pi \mathbf{C}_C$. By Lemma \ref{lem:1.1.8}(ii), $X\longrightarrow  FQX$, $f\longrightarrow  FQ(f)$ is a functor $FQ:\mathbf{C}\longrightarrow  \mathbf{B}$ which induces a functor $LF:\Ho \mathbf{C}\longrightarrow  \mathbf{B}$ since $Q(f)$ is a weak equivalence if $f$ is. Let $\varepsilon: LF\circ \gamma \longrightarrow  F$ be the natural transformation given by \\$\varepsilon(X) = F(p_X):FQX\longrightarrow  FX$. To show that $\varepsilon$ has the universal property of definition \ref{def:1.4.1}, let $\zeta:G\circ \gamma \longrightarrow  F$ where $G:\Ho \mathbf{C} \longrightarrow  \mathbf{B}$. Define \\$\Theta(X):G(X)\longrightarrow  LF(X)$ to be the composition
+    \[G(X)\xrightarrow{G(\gamma(p_X))^{-1}} GQX \xrightarrow{\zeta} FQX = LF(X).\]
+    It is clear that $\Theta$ is a natural transformation $G\circ \gamma \longrightarrow  LF\circ \gamma$, and since every map is $\Ho \mathbf{C}_C$ is a finite composition of maps $\gamma(f)$ or $\gamma(s)^{-1}$, $\Theta$ is a natural transformation $\Theta: G\longrightarrow  LF$. The diagram
+    \begin{center}
+        \begin{tikzcd}
+            GX \arrow[rr,"G(\gamma(p_X)^{-1})"] \arrow[rrdd,"\text{id}_{GX}"]&& GQX \arrow[rr,"\zeta"] \arrow[dd,"G(p_X)"] && FQX \arrow[dd,"F(p_X)"] \arrow[rr,"\sim"] && LF(X) \arrow[ddll,"\varepsilon"]\\ \\
+            &&GX \arrow[rr,"\zeta"]&&FX&
+        \end{tikzcd}
+    \end{center}
+    shows that $\varepsilon(\Theta \ast \gamma) = \zeta$. The uniqueness of $\Theta: G\longrightarrow  LF$ is clear since it is determined by %word missing?
+    on $\Ho \mathbf{C}_C = \Ho \mathbf{C}$ and so $\varepsilon$ has the required universal property. Finally if $X$ is cofibrant $LFX=FQX=FX$ and $\varepsilon(X)=\text{id}_{F(X)}$.
+\end{proof}
+\begin{definition}
+    Let $F:\mathbf{C} \longrightarrow  \mathbf{C}'$ be a functor where $\mathbf{C}$ and $\mathbf{C}'$ are model categories. By the \defemphi{total left-derived functor}\index{left-derived functor!\indexline total} of $F$ we mean the functor\\ $\mathbf{L}F:\Ho \mathbf{C}\longrightarrow \Ho\mathbf{C}'$ given by $\mathbf{L}F= L^\gamma(\gamma'\circ F)$ where $\gamma:\mathbf{C}\longrightarrow\Ho \mathbf{C}$ and $\gamma':\mathbf{C}'\longrightarrow \Ho\mathbf{C}'$ are the localization functors.
+\end{definition}
+
+\begin{remark*}
+The diagram
+\[\tag{2}\label{diag:1.4.2}
+\begin{tikzcd}
+    \mathbf{C}\arrow[rr,"f"] \arrow[dd,"\gamma"]&& \mathbf{C}'\arrow[dd,"\gamma'"] \\ \\
+    \Ho \mathbf{C} \arrow[rr, "\mathbf{L}F"]&& \Ho \mathbf{C}'
+\end{tikzcd}
+\]
+does \defemph{not} commute, but rather there is a natural transformation \\$\varepsilon: \mathbf{L}F\circ \gamma \longrightarrow \gamma'\circ F$ such that the pair $(\mathbf{L}F,\varepsilon)$ comes as close to making (\ref{diag:1.4.1}) commutative as possible.
+\end{remark*}
+\begin{corollary*}
+If $F$ carries weak equivalence in $\mathbf{C}_c$ into weak equivalences $\mathbf{C}'$, then $\mathbf{L}F:\Ho\mathbf{C}\longrightarrow\Ho\mathbf{C}'$ exists and $\varepsilon(X):\mathbf{L}(X)\longrightarrow F(X)$ is an isomorphism in $\Ho \mathbf{C}'$ for $X$ cofibrant.
+\end{corollary*}
+\begin{proposition}\label{prop:1.4.2}
+Let $\mathbf{C}$ and $\mathbf{C}'$ be pointed model categories with suspension functors $\Sigma$ and $\Sigma'$ on $\Ho\C$ and $\Ho\C'$, respectively. Let $F:\C\longrightarrow \C'$ be a functor which is right exact (i.e. compatible with finite inductive limits), which carries cofibrations in $\C$ into  cofibrations in $\C'$, and which carries weak equivalences in $\C_c$ into weak equivalences in $\C'$. Then $\bL F$ is compatible with finite direct sums, there is a canonical isomorphism of functors $\bL F\circ \Sigma \simeq \Sigma'\circ\bL F$, and with respect to this isomorphism $\bL F$ carries cofibration sequences in $\Ho\C$ into cofibration sequences in $\Ho\C'$.
+\end{proposition}
+\begin{proof}
+    $\bL F$ exists by proposition \ref{prop:1.4.1} and we may assume that $\bL F(A)=F(A)$ if $A$ is cofibrant. If $A_1$ and $A_2$ are in $\C_c$ then $A_1\vee A_2$, the direct sum of $A_1$ and $A_2$ in $\C$, is also the direct sum of $A_1$ and $A_2$ in $\Ho \C$. By assumption $F(\C_c)\subset\C'_c$ and so 
+    \[\bL F(A_1\vee A_2)= F(A_1\vee A_2)=F(A_1)\vee F(A_2) = \bL F(A_1)\vee \bL F(A_2)\] 
+    where the last $v$ means direct sum in $\Ho\C'$. This proves the first assertion about $F$.
+    
+    Next observe that if $A$ is cofibrant, then for a given object $A\times I$ we have that 
+    \[F(A)\vee F(A)\varrightarrow{F(\partial_0)+F(\partial_1)} F(A\times I)\varrightarrow{F(\sigma)}F(A)\]
+    is a factorization of $\nabla_{F(A)}$ into the cofibration $F(\partial_0)+F(\partial_1) = F(\partial_0+\partial_1)$ followed by the weak equivalence $F(\sigma)$. Hence $F(A\times I)=F(A)\times I$ and since $F$ is compatible with cofibre products $F(\Sigma A) = \Sigma F(A)$. As $F(A)$ is cofibrant $\Sigma(F(A))$ represents $\Sigma(F(A))$ in $\Ho\C$ and so the second assertion is proved. Finally note that if $i:A\longrightarrow B$ is a cofibration in $\C_c$ and $A\times I\varrightarrow{i\times I}B\times I$ is a compatible choice in the dual sense that $p^I:E^I\longrightarrow B^I$ was a compatible choice in \S\ref{sec:1.3}, then $F(A\times I)\longrightarrow F(B\times I)$ is also a compatible choice for $FA\times I\longrightarrow FB\times I$. It follows that F carries the diagram in $\C_c$
+    \[A\varrightarrow{I}B\varrightarrow{q}C\quad\quad C\varrightarrow{\In_1}C\underset{B}{\vee} B\!\times\! I\underset{B}{\vee} C\xleftarrow{\,\,\xi\,\,}C\vee A\]
+    where $\xi$ is a weak equivalence into a similar diagram with $A$ replaced by $FA$, etc. This proves the last assertion about $\bL F$.
+\end{proof}
+
+\begin{theorem}\label{thm:3}
+Let $\C$ and $\C'$ be model categories and let
+% https://q.uiver.app/?q=WzAsMixbMCwwLCJDIl0sWzIsMCwiQyciXSxbMCwxLCJMIiwwLHsiY3VydmUiOi0yfV0sWzAsMSwiUiIsMix7ImN1cnZlIjoyfV1d
+\[\begin{tikzcd}
+	\C && {\C'}
+	\arrow["L", curve={height=-12pt}, from=1-1, to=1-3]
+	\arrow["R"', curve={height=-12pt}, from=1-3, to=1-1]
+\end{tikzcd}\]
+be a pair of adjoint functors, $L$ being the left and $R$ the right adjoint functor. Suppose that $L$ preserves cofibrations and that $L$ carries weak equivalences in $\C_c$ into weak equivalences in $\C'$. Also suppose that $R$ preserves fibrations and that $R$ carries weak equivalences in $\C'_f$ into weak equivalences in $\C$. Then the functors
+% https://q.uiver.app/?q=WzAsMixbMCwwLCJcXEhvXFxDIl0sWzIsMCwiXFxIb1xcQyciXSxbMCwxLCJcXEwoTCkiLDAseyJjdXJ2ZSI6LTJ9XSxbMCwxLCJcXG1hdGhiZntSfShSKSIsMix7ImN1cnZlIjoyfV1d
+\[\begin{tikzcd}
+	\Ho\C && {\Ho\C'}
+	\arrow["{\mathbf{L}(L)}", curve={height=-12pt}, from=1-1, to=1-3]
+	\arrow["{\mathbf{R}(R)}"', curve={height=-12pt}, from=1-3, to=1-1]
+\end{tikzcd}\]
+are canonically adjoint. 
+
+Suppose in addition for $X$ in $\C_c$ and $Y$ in $\C_f$ that a map $LX\longrightarrow Y$ is a weak equivalence if and only if the associated map $X\longrightarrow RY$ is a weak equivalence. Then the adjunction morphisms $\id\longrightarrow\bL(L)\circ\mathbf{R}(R)$ and $\bR(R)\circ\bL(L)\longrightarrow\id$ are isomorphisms so the categories $\Ho\C$ and $\Ho\C'$ are equivalent. Furthermore if $\C$ and $\C'$ are pointed then these equivalences $\bL(L)$ and $\bR(R)$ are compatible with the suspension and loop functors and the fibration and cofibration sequences in $\Ho\C$ and $\Ho\C'$.
+\end{theorem}
+\begin{proof}
+    For simplicity we write $\bL$ instead of $\bL(L)$ and we use Grothendieck's notation $u^{\flat}:X\longrightarrow RY$(resp. $v^\sharp:LX\longrightarrow Y$) to denote the map corresponding to $u:LX\longrightarrow Y$ (resp $v:X\longrightarrow RY$). If $X$ is in $\C_c$ and $Y$ is in $\C_f$, then we saw in the proof of proposition \ref{prop:1.4.1} that $L(X\times I)=LX\times I$. Hence to any left homotopy $h:X\times I\longrightarrow RY$ between $f$ and $g$ there corresponds the homotopy $H^\flat:LX\times I\longrightarrow Y$ between $f^\flat$ and $g^\flat$ and so $[X,RY]=[LX,Y]$. Hence if $X\mapsto Q(X)$ etc. is as in the proof of theorem \ref{thm:1} and $Y\mapsto R'(Y)$, $f\mapsto R'(f)$, $i_Y:Y\longrightarrow R'(Y)$ is the functor-up-to-homotopy of theorem \ref{thm:1} for the category $\C'$ we have the isomorphisms:
+    \[\tag{3}\label{eq:1.4.3}\Hom_{\Ho\C'}(\bL X,Y) \simeq [LQX,R'Y] \simeq [QX,RR'Y] \simeq \Hom_{\Ho\C}(X,\bR Y),\]
+    where the first and last isomorphisms come from the construction of $\bL$ and $\bR$ given above in proposition \ref{prop:1.4.1}. The isomorphisms (\ref{eq:1.4.3}) are clearly functorial as $(X,Y)$ runs over $\C^0\times \C^1$, and hence as every map in $\Ho\C$ is a finite composition of maps of the form $\gamma(f)$ or $\gamma(s)^{-1}$, (\ref{eq:1.4.3}) is functorial as $(X,Y)$ runs over \\$(\Ho\C)^0\times (\Ho\C')$ proving that $\bL$ and $\bR$ are adjoint.
+    
+    Suppose now that for $X$ in $\C_c$ and $Y$ in $\C'_f,$ $f:X\longrightarrow RY$ is a weak equivalence iff $f^\sharp:LX\longrightarrow Y$ is a weak equivalence so $X\varrightarrow{(i_{LX})^\flat}RR'(LX)$ is a weak equivalence. But by propostion \ref{prop:1.4.1}, $RR'LX= \bR\bL X$ and by examining (\ref{eq:1.4.3}) we see that $\gamma((i_{LX})^\flat):X\longrightarrow RR'(LX)$ is the adjunction map $X\longrightarrow \bR\bL X$. Hence $X\varrightarrow{\sim}\bR\bL X$ for all $X$ in $\Ho\C_c$ and hence in $\Ho\C$. Similarly $\bL\bR\varrightarrow{\sim}\id$ which proves the second assertion of the theorem.
+    
+    If $\C$ and $\C'$ are pointed we have by proposition \ref{prop:1.4.2} and its dual $\bL\Sigma\simeq \Sigma'\bL$ and $\Omega\bR\simeq \bR\Omega'$,. Hence 
+    \[\bR\Sigma'\simeq \bR\Sigma'\bL\bR\simeq \bR\bL\Sigma\bR\simeq \Sigma\bR\]
+    and similarly $\bL$ preserves loop functors. Also by proposition \ref{prop:1.4.2} $\bL$ preserves cofibration sequences and $\bR$ preserves fibration sequences. Suppose that \
+    \[\varepsilon= \{F\varrightarrow{i}E\varrightarrow{p}B,\,\, \Omega B\times F\varrightarrow{n}F\}\]
+    is a fibration sequence in $\Ho\C$. Then we may embed the map $\bL E\longrightarrow \bL B$ in a fibration sequence $\varepsilon'$ of $\Ho\C'$ by proposition \ref{prop:1.3.5} (i) and the image $\bR\varepsilon'$ of the sequence under $\bR$ is a fibration seuqnece which is isomorphic to $\varepsilon$ by Proposition \ref{prop:1.3.5}, (ii) and (iii). Hence $\varepsilon'\simeq \bL\varepsilon$ and $\bL$ preserves fibration sequences. Similarly $R$ preserves cofibration sequences.
+\end{proof}
+
+\begin{examples}
+\begin{enumerate}
+    \item Let $\mathbf{A}$ be an abelian category with enough projectives and injectives and let $\C$ and $\C'$ be the two model categories which have $C_b(\mathbf{A})$ as underlying category described in Remark 3 following theorem \ref{thm:1}. Then the identity functor gives a pair of adjoint functor
+    \[\begin{tikzcd}
+	\C && {\C'}
+	\arrow[curve={height=-12pt}, from=1-1, to=1-3]
+	\arrow[curve={height=-12pt}, from=1-3, to=1-1]
+    \end{tikzcd}\]
+    satisfying the conditions of the theorem. The theorem implies that cofibration and fibration sequences constructed from both categories coincide which is clear since they coincide with Verdier's triangles.
+
+    \item Let $\C' = $ (spaces)  $\C = $ (ss sets) as in examples $\ref{ex:1.1.A}$ and $\ref{ex:1.1.C}$ and let $L$ be the geometric realization functor, and $R$ the singular complex functor. Then theorem \ref{thm:3} applies because of \cite{milnor_geometric_1957} and so the cofibration sequences in the homotopy categories of ss sets of spaces coincide. This is not entirely trivial since the singular functor does not commute with the operation of taking the cofibre of a map.
+\end{enumerate}
+\end{examples}
+\begin{remark*}
+We recall our vague definition of the
+homotopy theory associated to a model category, namely
+the category $\Ho\C$ with all extra structure which comes by
+performing constructions in $\C$. In \S\ref{sec:1.2} and \S\ref{sec:1.3} we gave
+the most important examples of that extra structure and
+Theorem \ref{thm:3} gives a criterion which shows when the homotopy
+theories coming from different model categories coincide,
+at least when only the structure of \S\ref{sec:1.2} and \S\ref{sec:1.3} is concerned.
+There are other kinds of structure, e.g. higher order (\cite{verdier_categories_nodate},\cite{spanier_higher_1963})
+ operations, which ate not included in theorem \ref{thm:3}, and it 
+seems reasonable to conjecture that this extra structure
+is preserved under the conditions of theorem \ref{thm:3}. 
+\end{remark*}
+
+\end{document}

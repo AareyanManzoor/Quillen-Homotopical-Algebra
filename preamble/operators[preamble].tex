@@ -1,0 +1,69 @@
+\newcommand{\defemph}[1]{\textbf{#1}} %to emphases words underlined in the original text.
+\newcommand{\defemphi}[1]{\textbf{#1}\index{#1}}
+
+\DeclareMathOperator{\Ho}{Ho} %homotopy category of e.g. C
+\DeclareMathOperator{\Ob}{Ob} %objects of a category 
+\DeclareMathOperator{\Hom}{Hom} %morphisms between e.g. two objects A,B \in category C.
+\DeclareMathOperator{\Map}{Map} %maps between objects
+\DeclareMathOperator{\Ker}{Ker}
+\DeclareMathOperator{\Coker}{Coker}
+\DeclareMathOperator{\Image}{Im} %image
+\DeclareMathOperator{\pr}{pr} %for projection functions.
+\DeclareMathOperator{\In}{in}
+\DeclareMathOperator{\id}{id} %for identity function
+\DeclareMathOperator{\Aut}{Aut} %automorphisms of objects
+\DeclareMathOperator{\Ex}{Ex} %whenever there is a Ex or Ex^infty functor in the book.
+\DeclareMathOperator{\cosk}{cosk} %coskeleton, see page 126
+\DeclareMathOperator{\Ch}{Ch} %chain complexes
+\DeclareMathOperator{\Der}{Der}
+\newcommand{\homology}{H} %for (co)homology
+\newcommand{\chomology}{\check{\homology}}
+\newcommand{\uhomology}{\mathbf{H}}
+\newcommand{\cuhomology}{\mathbf{\check{H}}}
+\DeclareMathOperator{\Tor}{Tor} %Tor
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Sing}{Sing}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\ab}{ab}
+\renewcommand{\epsilon}{\varepsilon}
+
+\newcommand{\cat}[1]{\mathscr{#1}} %for the fancy A,B,C etc used to denote model categories.
+
+\newcommand{\RHom}{\overset{r}{\sim}} %for the equivalence relations of right homotopy
+\newcommand{\LHom}{\overset{l}{\sim}} %for the equivalence relations of left homotopy
+\newcommand{\UHom}{\operatorname{\mathbf{Hom}}} %underlined Hom
+
+\newcommand{\xoverline}[1]{\mskip.5\thinmuskip\overline{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\newcommand{\xhat}[1]{\mskip.5\thinmuskip\widehat{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\newcommand{\xtilde}[1]{\mskip.5\thinmuskip\widetilde{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+\newcommand{\xunderline}[1]{\mskip.5\thinmuskip\underline{\mskip-.5\thinmuskip {#1} \mskip-.5\thinmuskip}\mskip.5\thinmuskip}
+
+%%use this to overset/underset things to arrows, and in general use \varrightarrow{} for maps 
+
+\makeatletter
+
+\def\@@varrightarrow#1#2#3{\begingroup%
+\setbox0=\hbox{$#1\xrightarrow[#3]{#2}$}%
+\setbox1=\hbox{$#1\longrightarrow$}%
+\ifdim\wd0<\wd1 \mathrel{\mathop{\longrightarrow}\limits^{#2}_{#3}}
+\else \xrightarrow[#3]{#2} \fi\endgroup}
+
+\def\@varrightarrow#1#2{\@@varrightarrow#1#2}
+
+% \varrightarrow[under material]{over material} puts material over and under a right arrow.
+% It automatically prints the longer option between an xrightarrow and a longrightarrow
+\renewcommand\varrightarrow[2][]{\mathpalette\@varrightarrow{{#2}{#1}}}
+
+
+\newcommand{\rightrightrightarrows}{\mathbin{\substack{\rightarrow \\[-1em] \rightarrow \\[-1em] \rightarrow}}} % like \rightrightarrows but with 3 arrows
+
+\newcommand{\dottopright}[1]{\dot{#1}}
+
+\newcommand{\indexline}{---\ } %for index, split entry
+
+\tikzstyle{bullet}=[fill=black, draw=black, shape=circle, tikzit shape=circle, xscale=0.01cm, tikzit draw=black, tikzit fill=black, yscale=0.01cm]
+
+%%%shortcut
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\bL}{\mathbf{L}}
+\newcommand{\bR}{\mathbf{R}}

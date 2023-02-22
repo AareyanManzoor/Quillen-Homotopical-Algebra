@@ -1,0 +1,407 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{The loop and suspension functors}\label{sec:1.2}
+Homotopy theory is concerned not only with the category $\Ho \cat{C}$ as a category but also with certain extra structure which comes from performing constructions in $\cat{C}$. In this section we will be concerned with one aspect of this extra structure--the loop and suspension functors.\\
+$\cat{C}$ denotes a mixed model category and $f, g \colon A \rightrightarrows B$ two maps in $\cat{C}$ where $A$ is cofibrant and $B$ is fibrant.
+
+\begin{definition}
+\label{def:1.2.1}
+Let $h \colon A \times I \longrightarrow B$ and $h' \colon A \times I' \longrightarrow B$ be two left homotopies from $f$ to $g$. By a left homotopy from $h$ to $h'$ we mean a diagram
+\[\tag{1}\label{diag:1.2.1}
+\begin{tikzcd}
+    A \times I \underset{A \vee A}{\vee} A \times I' \arrow[dd, "\sigma + \sigma'"] \arrow[rrdd, "j_0 + j_1"]  \arrow[rr, no head, "h+h'"] & & B \\
+    \\
+    A  & & \arrow[ll, "\tau"] A \times J \arrow[uu, "H"]
+\end{tikzcd} 
+\]
+where $j_0 + j_1$ is a a cofibration and $\tau$ is a weak equivalence. (Here $A \times I \underset{A \vee A}{\vee} A \times I'$ is the cofibre product of the maps  $\partial_0 + \partial_1 \colon A \vee A \longrightarrow A \times I$ and \\$\partial_0' + \partial_1' \colon A \vee A \longrightarrow A \times I'$.) We say $h$ is \defemph{left homotopic}\index{homotopy!\indexline left} to $h'$ (notation $\LHom$) if such a left homotopy exists.
+\end{definition}
+\begin{remarks*}
+    \begin{enumerate}
+        \item\label{rem:1.2.1} As in \S\ref{sec:1.1}, the symbol $A \times J$ will denote an object of $\cat{C}$ together with a cofibration $j_0 + j_1$ and weak equivalence $\tau$ as in (\ref{diag:1.2.1}). $A \times J$ is \defemph{not} generally the product of $A$ and an object ``$J$''.
+        \item\label{rem:1.2.2} There is a dual notion of \defemph{right homotopy}\index{homotopy!\indexline right} of right homotopies whose formulation we will leave to the reader.
+    \end{enumerate}
+\end{remarks*}
+
+\begin{definition}
+    \label{def:1.2.2}
+    Let $h \colon A \times I \longrightarrow B$ be a left homotopy from $f$ to $g$ and let $k \colon A \longrightarrow B^I$ be a right homotopy from $f$ to $g$. By a \defemphi{correspondence} between $h$ and $k$ we mean a map $H \colon A \times I \longrightarrow B^I$ such that $H\partial_0 = k$, $H\partial_1 = sg$, $d_0H = h$, and $d_1 H = g \sigma$. We say that $h$ and $k$ \defemph{correspond} if such a correspondence exists. \\
+    It will be useful to use the following diagrams to indicate a left homotopy $h$, a right homotopy $k$, and a correspondence $H$ between $h$ and $k$ respectively.
+    \[
+    \tag{2}\label{diag:1.2.2}
+    \begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=bullet, label = {above:$ f $}] (0) at (-4, 0) {};
+		\node [style=bullet, label = {above:$ g $}] (1) at (-1, 0) {};
+		\node [style=none, label = {above:$ h $}] (2) at (-2.5, 0) {};
+		\node [style=bullet, label = {above:$ g $}] (3) at (0, 1.5) {};
+		\node [style=bullet, label = {below:$ f $}] (4) at (0, -1.5) {};
+		\node [style=none, label = {right:$ k $}] (5) at (0, 0) {};
+		\node [style=bullet, label = {above:$ g $}] (6) at (2, 1.5) {};
+		\node [style=none, label = {left:$ k $}] (7) at (2, 0) {};
+		\node [style=bullet, label = {below:$ f $}] (8) at (2, -1.5) {};
+		\node [style=none, label = {below:$ h $}] (9) at (3.5, -1.5) {};
+		\node [style=bullet, label = {below:$ g $}] (10) at (5, -1.5) {};
+		\node [style=none, label = {right:$ sg $}] (11) at (5, 0) {};
+		\node [style=bullet, label = {above:$ g $}] (12) at (5, 1.5) {};
+		\node [style=none, label={above:$g\sigma$}] (13) at (3.5, 1.5) {};
+		\node [style=none] (14) at (3.5, 0) {$H$};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (1);
+		\draw [in=90, out=-90] (3) to (4);
+		\draw (6) to (8);
+		\draw (8) to (10);
+		\draw (10) to (12);
+		\draw (12) to (6);
+	\end{pgfonlayer}
+\end{tikzpicture}
+    \]
+\end{definition}
+
+
+\begin{lemma}
+    \label{lem:1.2.1}
+    Given $A \times I$ and a right homotopy $k \colon A \longrightarrow B^I$ there is a left homotopy $h \colon A \times I \longrightarrow B$ corresponding to $k$. Dually given $B^I$ and $h$, there is a $k$ corresponding to $h$.
+\end{lemma}
+
+\begin{proof}
+Same of that as Lemma~\ref{lem:1.1.5}(ii).
+\end{proof}
+
+\begin{lemma}
+    \label{lem:1.2.2}
+    Suppose that $h \colon A \times I \longrightarrow B$ and $h' \colon A \times I' \longrightarrow B$ are two left homotopies from $f$ to $g$ and that $k \colon A \longrightarrow B^I$ is a right homotopy from $f$ to $g$. Suppose that $h$ and $k$ correspond. Then $h'$ and $k$ correspond iff $h'$ is left homotopic to $h$.
+\end{lemma}
+
+\begin{proof}
+    Let $H \colon A \times I \longrightarrow B^I$ be a correspondence between $h$ and $k$, and let $H' \colon A \times I \longrightarrow B^I$ be a correspondence between $h'$ and $k$. Let $A \times J$, $j_0 + j_1$, and $\tau$ be as in Remark \ref{rem:1.2.1}. The dotted arrow $K$ exists in 
+    \begin{center}
+    \begin{tikzcd}
+        A \times I \underset{A \vee A}{\vee} A \times I' \arrow[rr, "H+H'"] \arrow[dd, "j_0 + j_1"] & & B^I \arrow[dd, "d_1"]\\
+        \\
+        A \times J \arrow[rruu, dashed, "K"] \arrow[rr, "g\tau"] & & B
+    \end{tikzcd}
+    \end{center}
+    and $d_0 K \colon A \times J \longrightarrow B$ is a left homotopy from $h$ to $h'$. Conversely suppose given $H \colon A \times I \longrightarrow B^I$ and a left homotopy $K \colon A \times J \longrightarrow B$ from $h$ to $h'$. Then $j_0 \colon A \times I \longrightarrow A \times J$ is a cofibration by \ref{1.1.M3} since it's the composition of $j_0 + j_1$ and \[\In_{1} \colon A \times I \longrightarrow A \times I \underset{A \vee A}{\vee} A \times I'\] which is the cobase extension of $\partial_0 + \partial_1$. Also $j_0$ is trivial by \ref{1.1.M5} since $\tau j_0 = \sigma$. Therefore the dotted arrow $\varphi$ exists in 
+    \begin{center}
+    \begin{tikzcd}
+        A \times I \arrow[dd, "j_0"] \arrow[rr, "H"] & & B^I \arrow[dd, "{(d_0, d_1)}"]  \\
+        \\
+        A \times J \arrow[uurr, dashed, "\varphi"] \arrow[rr, "{(K, g\tau)}"] & &  B\times B
+    \end{tikzcd}
+    \end{center}
+    and $\varphi j_1 \colon A \times I' \longrightarrow B^I$ is a correspondence between $h'$ and $k$.
+\end{proof}
+
+\begin{corollary*}
+    ``is left homotopic to'' is an equivalence relation on the class of left homotopies from $f$ to $g$ and the equivalence classes form a set $\pi_1^{l}(A, B;f,g)$. Dually right homotopy classes of right homotopies form a set $\pi_1^{r}(A,B; f,g)$. Correspondence yields a bijection $\pi_1^{l}(A,B; f,g) \simeq \pi_1^{r}(A,B; f,g)$
+\end{corollary*}
+
+\begin{proof}
+    Lemma~\ref{lem:1.2.2} yields the equivalence relation assertion while Lemma~\ref{lem:1.2.1} shows that every $h$ is equivalent to a $k \colon A \longrightarrow B^I$ with \defemph{fixed} $B^I$ and hence the equivalence classes form a set. The last assertion is clear from Lemma~\ref{lem:1.2.2} and its dual.
+\end{proof}
+
+By the corollary we may drop the ``$l$'' and ``$r$'' and write $\pi_1(A,B;f,g)$ and refer to an element of this set as a homotopy class of homotopies from $f$ to $g$. 
+
+Again let $\cat{C}$ be a fixed model category, let $A$ be a cofibrant object of $\cat{C}$, and let $B$ be a fibrant object.
+
+\begin{definition}
+    \label{def:1.2.3}
+    Let $f_1, f_2, f_3 \in \Hom (A,B)$, let $h \colon A \times I \longrightarrow B$ be a left homotopy from $f_1$ to $f_2$ and let $h' \colon A \times I' \longrightarrow B$ be a left homotopy from $f_2$ to $f_3$. By the \defemphi{composition} of $h$ and $h'$, denoted $h \cdot h'$, we mean the homotopy $h'' \colon A \times I'' \longrightarrow B$ given by $h''\mathrm{in}_1 = h$, $h''\mathrm{in}_2 = h'$ where $A \times I''$ is the path object constructed in Lemma~\ref{lem:1.1.3}. If $f, g \in \Hom(A,B)$ and $h \colon A \times I \longrightarrow B$ is a left homotopy from $f$ to $g$, then by the \defemphi{inverse} of $h$, denoted $h^{-1}$ we mean the left homotopy $h' \colon A \times I' \longrightarrow B$ from $g$ to $f$, where $A \times I'$ is the path object for $A$ given by $A \times I' = A \times I$, $\partial_0' = \partial_1$, $\partial_1' = \partial_0$, $\sigma' = \sigma$ and where $h' = h$.
+    
+
+\end{definition}
+    The following pictures for $h \cdot h'$ and $h^{-1}$ will be used.
+    \[
+    \tag{3}\label{diag:1.2.3}
+    \begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=bullet, label={above:$f_1$}] (0) at (-3, 1) {};
+		\node [style=bullet, label={above:$f_2$}] (1) at (0, 1) {};
+		\node [style=bullet, label={above:$f_3$}] (2) at (3, 1) {};
+		\node [style=bullet, label={above:$g$}] (3) at (-1.5, -1) {};
+		\node [style=bullet, label={above:$f$}] (4) at (1.5, -1) {};
+		\node [style=none, label={above:$h$}] (5) at (-1.5, 1) {};
+		\node [style=none, label={above:$h'$}] (6) at (1.5, 1) {};
+		\node [style=none, label={above:$h^{-1}$}] (7) at (0, -1) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0) to (2);
+		\draw (3) to (4);
+	\end{pgfonlayer}
+\end{tikzpicture}
+    \]
+    Composition and inverses for right homotopies are defined dually and will be pictured by diagrams like (\ref{diag:1.2.3}) but where the lines run vertically.
+    
+
+\begin{proposition}
+    \label{prop:1.2.1}
+    Composition of left homotopies induces maps\\ $\pi_{1}^{l}(A,B; f_1, f_2) \times \pi_1^{l}(A,B; f_2, f_3) \longrightarrow \pi_1^{l}(A,B;f_1,f_3)$ and similarly for right homotopies. Composition of left and right homotopies is compatible with the correspondence bijection of the corollary of Lemma \ref{lem:1.2.2}. Finally the category with objects $\Hom (A,B)$, with a morphism from $f$ to $g$ defined to be an element of $\pi_1(A,B;f,g)$, and with composition of morphisms defined to be induced by composition of homotopies, is a groupoid, the inverse of an element of $\pi_1^{l}(A,B;f,g)$ represented by $h$ being represented by $h^{-1}$.
+\end{proposition}
+
+\begin{proof}
+    Let $h$ (resp. $k$) be a left (resp. right) homotopy from $f_1$ to $f_2$, let $h'$ (resp. $k'$) be a left (resp. right) homotopy from $f_2$ to $f_3$, and let $H$ (resp. $H'$) be a correspondence between $h$ and $k$ (resp $h'$ and $k'$). Then we have the following correspondence between $h \cdot h'$ and $k \cdot k'$. 
+    \[\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (0, 3) {};
+		\node [style=none] (1) at (-3, 3) {};
+		\node [style=none] (2) at (-3, 0) {};
+		\node [style=none] (3) at (0, 0) {};
+		\node [style=none] (4) at (3, 0) {};
+		\node [style=none] (5) at (3, 3) {};
+		\node [style=none] (6) at (3, -3) {};
+		\node [style=none] (7) at (0, -3) {};
+		\node [style=none] (8) at (-3, -3) {};
+		\node [style=none, label={left:$k'$}] (9) at (-3, 1.5) {};
+		\node [style=none, label={left:$k'$}] (10) at (0, 1.5) {};
+		\node [style=none, label={right:$s'f_3$}] (11) at (3, 1.5) {};
+		\node [style=none, label={left:$k$}] (12) at (-3, -1.5) {};
+		\node [style=none, label={left:$sf_2\!$}] (13) at (0, -1.5) {};
+		\node [style=none, label={right:$sf_3$}] (14) at (3, -1.5) {};
+		\node [style=none, label={above:$f_3\sigma$}] (15) at (-1.5, 3) {};
+		\node [style=none] (16) at (-1.5, 1.5) {$k'\sigma$};
+		\node [style=none, label={below:$f_2\sigma$}] (17) at (-1.5, 0) {};
+		\node [style=none] (18) at (-1.5, -1.5) {$H$};
+		\node [style=none, label={below:$h$}] (19) at (-1.5, -3) {};
+		\node [style=none, label={above:$f_3\sigma$}] (20) at (1.5, 3) {};
+		\node [style=none] (21) at (1.5, 1.5) {$H'$};
+		\node [style=none, label={below:$h'$}] (22) at (1.5, 0) {};
+		\node [style=none] (23) at (1.5, -1.5) {$sh'$};
+		\node [style=none, label={below:$h'$}] (24) at (1.5, -3) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (1.center) to (5.center);
+		\draw (5.center) to (6.center);
+		\draw (6.center) to (8.center);
+		\draw (8.center) to (1.center);
+		\draw (0.center) to (7.center);
+		\draw (2.center) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\]
+    Taking Lemma~\ref{lem:1.2.2} into consideration this proves the first two assertions of the proposition.
+    
+    Composition is associative because $(h \cdot h') \cdot h''$ and $h \cdot(h' \cdot h'')$ are both represented by the picture
+    \begin{center}
+    \begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=bullet] (0) at (-4.5, 0) {};
+		\node [style=bullet] (1) at (-1.5, 0) {};
+		\node [style=bullet] (2) at (1.5, 0) {};
+		\node [style=bullet] (3) at (4.5, 0) {};
+		\node [style=none, label={above:$h$}] (4) at (-3, 0) {};
+		\node [style=none, label={above:$h'$}] (5) at (0, 0) {};
+		\node [style=none, label={above:$h''$}] (6) at (3, 0) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [in=180, out=0] (0) to (3);
+	\end{pgfonlayer}
+\end{tikzpicture}
+
+    \end{center}
+    If $h \colon A \times I \longrightarrow B$ from $f$ to $g$ and $H \colon A \times I \longrightarrow B^I$ is a correspondence of $h$ with some right homotopy $k$ then the diagrams \\
+    \adjustbox{scale = 0.8}{
+    \begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1, 1.5) {};
+		\node [style=none] (1) at (-1, -1.5) {};
+		\node [style=none] (2) at (1, 1.5) {};
+		\node [style=none] (3) at (1, -1.5) {};
+		\node [style=none] (4) at (-4, -1.5) {};
+		\node [style=none] (5) at (-7, -1.5) {};
+		\node [style=none] (6) at (-7, 1.5) {};
+		\node [style=none] (7) at (-4, 1.5) {};
+		\node [style=none, label={left:$k$}] (8) at (-4, 0) {};
+		\node [style=none, label={left:$k$}] (9) at (-7, 0) {};
+		\node [style=none, label={right:$sg$}] (10) at (-1, 0) {};
+		\node [style=none, label={left:$k$}] (11) at (1, 0) {};
+		\node [style=none] (12) at (4, 1.5) {};
+		\node [style=none] (13) at (7, 1.5) {};
+		\node [style=none, label={right:$sg$}] (14) at (7, 0) {};
+		\node [style=none, label={right:$\!\!sg$}] (15) at (4, 0) {};
+		\node [style=none] (16) at (4, -1.5) {};
+		\node [style=none] (17) at (7, -1.5) {};
+		\node [style=none] (18) at (-5.5, 0) {$k\sigma$};
+		\node [style=none] (19) at (-2.5, 0) {$H$};
+		\node [style=none] (20) at (2.5, 0) {$H$};
+		\node [style=none] (21) at (5.5, 0) {$sg\sigma$};
+		\node [style=none, label={below:$f\sigma$}] (22) at (-5.5, -1.5) {};
+		\node [style=none, label={above:$g\sigma$}] (23) at (-5.5, 1.5) {};
+		\node [style=none, label={above:$g\sigma$}] (24) at (-2.5, 1.5) {};
+		\node [style=none, label={below:$h$}] (25) at (-2.5, -1.5) {};
+		\node [style=none, label={below:$h$}] (26) at (2.5, -1.5) {};
+		\node [style=none, label={above:$g\sigma$}] (27) at (2.5, 1.5) {};
+		\node [style=none, label={above:$g\sigma$}] (28) at (5.5, 1.5) {};
+		\node [style=none, label={below:$g\sigma$}] (29) at (5.5, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6.center) to (0.center);
+		\draw (0.center) to (1.center);
+		\draw (1.center) to (5.center);
+		\draw (5.center) to (6.center);
+		\draw (7.center) to (4.center);
+		\draw (2.center) to (13.center);
+		\draw (13.center) to (17.center);
+		\draw (17.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (12.center) to (16.center);
+	\end{pgfonlayer}
+	\end{tikzpicture}
+}\\
+and Lemma~\ref{lem:1.2.2} give $f\sigma \cdot h \sim h$, $h \cdot g\sigma \sim h$, proving the existence of identities and hence $\Hom (A,B)$ is a category. Finally let $H'\colon A \times I' \longrightarrow B^I$ be $H \colon A \times I \longrightarrow B^I$, where $A \times I'$ is $A \times I$ with $\partial_0' = \partial_1$, $\partial_1' = \partial_0$, and $\sigma' = \sigma$, and let $H''\colon A \times I' \longrightarrow B^I$ be a correspondence of $h^{-1} \colon A \times I' \longrightarrow B$ with some $k'' \colon A \longrightarrow B^I$, and let $\tilde{H} \colon A \times I \longrightarrow B$ be $H''$. 
+    Then the diagrams
+    \adjustbox{scale = 0.8}{
+    \begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1, 1.5) {};
+		\node [style=none, label={below:$g$}] (1) at (-1, -1.5) {};
+		\node [style=none] (2) at (1, 1.5) {};
+		\node [style=none, label={below:$f$}] (3) at (1, -1.5) {};
+		\node [style=none, label={below:$f$}] (4) at (-4, -1.5) {};
+		\node [style=none, label={below:$g$}] (5) at (-7, -1.5) {};
+		\node [style=none] (6) at (-7, 1.5) {};
+		\node [style=none] (7) at (-4, 1.5) {};
+		\node [style=none, label={left:$k$}] (8) at (-4, 0) {};
+		\node [style=none, label={left:$sg$}] (9) at (-7, 0) {};
+		\node [style=none, label={right:$sg$}] (10) at (-1, 0) {};
+		\node [style=none, label={left:$sf$}] (11) at (1, 0) {};
+		\node [style=none] (12) at (4, 1.5) {};
+		\node [style=none] (13) at (7, 1.5) {};
+		\node [style=none, label={right:$sf$}] (14) at (7, 0) {};
+		\node [style=none, label={right:$\!\!k''$}] (15) at (4, 0) {};
+		\node [style=none, label={below:$g$}] (16) at (4, -1.5) {};
+		\node [style=none, label={below:$f$}] (17) at (7, -1.5) {};
+		\node [style=none] (18) at (-5.5, 0) {$H'$};
+		\node [style=none] (19) at (-2.5, 0) {$H$};
+		\node [style=none] (20) at (2.5, 0) {$\xtilde{H}$};
+		\node [style=none] (21) at (5.5, 0) {$H''$};
+		\node [style=none, label={below:$h^{-1}$}] (22) at (-5.5, -1.5) {};
+		\node [style=none, label={above:$g\sigma$}] (23) at (-5.5, 1.5) {};
+		\node [style=none, label={above:$g\sigma$}] (24) at (-2.5, 1.5) {};
+		\node [style=none, label={below:$h$}] (25) at (-2.5, -1.5) {};
+		\node [style=none, label={below:$h$}] (26) at (2.5, -1.5) {};
+		\node [style=none, label={above:$f\sigma$}] (27) at (2.5, 1.5) {};
+		\node [style=none, label={above:$f\sigma$}] (28) at (5.5, 1.5) {};
+		\node [style=none, label={below:$h^{-1}$}] (29) at (5.5, -1.5) {};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (6.center) to (0.center);
+		\draw (0.center) to (1.center);
+		\draw (1.center) to (5.center);
+		\draw (5.center) to (6.center);
+		\draw (7.center) to (4.center);
+		\draw (2.center) to (13.center);
+		\draw (13.center) to (17.center);
+		\draw (17.center) to (3.center);
+		\draw (3.center) to (2.center);
+		\draw (12.center) to (16.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+
+    }
+    show that $h^{-1} \cdot h \sim g \sigma$ and $h \cdot h^{-1} \sim f \sigma$ providing the last assertion of Proposition \ref{prop:1.2.1}.
+\end{proof}
+It is clear that if $i \colon A' \longrightarrow A$ is a map of cofibrant objects, then there is a functor $i^* \colon \Hom (A,B) \longrightarrow \Hom (A', B)$ which sends $f$ into $fi$ and a right homotopy $k \colon A \longrightarrow B^I$ into $ki \colon A' \longrightarrow B^I$. Similarly if $j \colon B \longrightarrow B'$ is a map of fibrant objects there is a function $j_* \colon \Hom (A,B) \longrightarrow \Hom(A,B)$.
+\begin{lemma}\label{lem:1.2.3}
+    The diagram
+    \begin{center}
+    \begin{tikzcd}
+        \pi_1(A,B;f,g) \arrow[rr, "i^*"] \arrow[dd, "j_*"] & & \pi_1(A,B;fi,gi) \arrow[dd, "j_*"]\\
+        \\
+        \pi_1(A,B;jf,jg) \arrow[rr, "i^*"] & & \pi_1(A',B',jfi,jgi)
+    \end{tikzcd}
+    \end{center}
+    commutes.
+\end{lemma}
+\begin{proof}
+    Let $\alpha \in \pi_1(A,B;f,g)$ and represent $\alpha$ with $h \colon A \times B \longrightarrow B$, $k \colon A \longrightarrow B^I$, and let $H$ be a correspondence between $h$ and $k$. By Lemma \ref{lem:1.1.5}(ii) and Lemma \ref{lem:1.2.1} we may assume that $\sigma \colon A \times I \longrightarrow A$ is a trivial cofibration. By \ref{1.1.M1} we can choose dotted arrows in
+    \begin{center}
+    \begin{tikzcd}
+        A' \vee A' \arrow[dd, "\partial_0' + \partial_1'"] \arrow[rr, "\partial_0 i + \partial_1 i"] & & A \times I \arrow[dd, "\sigma"] & & B \arrow[rr, "s'j"] \arrow[dd, "s"] & & (B')^I \arrow[dd, "{(d_0', d_1')}"]\\
+        \\
+        A' \vee I \arrow[uurr, dashed, "\varphi"] \arrow[rr, "i\sigma'"] & & A & & B^{I} \arrow[uurr, dashed, "\psi"] \arrow[rr, "{(jd_0, jd_1)}"] & & B' \times B'
+    \end{tikzcd}
+    \end{center}
+    Then $H$ is a correspondence between $jh$ and $\psi k$; hence $\psi k$ represents $j_* \alpha$ and so $\psi k i$ represents $i^* j_* \alpha$. Similarly $H\varphi$ is a correspondence between $ k i$ and $h\varphi$; hence $h\varphi$ represents $i^* \alpha$ and so $jh\varphi$ represents $j_*i^*\alpha$. Finally $\psi H\varphi$ is a correspondence between $\psi ki$ and $jh\varphi$ which shows that $i^* j_* \alpha = j_* i^* \alpha$.
+\end{proof}
+
+\begin{definition}
+    \label{def:1.2.4}
+    A \defemphi{pointed category} is a category $\cat{A}$ in which ``the'' initial object and final object exist and are isomorphic. We shall denote this object by $*$ and call it the \defemphi{null-object} of $\cat{A}$. If $X$ and $Y$ are arbitrary objects of $\cat{A}$ we denote by $0 \in \Hom_{\cat{A}}(X,Y)$ the composition $X \longrightarrow * \longrightarrow Y$. If $f \colon X \longrightarrow Y$ is a map in $\cat{C}$, then we define the \defemphi{fibre} of $f$ to be the fibre product $* \times_Y X$ and the \defemphi{cofibre} of $f$ to be the fibre product $*\vee_X Y$.
+    
+    By a \defemphi{pointed model category} we mean a model category $\cat{C}$ which is also a pointed category. If $A$ is in $\cat{C}_0$ and $B$ in $\cat{C}_f$, then we will abbreviate $\pi_1(A,B;0,0)$ to $\pi_1(A,B)$. $\pi_1(A,B)$ is a group by the above proposition.
+\end{definition}
+
+\begin{theorem}
+    \label{thm:2}
+    Let $\cat{C}$ be a pointed model category. Then there is a functor $A,B \longrightarrow [A,B]_1$ from $(\Ho\cat{C})^{\circ} \times \Ho\cat{C}$ to $\mathbf{Grp}$\footnote{category of groups and homomorphisms} which is determined up to canonical isomorphism by $[A,B]_1 = \pi_1(A,B)$ if $A$ is cofibrant and $B$ is fibrant. Furthermore, there are two functors from $\Ho \cat{C}$ to $\Ho \cat{C}$, the suspension functor $\Sigma$ and the loop functor $\Omega$ and canonical isomorphisms 
+    \[
+    [\Sigma A, B] \simeq [A,B]_1 \simeq [A, \Omega B]
+    \]
+    of functors $(\Ho \cat{C})^{\circ} \times \Ho \cat{C} \longrightarrow \mathbf{Set}$\footnote{Category of sets and functions} where $[X,Y] = \Hom_{\Ho} (X,Y)$
+\end{theorem}
+
+\begin{proof}
+    Let $A$ be cofibrant; choose a cylinder object $A \times I$ and let $A \times I \overset{\pi}{\longrightarrow} \Sigma A$ be the cofibre of $\partial_0 + \partial_1 \colon A \vee A \longrightarrow A \times I$. By \ref{1.1.M3} $\Sigma A$ is cofibrant. We shall define a bijection
+    \[\tag{4}\label{eq:1.2.4}
+    \rho \colon \pi(\Sigma A,B) \varrightarrow{\sim} \pi_1(A,B) 
+    \]
+    which is a natural transformation of functors to $\mathbf{Set}$ as $B$ runs over $\cat{C}_f$. Let $\varphi \colon \Sigma A \longrightarrow B$ be a map and let $\rho(\varphi)$ be the element of $\pi_1(A,B)$ represented by $\varphi \pi \colon A \times I \longrightarrow B$. If $\varphi, \varphi' \in \Hom(\Sigma A,B)$ and $\varphi \sim \varphi'$, then there is a right homotopy $h \colon \Sigma A \longrightarrow B^I$ from $\varphi$ to $\varphi'$. Let $H \colon A \times I \longrightarrow B^I$ be a correspondence of $\varphi'\pi$ with some right homotopy $k$ from $0$ to $0$ and consider the diagram 
+    \begin{center}
+    \begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=none] (0) at (-1.5, 3) {};
+		\node [style=none] (1) at (-1.5, 0) {};
+		\node [style=none] (2) at (-1.5, -3) {};
+		\node [style=none] (3) at (1.5, -3) {};
+		\node [style=none] (4) at (1.5, 0) {};
+		\node [style=none] (5) at (1.5, 3) {};
+		\node [style=none, label={left:$k$}] (6) at (-1.5, 1.5) {};
+		\node [style=none, label={right:$s0$}] (7) at (1.5, 1.5) {};
+		\node [style=none, label={left:$s0$}] (8) at (-1.5, -1.5) {};
+		\node [style=none, label={right:$s0$}] (9) at (1.5, -1.5) {};
+		\node [style=none, label={above:$\phi'\pi$}] (10) at (0, 0) {};
+		\node [style=none, label={above:$0\sigma$}] (11) at (0, 3) {};
+		\node [style=none, label={below:$\phi\pi$}] (12) at (0, -3) {};
+		\node [style=none] (13) at (0, -1.5) {$h\pi$};
+		\node [style=none] (14) at (0, 1.5) {H};
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw (0.center) to (2.center);
+		\draw (2.center) to (3.center);
+		\draw (3.center) to (5.center);
+		\draw (5.center) to (0.center);
+		\draw (1.center) to (4.center);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\end{center}
+    This shows that $\varphi \pi$ commutes with $s0 \cdot k$ and $\varphi' \pi$ corresponds to $k$, as $s0 \cdot k$ and $k$ represents the same element of $\pi_1(A,B)$ so do $\varphi \pi$ and $\varphi' \pi$ and hence $\rho(\varphi) = \rho(\varphi')$. This shows that $\rho$ (\ref{eq:1.2.4}) is well-defined. $\rho$ is surjective by Lemma~\ref{lem:1.2.1}. Finally, if $\rho(\phi) = \rho(\phi')$, then, with the notation from Definition~\ref{def:1.2.1}, there is a left homotopy $H \colon A \times J \longrightarrow B$ from $\varphi \pi$ to $\varphi' \pi$. Let $H' \colon A \times J \longrightarrow B$ be given by $H'j_0 = H'j_1 = \varphi\pi$ and let $K$ be the dotted arrow in 
+    \begin{center}
+    \begin{tikzcd}
+        A \times I \arrow[rr, "s\varphi\pi"] \arrow[dd, "j_0"] & & B^I \arrow[dd, "{(d_0, d_1)}"] \\
+        \\
+        A \times J \arrow[uurr, dashed, "K"] \arrow[rr, "{(H,H')}"] & & {(B,B)}
+    \end{tikzcd}
+    \end{center}
+    ($j_0$ was shown to be a trivial cofibration in proof of Lemma~\ref{lem:1.2.2}.) Then \newline $Kj_1 \colon A \times I \longrightarrow B^I$ is a right homotopy from $\varphi \pi$ to $\varphi' \pi$ such that $Kj_1(\partial_0 + \partial_1) = 0$ and so induces a right homotopy $\sigma A \longrightarrow B^I$ from $\varphi$ to $\varphi'$. This shows $\rho$ is injective and proves (\ref{eq:1.2.4}).
+    
+    Dually if we choose a path object $B^I$ and let $\Omega B$ be the fibre of\\ $(d_0, d_1) \colon B^I \longrightarrow B \times B$, then $\Omega B$ is fibrant and there is a bijection 
+    \[\tag{5}\label{diag:1.2.5}
+    \begin{tikzcd}
+        \pi(A, \Omega B) \arrow[r, no head, "\sim"] & \pi_1(A,B)
+    \end{tikzcd}
+    \]
+    which is a natural transformation of functors as $A$ runs over $\cat{C}_C$.
+    
+    Lemma~\ref{lem:1.1.3} shows that $A,B \longrightarrow \pi_{1}(A,B)$ is a functor $(\cat{C}_{C})^{\circ} \times \cat{C}_f$ to $\mathbf{Grp}$. (\ref{eq:1.2.4}) and (\ref{diag:1.2.5}) combined with Theorem~\ref{thm:1} and its first corollary show that this functor induces a functor $(\Ho \cat{C}_C)^{\circ} \times \Ho \cat{C}_f$ to $\mathbf{Grp}$, which then by Theorem~\ref{thm:1} may be extended to a functor $A,B \longrightarrow [A,B]_1$ from $(\Ho \cat{C} )^{\circ} \times \Ho \cat{C}$ to groups, not uniquely but unique up to canonical isomorphism. By the first corollary of Theorem~\ref{thm:1} and (\ref{eq:1.2.4}) and (\ref{diag:1.2.5}) the bifunctor $[\cdot, \cdot]_1$ is representable in the first and second variables which proves the theorem.
+\end{proof}
+
+\begin{remark*}
+    \begin{enumerate}
+        \item $\Sigma$ and $\Omega$ are adjoint functors on $\Ho \cat{C}$ and are unique up to canonical isomorphism. Also for any $X$, $\Sigma^n X \ n\geq 1$ is a cogroup object (resp. $\Omega^n X$ is a group object) in $\Ho \cat{C}$, which is commutative for $n \geq 2$.
+        \item We shall indulge in the abuse of notation of writing $\Sigma$ for both the functors on $\Ho \cat{C}$ of Theorem~\ref{thm:2} and writing $\sigma A$ for the cofibre of $A \vee A \longrightarrow A \times I$ when $A$ is in $\cat{C}_C$. If we should encounter a situation where this would lead to confusion we shall denote the former use of $\Sigma$ by $\mathbf{L}\Sigma$ because it's kind of a left-derived functor in the sense of \S \ref{sec:1.4} below. Similarly $\mathbf{R} \Omega$ will be used for the loop functor on $\Ho \cat{C}$ if necessary. 
+    \end{enumerate}
+\end{remark*}
+\end{document}

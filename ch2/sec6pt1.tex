@@ -1,0 +1,113 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Modules over a simplicial ring}\label{sec:2.6}
+ %might want to check the notation
+In this section we show how the category $\mathbf{M}_R$ of left simplicial modules over a simplicial ring forms closed simplicial model category. $\mathbf{M}_R$ occurs as the category $(s\mathbf{A}/X)_{ab}$ where $X$ is a non-constant simplicial object in $s\mathbf{A}$ and hence is worth studying in virtue of \S\ref{sec:2.5}. We also derive Kunneth spectral sequences which are useful in applications. Some applications to simplicial groups are given.
+
+In this section a ring is always associative with unit, not necessarily commutative, and left or right modules are always unitary.
+
+Let $R$ be a simplicial ring. By a \defemph{left simplicial $R$-module} we mean a simplicial abelian group $M$ together with a map $R\times M\longrightarrow M$ of simplicial sets which for each $q$ makes $M_q$ into a left $R_q$-module. The left simplicial $R$-modules form an abelian category $\mathbf{M}_R$ where a sequence is exact iff it is exact in each dimension. The category of right simplicial $R$-modules is the category $\mathbf{M}_{R^{op}}$ where $R^{op}$ is the simplicial ring which is the simplicial abelian group $R$ with the multiplication opposed to that of $R$.
+
+If $X,Y\in\Ob\mathbf{M}_R$, let $\UHom_R(X,Y)_n=\Hom_{\mathbf{M}_R}(X\otimes_{\mathbb{Z}}\mathbb{Z}\Delta(n),Y)$ with the simplicial operator $\phi^\bullet $ induced by $\xtilde{\phi}$ in the obvious way. Here $\mathbb{Z}K$ denotes the simplicial abelian group obtained by applying the free abelian group functor dimension-wise to the simplicial set $K$ and $\otimes$ denotes dimension-wise tensor product. There is a bilinear map
+\begin{equation}\tag{1}\label{eq:2.6.01}
+    \UHom_{R}(X,Y)\otimes\UHom_R(Y,Z)\longrightarrow\UHom_R(X,Z)
+\end{equation}
+defined by letting $g\circ f$ for $f:X\otimes\mathbb{Z}\Delta(n)\longrightarrow Y$ and $g:Y\otimes\mathbb{Z}\Delta(n)\longrightarrow Z$ be the map
+\begin{equation*}  
+X\otimes\mathbb{Z}\Delta(n)\xrightarrow{\id \otimes\Delta}X\otimes\mathbb{Z}\Delta(n)\otimes\mathbb{Z}\Delta(n)\xrightarrow{f\otimes\id }Y\otimes\mathbb{Z}\Delta(n)\xrightarrow[]{}Z.
+\end{equation*}
+It is clear that $\mathbf{M}_R$ is a simplicial category with $\UHom_{\mathbf{M}_R}(X,Y)$ %replacing an equality sign by text
+is equal to the underlying simplicial set of set of $\UHom_R(X,Y)$ and with composition induced by (\ref{eq:2.6.01}). If $K$ is a simplicial set, let $X\otimes_{\mathbb{Z}}\mathbb{Z}K$ and $\UHom_{\mathbf{S}}(K,Y)$ be considered as simplicial $R$-modules in the natural way. Then there are canonical isomorphisms
+\begin{gather*}
+\Hom_{\mathbf{S}}(K,\UHom_R(X,Y))=\Hom_{\mathbf{M}_R}(X\otimes_{\mathbb{Z}}\mathbb{Z}K,Y)=\Hom_{\mathbf{M}_R}(X,\UHom_{\mathbf{S}}(K,X))\nonumber\\
+X\otimes_{\mathbb{Z}}\mathbb{Z}(K\times L)=(X\otimes_{\mathbb{Z}}\mathbb{Z}K)\otimes_{\mathbb{Z}}\mathbb{Z}L\label{eq:2.6.02}\tag{2}\\
+\UHom_{\mathbf{S}}(K\times L,Y)=\UHom_{\mathbf{S}}(L,\UHom_{\mathbf{S}}(K,Y))\nonumber
+\end{gather*}
+which may be used in the proof of Prop. \ref{prop:2.1.02} to show that $X\otimes_{\mathbb{Z}}\mathbb{Z}K$ is an object $X\otimes K$ and that $\UHom_{\mathbf{S}}(K,Y)$ is an object $Y^K$ in the simplicial category $\mathbf{M}_R$. We will use the notation $X\otimes\mathbb{Z}K$ instead of $X\otimes K$ in the following.
+
+Define a map in $\mathbf{M}_R$ to be a fibration (resp. weak equivalence) if it is so as a map in $\mathbf{S}$, and call a map a cofibration if it has the LLP with respect to the trivial fibrations. The proof that $\mathbf{M}_R$ is a closed simplicial model category follows that for $\mathbf{SimpGrp}$ (\S\ref{sec:2.3}) and $s\mathbf{A}$ in the case $(*)$ (\S\ref{sec:2.4}); in effect every object is fibrant and factorization axiom may be proved by the small object argument. The following descriptions hold: A map $f:X\longrightarrow Y$ in $\mathbf{M}_R$ is a fibration if
+\[(f,\epsilon):X\longrightarrow Y\times_{K(\pi_{0}Y,0)}K(\pi_{0}X,0)\]is surjective, a weak equivalence if $\pi_{\bullet}f:\pi_{\bullet}X\varrightarrow{\sim}\pi_{\bullet}Y,$
+and a trivial fibration if $f$ is a surjective weak equivalence. $f$ is a cofibration iff it is a retract of a free map, and a trivial cofibration iff $f$ is a cofibration and a strong deformation retract map. Here $f:X\longrightarrow Y$ is said to be \defemph{free} if there are subsets $C_q\subset Y_q$ for each $q$ such that $C_{\bullet}$ is stable under the degeneracy operators of $Y$ and $X_q\oplus R_qC_q\varrightarrow{\sim}Y_q$ for each $q$.
+
+If $A$ is a ring, $\mathbf{M}_A$ is the category of left $A$ modules, and $R$ is the constant simplicial ring obtained from $A$, then $\mathbf{M}_R=s(\mathbf{M}_A)$ and the above structure of a closed simplicial model category on $\mathbf{M}_R$ is the same as that defined in \S\ref{sec:2.4}. Moreover if $\Ch(\mathbf{M}_A)$ denotes the category of chain complexes in $\mathbf{M}_A$, then the normalization functor $N:\mathbf{M}_R\longrightarrow\Ch(\mathbf{M}_A)$ is an equivalence of closed model categories. Here $\Ch(\mathbf{M}_A)$ is defined to be a closed model category by a slight modification of example \ref{ex:1.1.B}. The following fact is of course clear for $\Ch(\mathbf{M}_A)$.
+
+\begin{proposition}
+\label{pro:2.6.01}
+Let $\Omega$ and $\Sigma$ be the loop and suspension functors in the category $\Ho(\mathbf{M}_R)$. Then 
+\begin{gather*}
+    \theta:M\varrightarrow{\sim}\Omega\Sigma M\\
+    \Sigma\Omega M\varrightarrow{\sim}M\iff \pi_0 M=0
+\end{gather*}
+where the maps are adjunction morphisms. Furthermore if \[A'\varrightarrow{i}A\varrightarrow{j}A''\varrightarrow{\delta}\Sigma A'\]is a cofibration sequence in $\Ho(\mathbf{M}_R)$, then \[\Omega\Sigma A'\varrightarrow{-i\theta^{-1}}A\varrightarrow{j}A''\varrightarrow{\delta}\Sigma A'\]is a fibration sequence.
+\end{proposition}
+\begin{proof}
+For any simplicial left $R$ module $X$ there are canonical exact sequences in $\mathbf{M}_R$
+\begin{gather}
+    0\longrightarrow X\longrightarrow CX\longrightarrow \Sigma X\longrightarrow 0\label{eq:2.6.03}\tag{3}\\
+    0\longrightarrow\Omega X\longrightarrow\mathlarger{\mathlarger{\wedge}}X\longrightarrow X\longrightarrow K(\pi_0 X,0)\longrightarrow 0\label{eq:2.6.04}\tag{4}
+\end{gather}
+which in more detail are the maps
+\begin{gather*}
+    X\varrightarrow{i_1} X\otimes\mathbb{Z}\Delta(1)/X\otimes\mathbb{Z}\{0\}\longrightarrow X\otimes\mathbb{Z}\Delta(1)/X\otimes\mathbb{Z}\overset{\bullet}{\Delta(1)}\\
+    0\times_{X}X^{\Delta(1)}\times_{X}0\varrightarrow{(\pr_1,\pr_2)}0\times_{X}X^{\Delta(1)}\varrightarrow{j_1\pr_2}X\varrightarrow{\epsilon}K(\pi_0 X,0)
+\end{gather*}
+Here $K(\pi_0 X,0)$ is the simplicial $R$ module which is the constant simplicial abelian group of $\pi_0 X$ with $R$ module structure determined via $\epsilon: R\longrightarrow K(\pi_0 R,0)$ and the natural $\pi_0 R$ action on $\pi_0 X$, and $\epsilon:X\longrightarrow K(\pi_0 X,0)$ is the canonical augmentation. The exactness of (\ref{eq:2.6.03}) is clear dimension-wise and (\ref{eq:2.6.04}) is exact for simplicial groups hence also for $\mathbf{M}_R$, since $X^{\Delta(1)}$ is calculated in $\mathbf{M}_R$ as in $\mathbf{SimpGrp}$. The canonical homotopy $h:\Delta(1)\times\Delta(1)\longrightarrow\Delta(1)$ with $hi_0=i_0\sigma$ and $hi_{1}=\id $ induces a homotopy $H:CX\otimes\mathbb{Z}\Delta(1)\longrightarrow CX$ with $Hi_0=0$ and $Hi_1=\id $ and a homotopy $K:\mathlarger{\mathlarger{\wedge}}X\otimes\mathbb{Z}\Delta(1)\longrightarrow\mathlarger{\mathlarger{\wedge}}X$ with $Ki_0=0$ and $Ki_1=\id $. Hence $\pi(CX)=\pi(\mathlarger{\mathlarger{\wedge}}X)=0$.
+
+The functor $\Omega$ on $\mathbf{M}_R$ defined by (\ref{eq:2.6.04}) actually becomes the functor $\Omega$ in $\Ho(\mathbf{M}_R)$, since every $X$ in $\mathbf{M}_R$ is fibrant and so $X^{\Delta(1)}$ is a path object for $X$. Similarly one sees that $\Sigma X$ represents the suspension of $X$ in $\Ho(\mathbf{M}_R)$ provided $X$ is cofibrant. However if $Y\longrightarrow X$ is a trivial fibration with $Y$ cofibrant we obtain a map into (\ref{eq:2.6.03}) of the corresponding sequence for $Y$, so by the homotopy long exact sequence and the 5 lemma $\Sigma Y\longrightarrow\Sigma X$ is a weak equivalence. Therefore $\Sigma X$ represents the suspension of $X$ in $\Ho(\mathbf{M}_R)$ for all $X$.
+
+If $\pi_0 X=0$, then the diagram
+\begin{equation}\tag{5}
+\label{eq:2.6.05}
+\begin{tikzcd}[font=\large]
+0\arrow{r}{}&\Omega X\arrow{rr}{}\arrow{dd}{1}&&C\Omega X\arrow{rr}{}\arrow{dd}{u}&&\Sigma\Omega X\arrow{r}{}\arrow{dd}{v}&0\\\\
+0\arrow{r}{}&\Omega X\arrow{rr}&&\mathlarger{\mathlarger{\wedge}}X\arrow{rr}&& X\arrow{r}&0
+\end{tikzcd}
+\end{equation}
+where $u$ and $v$ are induced by the contracting homotopy $K$ of $\mathlarger{\mathlarger{\wedge}}X$ described above, and the five lemma show that $v$ is a weak equivalence. However $v$ is the adjunction map for the adjoint functors $\Sigma$ and $\Omega$ in $\mathbf{M}_R$ and hence also in $\Ho(\mathbf{M}_R)$, so the direction $\Longleftarrow$ of the second assertion of the proposition is proved. The direction $\Longrightarrow$ results from the formula $\pi_0 (\Sigma X)=0$ which follows since $(\Sigma X)_{0}=0$. The first assertion of the proposition may be proved by a diagram similar to (\ref{eq:2.6.05}). For the last assertion of the proposition we may assume that $i:A\longrightarrow A'$ is a cofibration of cofibrant objects, that $A''$ is the cone on $i$, that $j$ is the embedding of $A$ as the base of this cone, and finally that $\delta$ is the cokernel of $j$. As $\mathbf{M}_R$ is abelian $\delta$ is a fibration with fiber $j:A\longrightarrow A''$ and there is a diagram 
+\begin{equation*}
+\begin{tikzcd}[font=\large]
+A'\arrow{rr}{i}\arrow{dd}{-\theta}&&A\arrow{rr}{j}\arrow{dd}{1}&&A''\arrow{rr}{\delta}\arrow{dd}{1}&&\Sigma A'\arrow{dd}{1}\\\\
+\Omega\Sigma A'\arrow[dashed]{rr}{\partial}&&A\arrow{rr}{j}&&A''\arrow{rr}{\delta}&&\Sigma A'
+\end{tikzcd}
+\end{equation*}
+where $\partial$ is the boundary operator of the fibration sequence associated to $\delta$. For the commutativity of the first square see proof of Prop. \ref{prop:1.3.6}. As $\theta$ is an isomorphism we find that $\partial=-i\theta^{-1}$ and so the proposition is proved.
+\end{proof}
+
+\defemph{Kunneth spectral sequences}. If $X$ and $Y$ are simplicial abelian groups and if $x\in X_p$, $y\in Y_q$, the the element $x\wedge y\in (X\otimes Y)_{p+q}$ is defined by the formula
+\begin{equation}\tag{6}
+\label{eq:2.6.06}
+    x\wedge y=\sum_{(\mu,\nu)}\epsilon(\mu,\nu)s_{\nu}x\otimes s_{\mu}y
+\end{equation}
+where $(\mu,\nu)$ runs over all $(p,q)$ shuffles, i.e., permutations $(\mu_1,\dots,\mu_p,\nu_1,\dots,\nu_q)$ of $\{0,\dots,p+q+1\}$ such that $\mu_1<\cdots<\mu_p$ and $\nu_1<\cdots<\nu_q$, where $\epsilon(\mu,\nu)$ is the sign of the permutation, and where
+\[s_{\mu}y=s_{\mu_{p}}\cdots s_{\mu_{1}}y,\quad s_{\nu}x=s_{\nu_{q}}\cdots s_{\nu_{1}}x.\]The following properties of the operation $\wedge $ are well known.
+
+\begin{enumerate}[(1)]
+    \item $x\in NX$, $y\in NY$ $\Longrightarrow$ $x\otimes y\in N(X\otimes Y)$
+    \item $d(x\wedge y)=dx\wedge y+(-1)^px\wedge dy$ where $p=$ degree $x$ and $d=\sum(-1)^id_i$.
+    \item $x\wedge (y\wedge z)=(x\wedge y)\wedge z$
+    \item If $\tau:X\otimes Y\varrightarrow{\sim}Y\otimes X$ is the isomorphism $\tau(x\otimes y)=y\otimes x$, then \[\tau(x\wedge y)=(-1)^{pq}\tau(y\wedge x)\]if $p=$ degree $x$, $q=$ degree $y$.
+\end{enumerate}
+
+If $R$ is a simplicial ring, then these properties show that $\wedge $ induces on $NR$ the structure of a differential graded ring which is anti-commutative if $R$ is commutative. In fact $NR$ is even strictly anti-commutative ($x^2=0$ if degree $x$ is odd) when $R$ is commutative as one sees directly from (\ref{eq:2.6.06}). Consequently $\pi_{\bullet}R=H_{\bullet}(NR)$ is a graded ring which is strictly anti-commutative if $R$ is commutative. If $X$ is a left (resp. right) simplicial $R$ module then by virtue of $\otimes$, $NX$ is a left (resp. right) differential graded $NR$ module, and so $\pi_{\bullet}X$ is a left (resp. right) graded $\pi_{\bullet}R$ module.
+
+By a \defemphi{projective resolution} of a left simplicial $R$ module $X$ we mean a trivial fibration $u:P\longrightarrow X$ in $\mathbf{M}_R$ such that $P$ is cofibrant. By Prop. \ref{prop:2.2.4} $u$ is unique up to homotopy over $X$, and moreover if we choose projective resolutions $p_Y:Q(Y)\longrightarrow Y$ for each $Y\in\Ob\mathbf{M}_R$ and a map $Q(f)$ for each map $f:Y\longrightarrow Y'$ such that $P_{Y'}Q(f)=fp_{Y}$, then we obtain a functor $\pi_0 (\mathbf{M}_R)\longrightarrow\pi_0 (\mathbf{M}_{R,c})$ right adjoint to the inclusion functor. Hence projective resolution is up to homotopy a homotopy preserving functor of $X$. 
+
+If $X$ is a right simplicial $R$ module and $Y$ is a left simplicial $R$ module, and if $P\varrightarrow{u}X$ and $Q\varrightarrow{v}Y$ are projective resolutions of $X$ and $Y$ in $\mathbf{M}_{R^{op}}$ and $\mathbf{M}_R$ respectively, then the abelian group $P\otimes_RQ$ is independent up to homotopy over $X\otimes_{R}Y$ of the choices of $u$ and $v$. We denote $P\otimes_RQ$ by $X\overset{L}{\otimes}_RY$ and call it the \defemphi{derived tensor product} of $X$ and $Y$ since in the terminology of \S\ref{sec:1.4}, it is the total left derived functor of $\otimes_R:\mathbf{M}_{R^{op}}\times\mathbf{M}_R\longrightarrow\mathbf{M}_{\mathbb{Z}}$.
+
+\begin{theorem}
+\label{thm:2.6}
+Let $R$ be a simplicial ring and let $X$ (resp. $Y$) be a left (resp. right) simplicial $R$ module. Then there are canonical first quadrant spectral sequences 
+\begin{enumerate}[(a)]
+    \item\label{2.6.a} $E^2_{pq}-\pi_p(\Tor^R_q(X,Y))\Longrightarrow\pi_{p+q}(X\otimes_R Y)$
+    \item\label{2.6.b} $E^2_{pq}=\Tor^{\pi R}_p(\pi M,\pi N)_q\Longrightarrow\pi_{p+q}(X\otimes_R Y)$
+    \item\label{2.6.c} $E^2_{pq}=\pi_p(\pi_qX\otimes_RY)\Longrightarrow\pi_{p+q}(X\otimes_R Y)$
+    \item\label{2.6.d} $E^2_{pq}=\pi_p(X\otimes_R\pi_qY)\Longrightarrow\pi_{p+q}(X\otimes_R Y)$
+\end{enumerate}
+which are functorial in $R,X,Y$.
+\end{theorem}
+
+In (a) $\Tor^R_q(X,Y)$ denotes the simplicial abelian group obtained by applying the functor $\Tor_q^{-}(-,-)$ to $R,X,Y$ dimension-wise. In (b) $\Tor^{\pi R}_p(\pi M,\pi N)_q$ denotes the homogeneous submodule of degree in $q$ in $\Tor^{\pi R}_p(\pi M,\pi N)$ which is naturally graded since the ring $\pi R$ and the modules $\pi M,\pi N$ are graded. In (c) $\pi_qX$ is an abbreviation for the constant simplicial abelian group $K(\pi_qX,0)$ which becomes a right $R$ module via the augmentation $R\longrightarrow K(\pi_0 R,0)$ and the action $\pi_qX\otimes\pi_0 R\longrightarrow\pi_qX$ induced by $\wedge $. Similarly for $\pi_qY$ in (d).
+
+
+\end{document}

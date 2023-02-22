@@ -1,0 +1,313 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Topological spaces, simplicial sets, and simplicial groups}\label{sec:2.3}
+Let $\mathbf{Top}$ be the category of topological spaces and continuous maps. If $X$ and $Y$ are spaces, define the function complex $\mathbf {Hom}(X, Y)$ by \[\mathbf {Hom}(X, Y)_n = \Hom(X \times |\Delta(n)|, Y)\] with natural simplical operations, where $|\quad|$ denotes geometric realisation. If $f \in \mathbf {Hom}(X, Y)_n$ and $g \in \mathbf{Hom}(Y, Z)$, let $g \circ f$ be the composite map 
+\[
+X \times |\Delta(n)| \varrightarrow{\id \times \Delta} X \times |\Delta(n)| \times |\Delta(n)| \varrightarrow{f \times \id} Y \times |\Delta(n)| \varrightarrow{g} Z.
+\]
+$\mathbf{Top}$ thereby becomes a simplical category where $X \otimes K = X \times |K|$ and \\$X^k = \text {the function space } X^{|K|}$. 
+
+A map $f \colon X \to Y$ in $\mathbf{Top}$ will be called a fibration if it is a fiber map in the sense of Serre and a weak equivalence if it is a weak homotopy equivalence (i.e. $\pi_q(X, x) \varrightarrow{\sim} \pi_q(Y, fx)$ for all $x \in X$ and $q \ge 0$). Finally a map will be called a cofibration if it has the LLP with respect to all trivial fibrations. 
+
+\begin{theorem}
+\label{thm:2.3.1}
+With these definitions the category $\mathbf{Top}$ of topological spaces is a closed simplical model category. 
+
+Let $\Sing \colon \mathbf{Top} \to \mathbf{Simp}$ be the singular complex functor so that 
+\[
+\tag{1}
+\Hom_{\mathbf{Simp}} (K, \Sing X) = \Hom_{\mathbf{Top}}(|K|, X)
+\]
+(Actually $\Sing$ and $|\quad|$ are adjoint simplical functors which means that $\Hom$ can be replaced by $\mathbf {Hom}$ in (1).)
+\end{theorem} 
+
+\begin{lemma}
+\label{lem:2.3.1}
+The following are equivalent for a map $f$ in $\mathbf{Top}$. 
+\begin{enumerate}
+    \item[(i)] $f$ is a fibration.
+    \item[(ii)] $\Sing f$ is a fibration in $\mathbf{Simp}$.
+    \item[(iii)] $f$ has the RLP with respect to $|V(n, k)| \longhookrightarrow |\Delta(n)|$ for $0 \le k \le n > 0$.
+\end{enumerate} 
+\end{lemma} 
+
+\begin{proof}
+(ii) and (iii) are equivalent by (1), and (i) and (iii) are equivalent since $|V(n, k)| \longhookrightarrow |\Delta(n)|$ is isomorphic in $\mathbf{Top}$ to $I^{n - 1} \times 0 \longhookrightarrow I^n$. 
+\end{proof}
+
+\begin{lemma}
+\label{lem:2.3.2}
+The following are equivalent for a map $f$ in $\mathbf{Top}$. 
+\begin{enumerate}
+    \item[(i)] $f$ is a trivial fibration.
+    \item[(ii)] $\Sing f$ is a trivial fibration in $\mathbf{Simp}$.
+    \item[(iii)] $f$ has the RLP with respect to $\overset{\bullet}{\Delta(q_D)} \longhookrightarrow |\Delta(n)|$ for $n \ge 0$. 
+\end{enumerate} 
+\end{lemma} 
+
+\begin{proof}
+(ii) and (ii) are equivalent by (1). As $\overset{\bullet}{\Delta(q_D)} \longhookrightarrow |\Delta(n)|$ is isomorphic in $\mathbf{Top}$ to $S^{n - 1} \subset D^n$ (where $S^{-1} = \phi$ if $n = 0$), the equivalence of (i) and (iii) becomes a standard obstruction theory argument which we omit. 
+\end{proof} 
+
+\begin{corollary*}
+In $\mathbf{Top}$ every object is fibrant and the fibrations and trivial fibrations satisfy \ref{SM7a}.
+\end{corollary*}
+
+\begin{proof}
+Since $\Sing(X^{|K|}) = (\Sing X)^K$, \ref{SM7a} for $\mathbf{Simp}$ implies \ref{SM7a} for $\mathbf{Top}$. 
+\end{proof} 
+
+\begin{lemma}
+\label{lem:2.3.3}
+Any map $f$ may be factored $f = pi$ where $i$ is a cofibration and $p$ is a trivial fibration. 
+\end{lemma} 
+
+\begin{proof}
+Letting $f \colon X \to Y$ we construct a diagram
+\begin{center}
+    \begin{tikzcd}[row sep = large]
+        X 
+        \arrow[rr, "j_0"] 
+        \arrow[rrrd, "f"'] 
+        &&
+        Z^0 
+        \arrow[rr, "j_1"] 
+        \arrow[rd, "p_0"] 
+        && 
+        Z^1 
+        \arrow[rr] 
+        \arrow[ld, "p_1"] 
+        && 
+        \cdots 
+        \\&&& 
+        Y        
+    \end{tikzcd}
+\end{center}
+as follows. Let $Z^{-1} = X$ and $p_{-1} = f$, and having obtained $Z^{n - 1}$, consider the set $\mathbf D$ of all diagrams $D$ of the form 
+
+%TODO: inclusion arrow + q_D \ge 0
+\begin{center}
+\begin{tikzcd}[row sep = huge, column sep = huge]
+    \lvert \overset{\bullet}{\Delta(q_D)}\rvert 
+    \arrow[r, "\alpha_D"] 
+    \arrow[d] 
+    &
+    z^{n - 1} 
+    \arrow[d, "p_{n - 1}"] 
+    \\
+    \lvert\Delta(q_D)\rvert 
+    \arrow[r, "\beta_D"]
+    &
+    Y                                
+\end{tikzcd}
+\end{center} 
+and define $j_n \colon Z^{n - 1} \to Z^n$ by a co--cartesian diagram
+\begin{center}
+\begin{tikzcd}[row sep = huge, column sep = huge]
+    \bigvee\limits_{D \in \mathbf D} \lvert \overset{\bullet}{\Delta(q_D)}\rvert 
+    \arrow[r] 
+    \arrow[d, "\Sigma \alpha_D"] 
+    &
+    \bigvee\limits_{D \in \mathbf D} \lvert {\Delta(q_D)}\rvert 
+    \arrow[d, "in_2"] 
+    \\
+    z^{n - 1} 
+    \arrow[r, "j_n=in_1"]
+    &
+    z^n
+\end{tikzcd}
+\end{center} 
+Define $p_n \colon Z^n \to Y$ by $p_n j_n = p_{n - 1}$, $p_n i n_2 = \sigma^\beta_D$, let $Z = \varinjlim Z^n$, $p = \varinjlim p_n$ and $i = \varinjlim j_n \circ \ldots \circ j_0$. By Lemma~\ref{lem:2.3.1} $j_n$ has the LLP with respect to trivial fibrations, hence $i$ does too and so $i$ is a cofibration. Now as $\overset{\bullet}{\Delta(q_D)}$ is compact any map $\alpha \colon \overset{\bullet}{\Delta(q_D)} \to Z$ factors through $Z^m$ for $m$ sufficiently large. In effect the well--known argument works because all the points of $Z - i(X)$ are closed. Hence given $\alpha \colon \overset{\bullet}{\Delta(q_D)} \to Z$, $\beta \colon |\Delta(n)| \to Y$ with $p\alpha = $ the restriction of $\beta$, there is an $m$ with $\Image \alpha \subset Z^m$, and hence by the construction of $Z^{m + 1}$ a map $\gamma :|\Delta(n)| \to Z^{m + 1} \subset Z$ such that $p \alpha = \beta$ and $\alpha = $ the restriction of $\gamma$ to $\overset{\bullet}{\Delta(q_D)}$. By Lemma~\ref{lem:2.3.1}, $p$ is a trivial fibration. 
+\end{proof} 
+
+\begin{remark*}
+The argument used to prove Lemma~\ref{lem:2.3.3} relied primarily on the fact that $\Hom (\overset{\bullet}{\Delta(q_D)}, \varinjlim Z^m) = \varinjlim \Hom(\overset{\bullet}{\Delta(q_D)}, Z^m)$ and may be used to prove factorization whenever the fibrations (or trivial fibrations) are characterized by the RLP with respect to a set of maps $\{A_i \to B_i\}$ where each $A_i$ is ``sequentially small'' in the sense that $\Hom(A_i, \bullet)$ commutes with sequential inductive limits. We will have further occasions to use this argument and will refer to it as the \defemph{small object argument}. 
+\end{remark*} 
+
+\begin{lemma}
+\label{lem:2.3.4}
+The following are equivalent for a map $i \colon A \to B$. 
+\begin{enumerate}
+    \item[(i)] $i$ is a trivial cofibration.
+    \item[(ii)] $i$ has the LLP with respect to the fibrations.
+    \item[(iii)] $i$ is a cofibration and a strong deformation retract map. 
+\end{enumerate} 
+\end{lemma} 
+
+\begin{proof}
+(iii) $\implies$ (i) since a strong deformatino retract map is a homotopy equivalence and hence a weak homotopy equivalence. 
+
+(ii) $\implies$ (iii). Any trivial fibration is a fibration so $i$ is a cofibration. The retract and strong deformation may be constructed by lifting in 
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[rr, "\sim"] \arrow[dd, "i"]   &  & B \arrow[dd] \\
+                                       &  &              \\
+B \arrow[rruu, "r", dashed] \arrow[rr] &  & e           
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+A \arrow[rr, "si"] \arrow[dd, "i"]                      &  & B^I \arrow[dd, "{(j_0, j_1)}"] \\
+                                                        &  &                                \\
+B \arrow[rr, "{(ir, \id_B)}"] \arrow[rruu, "h", dashed] &  & B\times B                     
+\end{tikzcd}
+\end{equation*} 
+which is possible since $A \to e$ and $B^I \to B \times B$ are fibrations by the corollary to Lemma~\ref{lem:2.3.2}.
+
+(iii) $\implies$ (ii). A lifting in the first diagram, where $p$ is a fibration, may be constructed by lifting in the second 
+\begin{equation*}
+\begin{tikzcd}
+A \arrow[rr, "\alpha"] \arrow[dd, "i"]          &  & X \arrow[dd, "p"] \\
+                                                &  &                   \\
+B \arrow[rr, "\beta"] \arrow[rruu, "u", dashed] &  & Y                
+\end{tikzcd}
+\quad
+\begin{tikzcd}
+A \arrow[rr, "s\alpha"] \arrow[dd, "i"]                    &  & X^I \arrow[dd, "{(j_0, p^I)}"] \\
+                                                           &  &                                \\
+B \arrow[rruu, "H", dashed] \arrow[rr, "{(\alpha_r, h)}"'] &  & X \times_Y Y^I                
+\end{tikzcd}
+\end{equation*} 
+and setting $u = j_1 H$. Here $r$ and $h$ are the retract and strong deformation for $i$ and lifting in the second diagram is possible because $(j_0, p^I)$ is a trivial fibration by the corollary of Lemma~\ref{lem:2.3.2}.
+
+(i) $\implies$ (iii). Consider the following factorization of $i$
+\begin{center}
+\begin{tikzcd}
+                                      &  & A \times_B B^I \arrow[dd, "p"] \\
+A \arrow[rru, "j"'] \arrow[rrd, "i"'] &  &                                \\
+                                      &  & B                             
+\end{tikzcd}
+\end{center} 
+which is the dual of the mapping cylinder construction. $j$ is a strong deformation map, hence a weak equivalence, and $p$ is a fibration. But $i$ is a weak equivalence and so $p$ is a trivial fibration. As $i$ is a cofibration there is a section $u$ of $p$ with $ui = j$. Hence $i$ is a retract of $j$ and so $i$ is a strong deformation retract map. 
+\end{proof} 
+
+\begin{proof}[Proof of Theorem~\ref{thm:2.3.1}]
+Axioms \ref{1.1.M0}, \ref{SM0}, and \ref{1.1.M5} are clear. Axiom \ref{1.1.M6} follows immediately from definitions and lemmas \ref{lem:2.3.1}, \ref{lem:2.3.2}, \ref{lem:2.3.4}. \ref{1.1.M6} and the corollary to Lemma~\ref{lem:2.3.2} yield \ref{SM7}. Lemma~\ref{lem:2.3.3} gives one case of \ref{1.1.M2}; to obtain the other, take $f \colon X \to Y$ and factor it $X \varrightarrow{j} X \times_Y Y^i \varrightarrow{p} Y$ where $p$ is a fibration and $j$ is a weak equivalence. Then factor $j = qi$ by Lemma~\ref{lem:2.3.3} where $i$ is a cofibration and $q$ is a trivial fibration. By \ref{1.1.M5} $i$ is a trivial cofibration hence $f = (qp)i$ is the desired factorization. This proves \ref{1.1.M2} and hence the theorem. 
+\end{proof} 
+Let \(\mathbf{Simp Grp}\) be the category of simplicial groups endowed with its natural simplicial structure (see \S\ref{sec:2.1}). Then \(G\otimes K\) and \(G^K\) exists if \(G\in \Ob \mathbf{Simp Grp}\) and \(K\) is a simplicial set. In fact $(G\otimes K)_q = \bigvee_{\sigma\in K_q} G_q$ with natural simplicial operations and $G^K$ is the function complex $\UHom_{\mathbf{Simp}}(K,G)$ with its natural group structure. Define the normalization of $\mathbf{Simp Grp}$ by
+\[N_q(G) = \bigcap_{i>0}\ker(d_i:G_q\longrightarrow G_{q-1})\quad \quad (=G_0\text{   if   } q=0)\]
+\[d:N_q(G)\longrightarrow N_{q-1}(G)\text{   induced by  } d_0.\quad (=0\text{   if   } q=0)\]
+and the (Moore) homotopy groups\index{Moore homotopy groups} of $G$ by
+    \[\pi_{q}(G) = \frac{\ker(d : N_{q}G \longrightarrow N_{q-1}G)}{\Image(d : N_{q+1}G \longrightarrow N_{q}G)}.\]
+Then $\pi_{q}(G)$ is abelian for $q \geq 1$ and $\pi_{0}(G)$ is the set of components of $G$ as a simplical set. 
+
+A map in \(\mathbf{Simp Grp}\) will be called a weak equivalence if it induces isomorphisms for the functor $\pi_{\bullet}$. A map will be called a fibration if it is a fibration as a map of simplicial sets and a cofibration if it has the LLP with respect to trivial fibrations.
+
+\begin{theorem}
+\label{thm:2.3.2}
+With these definitions the category \(\mathbf{Simp Grp}\) of simplicial groups is a closed simplicial model category.
+
+The proof will be exactly the same as for topological spaces once we get the corollary of Lemma \ref{lem:2.3.2} for \(\mathbf{Simp Grp}\) and the homotopy axiom for the functor $\pi_{\bullet}$.
+\end{theorem}
+
+\begin{proposition}
+\label{prop:2.3.1}
+The following are equivalent for a map $f : G \longrightarrow H$ of simplicial groups.
+\begin{enumerate}
+    \item[(i)] $f$ is a fibration in $\mathbf{Simp}$ (hence in \(\mathbf{Simp Grp}\)).
+    \item[(ii)] $N_{q}f : N_{q}G \longrightarrow N_{q}H$ is surjective for $q > 0$.
+    \item[(iii)] $G\varrightarrow{(f, \varepsilon)}H\times_{K(\pi_{0}H, 0)}K(\pi_{0}G, 0)$ is surjective (in each dimension).
+\end{enumerate}
+\end{proposition}
+
+Here if $A$ is a group we let $K(A, 0)$ be the constant simplicial group which is $A$ in each degree and which has all $\varphi^{\ast}=\id_{A}$. It is readily verified that $G \mapsto \pi_{0}(G)$ is adjoint to $A \mapsto K(A, 0)$, that is
+    \[\Hom_{\mathbf{Simp Grp}}(G, K(A, 0)) = \Hom_{\mathbf{Grp}}(\pi_{0}(G), A)\]
+and $\epsilon : G \longrightarrow K(\pi_{0}G, 0)$ is the adjunction map. The above proposition is essentially an elaboration of the following well-known fact which we shall assume.
+
+\begin{customcor}{Moore}\label{Moore}
+A simplical group is a Kan complexes.
+\end{customcor}
+
+We shall also need the following fact which may be proved in exactly the same way as \cite{dold_homologie_1961}.
+
+\begin{lemma}
+\label{lem:2.3.5}
+$f : G \longrightarrow H$ is surjective (resp. injective) iff $Nf : NG \longrightarrow NH$ is surjective (resp. injective).
+\end{lemma}
+
+\begin{proof}[Proof of proposition \ref{prop:2.3.1}]
+(i) $\implies$ (ii) since (ii) is equivalent to lifting in any diagram of the form
+% https://q.uiver.app/?q=WzAsNCxbMCwwLCJWKG4sIDApIl0sWzIsMCwiRyJdLFswLDIsIlxcRGVsdGEobikiXSxbMiwyLCJIIl0sWzAsMl0sWzAsMSwiMCJdLFsxLDMsImYiXSxbMiwzXSxbMiwxLCIiLDEseyJzdHlsZSI6eyJib2R5Ijp7Im5hbWUiOiJkYXNoZWQifX19XV0=
+\[\begin{tikzcd}
+	{V(n, 0)} && G \\
+	\\
+	{\Delta(n)} && H
+	\arrow[from=1-1, to=3-1]
+	\arrow["0", from=1-1, to=1-3]
+	\arrow["f", from=1-3, to=3-3]
+	\arrow[from=3-1, to=3-3]
+	\arrow[dashed, from=3-1, to=1-3]
+\end{tikzcd}\]
+where $0$ denotes the map sending all simplicies to the identity elements of \(\mathbf{Simp Grp}\).
+
+(ii) $\implies$ (iii). By Lemma \ref{lem:2.3.5} it suffices to show that $N(f, \epsilon)$ is surjective. As $N$ is left exact and $N_{j}K(A, 0) = \{ 1 \}$ for $j > 0$ and $A$ if $j = 0$, we find that $N_{j}\bigl(H \times_{K(\pi_{0}H, 0)}K(\pi_{0}G, 0)\bigr) = N_{j}H$ for $j > 0$, and hence $N_{j}(f, \epsilon)$ is surjective for $j > 0$. It remains to show that $G_{0} \longrightarrow H_{0} \times_{\pi_{0}H} \pi_{0}G$ is surjective which follows immediately by diagram chasing in the diagram
+% https://q.uiver.app/?q=WzAsOCxbMCwwLCJOX3sxfUciXSxbMiwwLCJHX3swfSJdLFs0LDAsIlxccGlfezB9RyJdLFs2LDAsIjEiXSxbNiwyLCIxIl0sWzQsMiwiXFxwaV97MH1IIl0sWzIsMiwiSF97MH0iXSxbMCwyLCJOX3sxfUgiXSxbMiw1XSxbMiwzXSxbNSw0XSxbMSw2XSxbNiw1XSxbMSwyXSxbMCwxLCJkIl0sWzAsNywiIiwyLHsic3R5bGUiOnsiaGVhZCI6eyJuYW1lIjoiZXBpIn19fV0sWzcsNiwiZCJdXQ==
+\[\begin{tikzcd}
+	{N_{1}G} && {G_{0}} && {\pi_{0}G} && 1 \\
+	\\
+	{N_{1}H} && {H_{0}} && {\pi_{0}H} && 1.
+	\arrow[from=1-5, to=3-5]
+	\arrow[from=1-5, to=1-7]
+	\arrow[from=3-5, to=3-7]
+	\arrow[from=1-3, to=3-3]
+	\arrow[from=3-3, to=3-5]
+	\arrow[from=1-3, to=1-5]
+	\arrow["d", from=1-1, to=1-3]
+	\arrow[two heads, from=1-1, to=3-1]
+	\arrow["d", from=3-1, to=3-3]
+\end{tikzcd}\]
+
+(iii) $\implies$ (i). First suppose $f : G \longrightarrow H$ is surjective. Given\\ $u : V(n, k) \longrightarrow G$ covering $v : \Delta(n) \longrightarrow H$ we may extend $u$ to a map \\ $u' :\Delta(n) \longrightarrow G$ by the corollary. We may solve the lifting problem for $u$ and $v$ iff we may solve it for $0 : V(n, k) \longrightarrow G$ and $v \cdot (fu')^{-1} : \Delta(n) \longrightarrow H$. Hence we reduce to the case $u = 0$. As $f$ is surjective when there is a map $w : \Delta(n) \longrightarrow G$ with $fw = v$. Then $w \vert_{V(n, k)}$ maps $V(n, k)$ to $\ker f$ and by the corollary there is a $z : \Delta(n) \longrightarrow \ker f$ with $z \vert_{V(n, k)} = w\vert_{V(n, k)}$. Then $w \cdot z^{-1} : \Delta(n) \longrightarrow G$ satisfies $(w \cdot z^{-1}) \vert_{V(n, k)} = 0 = u$ and $f \circ (w \cdot z^{-1}) = f \circ w = v$, thus providing the desired lifting. Hence any surjective map of simplicial groups is a fibration.
+
+Returning to the general case we consider the diagram
+% https://q.uiver.app/?q=WzAsNSxbMCwwLCJHIl0sWzIsMCwiSCBcXHRpbWVzX3tLKFxccGlfezB9SCwgMCl9SyhcXHBpX3swfUcsIDApIl0sWzQsMCwiSCJdLFs0LDIsIksoXFxwaV97MH1ILCAwKSJdLFsyLDIsIksoXFxwaV97MH1HLCAwKSJdLFsyLDNdLFsxLDRdLFs0LDMsIksoXFxwaV97MH1mLCAwKSJdLFsxLDIsIlxccHJfezF9Il0sWzAsMSwiKGYsIFxcdmFyZXBzaWxvbikiXV0=
+\[\begin{tikzcd}
+	G && {H \times_{K(\pi_{0}H, 0)}K(\pi_{0}G, 0)} && H \\
+	\\
+	&& {K(\pi_{0}G, 0)} && {K(\pi_{0}H, 0)}
+	\arrow[from=1-5, to=3-5]
+	\arrow[from=1-3, to=3-3]
+	\arrow["{K(\pi_{0}f, 0)}", from=3-3, to=3-5]
+	\arrow["{\pr_{1}}", from=1-3, to=1-5]
+	\arrow["{(f, \varepsilon)}", from=1-1, to=1-3]
+\end{tikzcd}\]
+where the square is cartesian. $K(\pi_{0}f, 0)$ is clearly a fibration hence so is $\pr_{1}$, and $(f, \varepsilon)$ being surjective is a fibration. Hence $f = \pr_{1}(f, \varepsilon)$ is a fibration.
+\end{proof}
+
+\begin{corollary*}
+$f$ is surjective iff $f$ is a fibration and $\pi_{0}(f)$ is surjective.
+\end{corollary*}
+
+\begin{proposition}
+\label{prop:2.3.2}
+The following are equivalent for a map $f$ in \(\mathbf{Simp Grp}\).
+\begin{enumerate}
+    \item[(i)] $f$ is a trivial fibration in $\mathbf{Simp}$.
+    \item[(ii)] $f$ is a trivial fibration in \(\mathbf{Simp Grp}\).
+    \item[(iii)] $f$ is surjective and $\pi_{\bullet}(\ker f) = 0$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(ii) $\iff$ (iii). First of all the above corollary shows that $f$ is surjective in case (ii). Letting $K$ be the kernel of $f$ we have the exact sequence of non-abelian group complexes
+    \[ 1 \longrightarrow N(K) \longrightarrow N(G) \longrightarrow N(H) \longrightarrow 1 \] 
+where exactness at $N(K)$ and $N(G)$ is because $N$ is left exact and exactness at $N(H)$ comes from lemma \ref{lem:2.3.5}. From this one gets by the usual diagram chasing a long exact sequence
+    \[ \cdots \longrightarrow \pi_{1}(G) \longrightarrow \pi_{1}(H) \longrightarrow \pi_{0}(K) \longrightarrow \pi_{0}(G) \longrightarrow \pi_{0}(H) \longrightarrow 1 \]
+which shows that $\pi_{\bullet}(K) = 0$ iff $\pi_{\bullet}(f)$ is an isomorphism.
+
+(i) $\implies$ (iii). First of all a trivial fibration is surjective in dimension $0$ since it has the RLP with respect to $\overset{\bullet}{\Delta(0)} \subset \Delta(0)$; hence by the Corollary of Proposition \ref{prop:2.3.1} $f$ is surjective. Next if $\alpha \in \pi_{q}(\ker f)$ we represent $\alpha$ by $x \in K_{q}$ with $d_{j}x = 0$ for $0 \leq j \leq q$ and define $u : \overset{\bullet}{\Delta(q+1)} \longrightarrow \ker f$ by sending all faces to the identity element of $\ker f$ except the $0$-th which goes to $x$. Lifting in
+\[\begin{tikzcd}
+	{\overset{\bullet}{\Delta(q+1)}} && G \\ \\
+	{\Delta (q+1)} && H
+	\arrow["u", from=1-1, to=1-3]
+	\arrow["0", from=3-1, to=3-3]
+	\arrow["f", from=1-3, to=3-3]
+	\arrow[from=1-1, to=3-1]
+\end{tikzcd}\]
+
+we obtain $y \in N_{q+1} (\Ker f)$ with $dy=x$ showing that $\alpha = 0$.
+% TODO: add references to other bullets
+
+(ii) + (iii) $\implies$ (i). Given $u \colon \Delta (n) \to G$ covering $v \colon \Delta (n) \to H$ we may lift if $n= 0$ since $f$ is surjective. If $n > 0$, then as $f$ is a fibration we may find $w \colon \Delta (n) \to G$ with $w\vert_{V(n,0)} = u \vert_{V(n,0)}$ and $fw=u$. Lifting for $u$ and $v$ is equivalent to lifting for $u \cdot w^{-1}$ and $0$ so we reduce to the case $v = 0$ and $u | V(n, 0) = 0$. Then $u$ applied to the $0$-th face of $\overset{\bullet}{\Delta(n)}$ is an element $x$ of $(\Ker f)_{n-1}$ with all faces the identity element. As $\pi_{\bullet} (\Ker f) = 0$, there is a $z \in N_n (\Ker f)$ with $dz = x$. Then $\tilde{z} \colon \Delta (n) \to G$ satisfies $\tilde{z} \vert_{\overset{\bullet}{\Delta(n)}} = u$ and $f \tilde{z} = 0$, hence $\tilde{z}$ is the desired lifting.
+\end{proof}
+\end{document}

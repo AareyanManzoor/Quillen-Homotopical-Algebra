@@ -1,0 +1,140 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\section{Closed simplicial model categories}\label{sec:2.2}
+
+$\overset{\bullet}{\Delta(n)}$ for $n \geq 0$ (resp. $V(n,k)$ for $0 \leq k \leq n > 0)$ denotes the simplicial subset of $\Delta(n)$ which is the union of the images of the faces $\partial_i \colon \Delta(n-1) \longrightarrow  \Delta(n)$ for $0 \leq i \leq n$ (resp. $0 \leq i \leq n, i \neq k$). $\dot{\Delta(0)} = \varnothing$ the initial object in $\mathbf{S}$. In the following, RLP (resp. LLP) stands for right (resp. left) lifting property ( \S\ref{sec:1.5}).
+
+\begin{proposition} \label{prop:2.2.1} 
+    The following are equivalent for a map $f$ in $\mathbf{S}$.
+    \begin{enumerate}[(i)]
+        \item $f$ has the RLP with respect to $\overset{\bullet}{\Delta(n)} \longhookrightarrow \Delta(n)$ for all $n$
+        \item $f$ has the RLP with respect to any injective (i.e. injective in each degree) map of simplicial sets.
+    \end{enumerate}
+    \end{proposition}
+    This follows immediately from the skeletal decomposition of an injective map (see \cite[Ch. II, 3.8]{gabriel_calculus_1967}). The following is proved in \cite[Ch. IV, \S 2.1]{gabriel_calculus_1967}. $\{e\} \subset \Delta(1)$ denotes the subcomplex consisting of the degeneracies of the vertex $e$, where $e=0,1$.
+
+
+\begin{proposition}\label{prop:2.2.2}
+    The following are equivalent for a map $f$ in $\mathbf{S}$.
+    \begin{enumerate}[(i)]
+        \item $f$ has the RLP with respect to $V(n,k) \longhookrightarrow$ for $0 \leq k \leq n > 0$
+        \item $f$ has the RLP with respect to \[\overset{\bullet}{\Delta(n)} \times \Delta(1) \cup \Delta(n) \times \{e\} \longhookrightarrow \Delta(n) \times \Delta(1)\] for $n \geq 0$ and $e=0,1$.
+        \item $f$ has the RLP with respect to \[L\times \Delta(1) \cup K\times\{e\} \longhookrightarrow K \times \Delta(1)\] for all injective maps $L \longhookrightarrow K$ in $\mathbf{S}$ and $e=0,1$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{definition}\label{def:2.2.1}
+    A map of simplicial sets will be called a \defemphi{trivial fibration} (resp. \defemphi{fibration}) if it satisfies the equivalent conditions in Proposition~\ref{prop:2.2.1} (resp. Proposition~\ref{prop:2.2.2}).
+\end{definition}
+Thus a fibration is a fiber map in the sense of Kan. It is easy to see that a trivial fibration is a fibration whose fibers are contractible. 
+\begin{definition}
+    By a \defemphi{closed simplicial model category} we mean a closed model category $\mathbf{C}$ which is also a simplicial category satisfying the following two conditions: 
+    \begin{enumerate}[label = SM\arabic*]
+    \setcounter{enumi}{-1}
+        \item\label{SM0} \label{def:closedsimplicialcat_SM0} If $X \in \Ob \mathbf{C}$, then the objects $X \otimes K$ and $X^K$ exist for any finite simplicial set $K$.\setcounter{enumi}{6}
+        \item\label{SM7} \label{def:closedsimplicialcat_SM7} If $i \colon A \longrightarrow  B$ is a cofibration and $p \colon X \longrightarrow  Y$ is a fibration, then 
+        \[\tag{1}\label{eq:2.2.1}
+            \UHom(B,X) \xrightarrow{(i^*,p_*)} \UHom(A,X)\underset{\UHom(A,Y)}{\times}\UHom(B,Y)
+        \]
+    \end{enumerate}
+\end{definition}
+
+\begin{conv}
+It will be convenient to use the notation $\UHom(i,p)$ for the target of the map (\ref{eq:2.2.1}).
+
+\end{conv} 
+\begin{proposition}\label{prop:2.2.3}
+    Suppose that $\mathbf{C}$ is a simplicial category satisfying \ref{1.1.M0} and \ref{SM0} with four distinguished classes of maps--fibrations, cofibrations, trivial fibrations, and trivial cofibration--such that the first and fourth (resp. second and third) determine each other by lifting properties as in \ref{M6}(a) and (b). (This holds in particular if $\mathbf{C}$ is a closed simplicial model category). Then \ref{SM7} is equivalent separately to each of the following:
+    \begin{enumerate}[label = SM7(\alph*)]
+        \item\label{SM7a} If $X \longrightarrow  Y$ is a fibration (resp. trivial fibration), then \[X^{\Delta(n)} \longrightarrow   X^{\overset{\bullet}{\Delta(n)}} \underset{Y^{\overset{\bullet}{\Delta(n)}}}{\times} Y^{\Delta(n)}\] is a fibration (resp. trivial fibration) and $X^{\Delta(1)} \longrightarrow  X^{\{e\}} \times \prescript{}{Y^{\{e\}}}{Y}^{\Delta(1)}$ is a trivial fibration for $e=0,1$. 
+        \item\label{SM7b} If $A \longrightarrow  B$ is a cofibration (resp. trivial cofibration), then 
+        \[
+        A \otimes \Delta (n) \underset{A \otimes \overset{\bullet}{\Delta(n)}}{\vee} B\otimes \overset{\bullet}{\Delta(n)} \longrightarrow  B \otimes \Delta(n)
+        \] 
+        is a cofibration (resp. trivial cofibration, and 
+        \[
+        A \otimes \Delta(1) \underset{A \otimes \{e\}}{\vee} B \otimes \{e\} \longrightarrow  B \otimes \Delta(1)
+        \] 
+        is a trivial cofibration for $e=0,1$).
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+     To show that $X^K \longrightarrow  X^L \times_{Y^L} Y^K$ is a fibration where $L \longrightarrow  K$ is a map of simplicial sets, it suffices to show that it has the RLP with respect to any trivial cofibration $A \longrightarrow  B$. By the definition of the object $X^K$ this is equivalent to showing that \[\UHom(B,X) \longrightarrow  \UHom(A,X) \underset{\UHom(A,Y)}{\times} \Hom(B,Y)\] has the RLP with respect to $L \longrightarrow  K$. Manipulating in this way one proves the proposition.
+\end{proof}
+
+\begin{remark*}
+    It is clear that \ref{SM7a} holds for the fibrations and trivial fibrations in $\mathbf{S}$.
+\end{remark*}
+
+For the rest of this section $\mathbf{C}$ denotes a closed simplicial model category. We shall be concerned with relating the simplicial homotopy structure of $\mathbf{C}$ with the left and right homotopy structure of Ch.~\ref{ch:1}. Let $f \overset{s.s}{\sim} g$ (resp. $f \overset{s}{\sim} g$) mean $f$ is strictly (simplicially) homotopic (resp. (simplicially) homotopic) to $g$. The following is the covering homotopy extension theorem for simplicial homotopies. It should be noted how much stronger it is when than the Cor. of Lemma~\ref{lem:1.1.2} and Lemma~\ref{lem:1.1.7}.
+
+\begin{proposition}\label{prop:2.2.4}
+    Let $i \colon A \longrightarrow  B$ be a cofibration and let $p \colon X \longrightarrow  Y$ be a fibration. Let $h \colon A \otimes J \longrightarrow  X$ and $h \colon B \otimes J \longrightarrow  Y$ be simplicial homotopies compatible with $i$ and $p$ in the sense that $pk = h(i\otimes \id_J)$.
+    \begin{enumerate}[label = (\arabic*)]
+        \item If $\theta \colon B \longrightarrow  X$ satisfies $p \theta = hj_0$, $\theta i = ki_0$, then there is a homotopy $H \colon B \otimes J \longrightarrow  X$ with $Hi_0 = \theta$, $pH = h$, and $H(i \otimes \id_J) = k$.
+        \item If either $i$ or $p$ is trivial and if $\theta_e \colon B \longrightarrow  X$ satisfies $p\theta_e = hi_e$, $\theta i = ki_e$, $e = 0,1$, then there is a homotopy $H \colon B \otimes J \longrightarrow  X$ with $Hi_e = \theta_e$, $e=0,1$, $pH = h$, and $H(i \otimes \id_J)=k$. 
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    This follows immediately from \ref{SM7} by an induction on the length of $J$.
+\end{proof}
+
+\begin{corollary*}
+    Let $i \colon A \longrightarrow  B$ be a cofibration of fibrant objects. Then $i$ is trivial iff $i$ is a strong deformation retract map (i.e. there exists $r \colon B \longrightarrow  A,$\\$ h \colon B\otimes \Delta(1) \longrightarrow  B$ with $ri = \id_A$, $h_0 = \id_B$, $h_1 = ir$, $h(i \otimes \Delta(1)) = i\sigma)$). Dually if $p \colon X \longrightarrow  Y$ is a fibration of cofibrant objects, then $p$ is trivial iff there are maps $s \colon Y \longrightarrow  X$, $h \colon X \otimes \Delta(1) \longrightarrow  X$ with $ps = \id_Y$, $h_0  =\id_X$, $h_1 = sp$, $ph = \sigma(p \otimes \Delta(1))$.
+\end{corollary*}
+
+\begin{proof}
+    ($\implies$) $r$ and $h$ may be obtained by lifting successively in 
+    \begin{center}
+    \begin{tikzcd}
+        A \arrow[rr, "\id A"] \arrow[dd, "i"] & & A \arrow[dd] & & A \arrow[rr, "si"] \arrow[dd] & & B^I \arrow[dd, "{(j_0, j_1)}"] \\
+        \\
+        B \arrow[uurr, dashed, "r"] \arrow[rr] & & e & & B \arrow[uurr, dashed, "h"] \arrow[rr, "{(\id_B, ir)}"] & & B \times B
+    \end{tikzcd}
+    \end{center}
+    ($\impliedby$) is clear from Proposition~\ref{prop:2.2.4}
+\end{proof} 
+
+\begin{proposition}\label{prop:2.2.5}
+    \begin{enumerate}[label = (\arabic*)]
+        \item If $f,g \colon X \rightrightarrows Y$ are two maps in $\mathbf{C}$, then \
+        \[f \overset{s}{\sim} g \implies f \LHom g\] and $f \RHom g$. If $X$ cofibrant and Y is fibrant, then the strict simplicial, left, and right homotopy relations on $\Hom(X,Y)$ coincide and are equivalence relations.
+        \item The conclusions of Theorem~\ref{thm:1},\S\ref{sec:1.1} remain valid if $\pi \mathbf{C}_C$, $\pi \mathbf{C}_f$, and $\pi \mathbf{C}_{cf}$ are replaced by $\pi_0(\mathbf{C}_c)$, $\pi_0(\mathbf{C}_f)$, and $\pi_0(\mathbf{C}_{cf})$, respectively. 
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \begin{enumerate}
+        \item[(2)] The inclusion $\{0\}\subset J$ has the LLP with respect to fibrations in $\mathbf{S}$, hence if $X$ is cofibrant one finds, as in the proof of Prop. \ref{prop:2.2.3}(b), that $i_0:X\longrightarrow X\otimes J$ is a trivial cofibration. By \ref{1.1.M5} the map $\sigma:X\otimes J \longrightarrow X$ is a weak equivalence. also by Prop \ref{prop:2.2.3}(b) $X\vee X\varrightarrow{i_0+i_1}X\otimes J$ is a cofibration and so $X\otimes J$ is a cylinder object for $J$. It follows as in the proof of Lemma \ref{lem:1.1.8} that if $f,g:X\rightrightarrows Y$ are two maps in $\C_{c}$ and $f\overset{s}{\sim} g$, then $\gamma_c(f)= \gamma_c(g)$ and hence $\gamma_c$ induces $\xoverline{\gamma}_c:\pi_0 \C_c \longrightarrow \Ho \C_c$. Similarly one shows that $\xoverline{\gamma}$, $\xoverline{\gamma}_f$ as in Theorem \ref{thm:1}, exist with $\pi$ replaced by $\pi_0$. Next note that the ``quasi-'' functors $X\mapsto Q(X)$ and $X\mapsto R(X)$ of the proof of this theorem yield functors $\xoverline{Q}:\pi_0\C \longrightarrow\pi_0\C_c$, $\xoverline{R}:\pi_0\C\longrightarrow \pi_0 \C_f$ in virtue of Prop. \ref{prop:2.2.4} (2) above. The rest of the proof of Theorem \ref{thm:1} goes through without change so (2) follows.
+        
+        \item[(1)] The quasi-inverse of $\xoverline{\gamma}:\pi_0 \C_{cf} \longrightarrow \Ho\C$ constructed in the proof of Theorem \ref{thm:1} is induced by $\xoverline{RQ}:\C\longrightarrow \pi_0\C_{cf}$. But we have just seen that 
+        \[f\overset{s}{\sim}g\implies RQ(f)\overset{s}{\sim}RQ(g)\]
+        and therefore we conclude that 
+        \[f\overset{s}{\sim}g\implies \gamma(f)=\gamma(g).\]
+        Now if $J$ is a generalized unit interval, there is a canonical homotopy \\$h:J\times J\longrightarrow J$ with $h(\id_J\times \xtilde{0}) = \id_J$ and $h(\id_J\times \xtilde{I}) = \id_J$ where \\$\xtilde{e}:\Delta(0)\longrightarrow J$ is the map with $\xtilde{e}(\id_{[0]}) = e,$ $e=0,1$ and $\sigma$ is the unique map $J\longrightarrow \Delta(0)$. This homotopy in a representative case may be pictured
+        \begin{figure}[ht]
+           \centering
+           \incfig{diagram}
+           \label{fig:diagram}
+        \end{figure}
+
+        where the arrows denote the direction of each $1$ simplex of $J\times J$ and where a simplex of $J\times J$ labelled as $s_0 a$ goes to $s_0a$ in $J$ under $h$. Consequently if $X$ is any object of $\C$, $\sigma:X\otimes J\longrightarrow X$ is a simplicial homotopy equivalence and therefore $\gamma(\sigma)$ is an isomorphism. By \ref{prop:1.5.1}, $\sigma$ is a weak equivalence and therefore $f\overset{s}{\sim} g\implies f\LHom g$. Similarly $X\varrightarrow{s}X^J$ is a weak equivalence for all $X$ in $\C$ so $f\overset{s}{\sim}g\implies f\RHom g$; thus this first part of (1) is proved. The last assertion follows from Lemma \ref{lem:1.2.1} which shows when $X$ is cofibrant and $Y$ is fibrant the cylinder object $X\otimes \Delta(1)$ (see proof of (2) above) may be used to represent any left homotopy from $f$ to $g$ and from Lemma \ref{lem:1.1.4}.
+    \end{enumerate}
+\end{proof}
+\begin{remark*}
+Propostion \ref{prop:2.2.5} shows that the simplicial homotopy relation of \\$\Hom(X,Y)$ is finer than either left or right homotopy, but when $X$ is cofibrant and $Y$ is fibrant the three relations coincide. One may compare the constructions of \S\ref{sec:1.2} and \ref{sec:1.3} with the correspending well-known simplicial constructions and show that the resulting structure on $\Ho \C$ is the same. This the fundamental groupoid of the Kan complex $\UHom(X,Y)$ coincides with the one constructed in \S\ref{sec:1.2}, and if $E\longrightarrow B$ is a fibration in $\C_f$ where $\C$ is pointed, then the long exact sequence of homotopy groups arising from the fibration $\UHom(A,E) \longrightarrow \UHom(A,B)$ (\ref{SM7} when $A\in \Ob\C_c$) coincides with that of \S\ref{sec:1.3}.
+\end{remark*}
+
+\begin{proposition}\label{prop:2.2.6}
+    If $\C$ is a closed simplicial model category, then in a natural way so are the dual $\C^{op}$ and the category $\C/X$ of the objects of $\C$ over a fixed object $X$.
+\end{proposition}
+\begin{proof}
+    The assertion about $\C^{op}$ is trivial. If $A$ and $B$ are two objects of $\C/X$, we let $\UHom_{\C/X} (A,B)$ be the subcomplex of $\UHom_{\C}(A,B)$ consisting of elements $f_n$ of dimension $n$ with $(s_0^n)\circ f = s^n_0u$, where $u:A\longrightarrow X$ and $v:B\longrightarrow X$ are the structural maps. With the induced composition $\C/X$ becomes a simplicial category closed under finite limits. If $K$ is a finite simplicial set, then the object $(A\varrightarrow{u} X)\otimes K$ in $\C/X$ is the map $A\otimes K \varrightarrow{\sigma(u\otimes \id)} X$, where $\sigma:X\otimes K\longrightarrow X$ is the map corresponding to the map $K\longrightarrow \UHom(X,X)$ sending all elements of $K$ to degeneracies of $\id_X$. The objects $(A\varrightarrow{u}X)^K$ in $\C/X$ is the map $\pr_2:A^K\times_{X^K}X$, whose source is the fiber product of $u^K$ and the map $s:X\longrightarrow X^K$ corresponding to $\sigma$. Thus $\C/X$ satisfies \ref{SM0}.
+    
+    A map in $\C/X$ will be called a fibration, cofibration or weak equivalence if it is so in $\C$. Axioms \ref{1.1.M2} and \ref{1.1.M5} are clear if $i:A\longrightarrow A'$ and $p:B'\longrightarrow B$ are maps in $\C/X$, then the map $\Hom_{\C/X}(A',B')\longrightarrow \UHom_{\C/X}(i,p)$ is the base extension by the structural map $\Delta(0)\longrightarrow \UHom_{\C}(A',X)$ of the map \\$\Hom_{\C}(A',B')\longrightarrow \Hom_{\C}(i,p)$. Hence \ref{SM7} holds, hence also \ref{1.1.M1}. To obtain \ref{1.1.M6} argue as follows: Supposing a map $f$ in $\C/X$ has the LLP with respect to the fibrations in $\C/X$, factor $f=pi$ where $i$ is a trivial cofibration and $p$ is a fibration $\C/X$; Then $f$ is a retract of $i$ hence is a trivial cofibration in $\C$ and hence in $\C/X$. The other cases of \ref{M6} are similar.
+\end{proof}
+
+
+\end{document}

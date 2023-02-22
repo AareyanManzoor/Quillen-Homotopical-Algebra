@@ -1,0 +1,208 @@
+\documentclass[../main]{subfiles}
+
+\begin{document}
+\begin{theorem} 
+  When each of groups $H_{M}^{q} (X,A), H_{\cot}^{q} (X,A)$, and $R^{q_{h_{A}}}(X)$ is defined, it is canonically isomorphic with the Grothendieck sheaf cohomology group $H_{GT}^{q} (X,A)$.
+ \end{theorem}
+  \begin{proof} 
+    We begin by showing that $H_{M}^{q} (X,A) = R^{q_{h_{A}}}(X)$. Let $F$ be the abelian category $(A / X)_{ab}$. $F$ has enough projectives, namely those of the form $P_{ab}$ where $P$ is a projective object $\mathbf A / X$. Hence $s \mathbf{F} $ and $\Ch(\mathbf{F})$ are model categories (see Remark 5 at the end of \S\ref{sec:2.4}) and $N:s \mathbf{F} \longrightarrow  \Ch(\mathbf{F})$ is an equivalence of model categories. The loop and suspension functors on $\Ho (\Ch \mathbf{F} )$ are given very simply by functors $\Omega$ and $\Sigma$ on $\Ch \mathbf{F} $ defined by the formulas
+\begin{align*} 
+  &(\Sigma X)_{q} = 
+  \begin{cases} 
+    X_{q-1} & q > 0 \qquad d \Sigma X = - \Sigma dX \\
+    0 & q = 0  
+  \end{cases} \\[0.5em]
+  &(\Omega X)_{q} = 
+  \begin{cases} 
+    X_{q+1} & q > 0 \qquad d \Omega X = - \Omega dX \\
+    \Ker \{d: X_1 \longrightarrow  X_0\} & q = 0 
+  \end{cases}
+\end{align*}
+Let $A[q]$ be the chain complex in $\mathbf{F}$ which is $A$ in dimension $q$ and 0 elsewhere $(A[q] \text{ if } q < 0)$. As \[NK(A,0) = A[0],\quad N\Omega^{q+N}\Sigma^NK(A,0) = A[q],\]
+hence 
+\begin{align*} 
+    H_{M}^{q} (X,A) &= [\mathbf{L}\ab (X), \Omega^{q+N}\Sigma^NK(A,0)] = \pi_{0}((P_\bullet)_{ab},\Omega^{q+N}\Sigma^NK(A,0)) \\[0.5em]
+   &= \pi (N(P_\bullet)_{ab}, A[q])= H^{q}\Hom_{\mathbf{F}}(N(P_\bullet)_{ab},A)\\[0.5em]
+   &= H^q(\Hom_{\mathbf{F}}((P_\bullet)_{ab}, A)) = H^{q}h_{A}(P_\bullet) =R^{q}h_{A}(X).
+\end{align*}
+
+To finish the theorem we need some results about Grothendieck sheaves (\cite{artin_grothendieck_1962}, \cite{verdier_categories_nodate}). Let $\mathbf T$ denote a Grothendieck topology whose underlying category is closed under finite projective limits and has sufficiently many projectives, and where a covering of an object $Y$ in $\mathbf T$ is a family $\mathbf{U} = (Z \longrightarrow  Y)$ consisting of a single effective epimorphism. Eventually we will let $\mathbf T$ be $\mathbf A / X.$ A \defemphi{presheaf} of sets (resp. abelian groups) is a functor $\mathbf{T}^0\longrightarrow \mathbf{Set}$(resp $\mathbf{Ab}$) and a presheaf of sets (resp. abelian groups) is a presheaf $F$ such that for any effective epimorphism $Z \longrightarrow  Y$ the diagram
+\[
+  F(Y) \longrightarrow  F(Z) \rightrightarrows F(ZX_{Y}Z)
+\] 
+is exact. 
+  
+Letting \defemph{Pr} and \defemph{Sh} (resp. \defemph{Prab} and \defemph{Shab}) denote the categories of presheaves and sheaves of sets (resp. abelian groups) we have the diagram
+% https://q.uiver.app/?q=WzAsNCxbMiwwLCJcXGRlZmVtcGh7UHJ9Il0sWzAsMCwiXFxkZWZlbXBoe1NofSJdLFswLDIsIlxcZGVmZW1waHtTaGFifSJdLFsyLDIsIlxcZGVmZW1waHtQcmFifSJdLFsxLDAsImkiLDIseyJvZmZzZXQiOjF9XSxbMCwxLCJhIiwyLHsib2Zmc2V0IjoxfV0sWzIsMSwiaiIsMix7Im9mZnNldCI6MX1dLFsxLDIsIlxcdW5kZXJsaW5le1p9IiwyLHsib2Zmc2V0IjoxfV0sWzIsMywiaSIsMix7Im9mZnNldCI6MX1dLFszLDIsImEiLDIseyJvZmZzZXQiOjF9XSxbMCwzLCJcXG1hdGhiYntafSIsMix7Im9mZnNldCI6MX1dLFszLDAsImoiLDIseyJvZmZzZXQiOjF9XV0=
+\[\tag{4}\label{eq:2.5.4}
+    \begin{tikzcd}
+    	{\defemph{Sh}} && {\defemph{Pr}} \\
+    	\\
+    	{\defemph{Shab}} && {\defemph{Prab}}
+    	\arrow["i"', shift right=1, from=1-1, to=1-3]
+    	\arrow["a"', shift right=1, from=1-3, to=1-1]
+    	\arrow["j"', shift right=1, from=3-1, to=1-1]
+    	\arrow["{\mathbf{Z}}"', shift right=1, from=1-1, to=3-1]
+    	\arrow["i"', shift right=1, from=3-1, to=3-3]
+    	\arrow["a"', shift right=1, from=3-3, to=3-1]
+    	\arrow["{\mathbb{Z}}"', shift right=1, from=1-3, to=3-3]
+    	\arrow["j"', shift right=1, from=3-3, to=1-3]
+    \end{tikzcd}
+\]
+Here $i$ and $j$ are inclusion functors which are right adjoint functors and the other functors are left adjoint functors. The square of left (resp. right) adjoint functors commutes up to canonical isomorphisms.
+
+We recall the construction of $a$, the associated sheaf functor. If $F \in \Ob\defemph{Pr}$ (resp. $\Ob\defemph{Prab}$), then the $0-$th (resp. $q-$th) Čech cohmology presheaf of $F$ is defined by
+\begin{align*}
+    \cuhomology^\circ (F)(Y) &= \lim_{\overrightarrow{\mathbf{U}}} \chomology^\circ (\mathbf{U}, F) \\
+    \text{(resp. } \cuhomology^q (F)(Y) &= \lim_{\overrightarrow{\mathbf{U}}} \chomology^q (\mathbf{U}, F) \text{)}
+\end{align*}
+where the limit is taken over the category coverings $\mathbf{U} = (U \longrightarrow Y)$ of $Y$ and where
+\[
+    \chomology^\circ ((U \longrightarrow Y), F) = \Ker\lbrace F(U) \rightrightarrows F(U\times_YU) \rbrace
+\]
+(resp. $\chomology^q((U \longrightarrow Y), F) = $ the $q-$th cohomology of the cosimplicial abelian group
+\[
+    F(U) \rightrightarrows F(U\times_YU) \rightrightrightarrows F(U\times_YU\times_YU) ~\ldots~)
+\]
+Then $aF = \cuhomology^\circ \cuhomology^\circ (F)$. Given $Y$, choose an effective epimorphism $P \longrightarrow Y$ with $P$ projective; it follows that $(P \longrightarrow Y)$ is cofinal in the category of coverings of $Y$ and hence
+\[
+    \chomology^\circ(F)(Y) = \Ker\lbrace F(P) \rightrightarrows F(P\times_YP)\rbrace
+\]
+In particular $\cuhomology^\circ(F)(P) = F(P)$ if $P$ is projective, and hence
+\[\tag{5}\label{eq:2.5.5}
+    (aF)(P) = F(P)
+\]
+If $Y$ is arbitrary choose effective epimorphism $P_0 \longrightarrow Y$, $P_l \longrightarrow P_0\times_YP_0$, whence
+\begin{align*}
+    a(F)(Y) &= \Ker\lbrace(aF)(P_0) \rightrightarrows (aF)(P_l)\rbrace \\
+    &= \Ker\lbrace F(P_0) \rightrightarrows F(P_l)\rbrace
+\end{align*}
+It follows that for $F \in \Ob\defemph{Prab}$, $aF = 0$ if and only if $F(P) = 0$ for all projective $P$. Now if $F' \varrightarrow{u} F \varrightarrow{v} F''$ are maps in \defemph{Shab} with $vu = 0$, then this sequence is exact iff $aH = 0$ where $H = \Ker v/\Image u$ in the category \defemph{Prab}. Hence we have proved
+
+
+\begin{lemma}\label{lem:2.5.01}
+    A sequence $F' \longrightarrow F \longrightarrow F''$ of abelian sheaves is exact iff $F'(P) \longrightarrow F(P) \longrightarrow F''(P)$ is exact for all projective objects $P$.
+\end{lemma}
+
+
+Let $\mathbb{Z}(S)$ denote the free abelian group generated by a set $S$. Then the abelianization functor $\mathbb{Z}$ for presheaves is given by $(\mathbb{Z}F)(Y) = \mathbb{Z}(F(Y))$ for all $Y$ hence combining (\ref{eq:2.5.5}) and the commutativity of (\ref{eq:2.5.5}) we obtain
+
+
+\begin{lemma}\label{lem:2.5.02}
+    If $F$ is a sheaf of sets, then its abelianization $\mathbf{Z}F$ is such that
+    \[
+        \mathbf{Z}F(P) = \mathbb{Z}(F(P))
+    \]
+    for all projectives $P$.
+\end{lemma}
+
+
+Let $\uhomology^q : \defemph{Shab} \longrightarrow \defemph{Prab}$ be the $q-$th cohomology presheaf functors. Then $\uhomology^q \quad q \geq 0$ are the right derived functors of $i : \mathbf{Simp} \longrightarrow \mathbf{P}$ and \\$\uhomology^\bullet (F)(Y) = \homology^\bullet (Y, F)$ is the cohomology of $F$ over $Y$. We define a weak equivalence in $s\mathbf{T}$ to be a map $Z_\bullet  \longrightarrow Y_\bullet $ such that for any projective object $P$,\\ $\UHom(P, Y_\bullet ) \longrightarrow \UHom(P, Z_\bullet )$ is a weak equivalence in $\mathbf{Simp}$. This agrees with the definition in \S\ref{sec:2.4}.
+
+
+\begin{proposition}\label{prop:2.5.01}
+    The following are equivalent for a sheaf of abelian groups:
+    
+    \begin{enumerate}[label=(\roman*)]
+        \item $\uhomology^q(F) = 0 \quad q > 0$.
+
+        \item $\chomology^q((U \longrightarrow Y), F) = 0 \quad q > 0$ for all effective epimorphisms $U \longrightarrow Y$.
+
+        \item For any weak equivalence $Z_\bullet  \longrightarrow Y_\bullet $ in $s\mathbf{T}$
+            \[
+                \homology^\ast (F(Y_\bullet )) \varrightarrow{\sim} \homology^\ast (F(Z_\bullet ))
+            \]
+    \end{enumerate}
+\end{proposition}
+
+
+A sheaf satisfying the equivalent conditions of Prop. 1 will be called \defemphi{flask}. By (i) any injective sheaf is flask.
+
+
+\begin{proof}
+    (i) $\Longrightarrow$ (iii). Let $h_Y : \mathbf{T}^0 \longrightarrow \mathbf{Set}$ be the functor repesented by $Y$; then $h_Y$ is a sheaf. Let $\mathbf{Z}_Y = \mathbf{Z}h_Y$ so that
+    \[
+        \Hom_{\defemph{Shab}}(\mathbf{Z}_Y, F) = F(Y)
+    \]
+    Let $I^\bullet $ be an injective resolution of $F$ in \defemph{Shab} so that $\homology^q(I^\bullet (Y)) = \homology^q(Y, F) = 0$ for all $Y$. Then
+    \begin{align*}
+        \homology_h^p\homology_v^q\Hom(\mathbf{Z}_Y, I^\bullet ) &= \homology^p\homology^q(Y_\bullet , F) = \begin{cases} \homology^p(F(Y_\bullet )) &q = 0 \\ 0 &q > 0 \end{cases} \\
+        \homology_v^p\homology_h^q\Hom(\mathbf{Z}_{Y_\bullet }, I^\bullet ) &= \homology^p\Hom(\homology_q(\mathbf{Z}_{Y_\bullet }), I^\bullet ) = \Ext^p(\homology_q(\mathbf{Z}_{Y_\bullet }), F)
+    \end{align*}
+    and so we obtain a spectral sequence
+    \[
+        E_2^{pq} = \Ext^p(\homology_q(\mathbf{Z}_{Y_\bullet }), F) \Longrightarrow \homology^{p + q}(F(Y_\bullet ))
+    \]
+    and a similar spectral sequence for $Z_\bullet $. Hence we are reduced to showing that $\homology_*(\mathbf{Z}_{Z_\bullet }) \varrightarrow{\sim} \homology_*(\mathbf{Z}_{Y_\bullet })$. By Lemmas \ref{lem:2.5.01} and \ref{lem:2.5.02} we are reduced to showing that $\mathbb{Z}\UHom(P, Z_\bullet ) \longrightarrow \mathbb{Z}\UHom(P, Y_\bullet)$ is a weak equivalence of simplicial abelian groups for each projective $ P_\bullet $  But this is clear since $\Hom(P, Z_\bullet ) \longrightarrow \UHom(P, Y_\bullet )$ is a weak equivalence and since $\pi_\ast (\mathbb{Z}K_\bullet )$, the homology of a simplicial set $K_\bullet $, is a weak homotopy invariant.
+
+    (ii) $\Longrightarrow$ (i). There is a Carten-Leray spectral sequence \\$E_2^{pq} = \cuhomology^p(\uhomology^qF) \Longrightarrow \uhomology^{p + q}F$ \cite[3.5, Ch.I.]{artin_grothendieck_1962}. By assumption $E_2^{p0} = \cuhomology^pF = 0$ for $p > 0$ hence by induction on $n$ one sees that $\uhomology^nF = 0$.
+
+    (iii) $\Longrightarrow$ (ii). $\chomology^q((U \longrightarrow Y), F) = \homology^q(F(Z_\bullet ))$ where $Z_\bullet $ is the object of $s\mathbf{T}$ with \[Z_q = \underbrace{U\times_Y\ldots \times_YU}_{q+1\text{ times}}.\] Regarding $Y$ as a constant simplicial object, $Z_\bullet  \longrightarrow Y$ is a weak equivalence. In effect if $P$ is projective $\Hom(P, U) \longrightarrow \Hom(P, Y)$ is surjective; denoting this by $S \longrightarrow T$ we have that $\UHom(P, Z_\bullet ) \longrightarrow \UHom(P, Y_\bullet )$ is the map
+    % https://q.uiver.app/?q=WzAsOCxbMywwLCJTIl0sWzEsMCwiUyBcXHVuZGVyc2V0e1R9e1xcdGltZXN9IFMgXFx1bmRlcnNldHtUfXtcXHRpbWVzfSBTIl0sWzIsMCwiUyBcXHVuZGVyc2V0e1R9e1xcdGltZXN9IFMiXSxbMCwwLCJcXGxkb3RzIl0sWzIsMSwiVCJdLFsxLDEsIlQiXSxbMywxLCJUIl0sWzAsMSwiXFxsZG90cyJdLFsxLDIsIiIsMCx7Im9mZnNldCI6LTJ9XSxbMSwyLCIiLDIseyJvZmZzZXQiOjJ9XSxbMiwwLCIiLDEseyJvZmZzZXQiOjF9XSxbMSwyXSxbMiwwLCIiLDEseyJvZmZzZXQiOi0xfV0sWzEsNV0sWzIsNF0sWzAsNl0sWzUsNF0sWzUsNCwiIiwxLHsib2Zmc2V0IjoyfV0sWzUsNCwiIiwxLHsib2Zmc2V0IjotMn1dLFs0LDYsIiIsMSx7Im9mZnNldCI6MX1dLFs0LDYsIiIsMSx7Im9mZnNldCI6LTF9XV0=
+    \[
+        \begin{tikzcd}
+        	\ldots & {S \underset{T}{\times} S \underset{T}{\times} S} & {S \underset{T}{\times} S} & S \\
+        	\ldots & T & T & T
+        	\arrow[shift left=2, from=1-2, to=1-3]
+        	\arrow[shift right=2, from=1-2, to=1-3]
+        	\arrow[shift right=1, from=1-3, to=1-4]
+        	\arrow[from=1-2, to=1-3]
+        	\arrow[shift left=1, from=1-3, to=1-4]
+        	\arrow[from=1-2, to=2-2]
+        	\arrow[from=1-3, to=2-3]
+        	\arrow[from=1-4, to=2-4]
+        	\arrow[from=2-2, to=2-3]
+        	\arrow[shift right=2, from=2-2, to=2-3]
+        	\arrow[shift left=2, from=2-2, to=2-3]
+        	\arrow[shift right=1, from=2-3, to=2-4]
+        	\arrow[shift left=1, from=2-3, to=2-4]
+        \end{tikzcd}
+    \]
+    which is a homotopy equivalence by the cone construction.
+\end{proof}
+
+
+\begin{lemma}\label{lem:2.5.03}
+    With the notations of (\ref{lem:2.5.02}) $C_\bullet(X) \longrightarrow X$ is a weak equivalence.
+\end{lemma}
+
+
+\begin{proof}
+    Let $P$ be projective, as $FSP \longrightarrow P$ is an effective epimorphism it follows that $P$ is a retract of $FSF$. It suffices to show therefore that \[\UHom_{\mathbf{A}}(FB, C_\bullet(X)) \longrightarrow \UHom_{\mathbf{A}}(FB, X)\]
+    or \[\UHom_{\mathbf{B}}(B, SC_\bullet(X)) \longrightarrow \UHom_{\mathbf{B}}(B, SX)\]
+    is a weak equivalence of simplicial sets. However $SC_\bullet(X) \longrightarrow SX$ is a homotopy equivalence by the ``cone construction''.
+\end{proof}
+
+
+We can now finish the proof of the theorem. Let $\mathbf{T} = \mathbf{A}/X$ and let $I^\bullet $ be a flask resolution of the sheaf $h_A$ and let $P_\bullet  \longrightarrow X$ be a weak equivalence where each $P_q$ is projective. For the double complex $I^\bullet (P_\bullet )$ we have
+\[
+    \homology_h^p\homology_v^q(I^\bullet (P_\bullet )) = \begin{cases}\homology^p(I^\bullet (X)) &q = 0 \\ 0 &q > 0\end{cases} = \begin{cases}\homology_{GT}^p(X, A) \\ 0 &q > 0\end{cases}
+\]
+by Prop. \ref{prop:2.5.01} and
+\[
+    \homology_v^p\homology_h^q(I^\bullet (P_\bullet )) = \begin{cases}\homology^p(h_A(P_\bullet )) &q = 0 \\ 0 &q > 0\end{cases} = \begin{cases}R^ph_a(X) &q = 0 \\ 0 &q > 0\end{cases}
+\]
+by Lemma \ref{lem:2.5.01}. Thus the two spectral sequences of a double complex degenerate giving $\homology_{GT}^p(X, A) \simeq \homology_{cot}^p(X, A)$ by Lemma \ref{lem:2.5.03} and condition (ii) on the functors (\ref{eq:2.5.3}). \end{proof}
+
+
+\begin{examples}
+    Let $\mathbf{A} = \mathbf{Grp}$ and let $G$ be a group. Then any abelian group object in $\mathbf{A}/G$ is of the form $M\times_TG \varrightarrow{pr_2} G$ where $M$ is a $G$ module and $M\times_TG$ denotes the semi-direct product of M and G. Hence $(\mathbf{A}/G)_{ab}$ is the abelian category of $G$ modules. Moreover if $X \longrightarrow G$ is a group over $G$, then \\$\Hom_{\mathbf{A}/G}(X, M\times_TG) = \Der(X, M)$, the derivative of $X$ with values in $M$ regarded as an $X$ module via the map $X \longrightarrow G$. For each group $X$ over $G$, let $C^q(X, M) = \Hom_{\mathbf{Set}}(X^q, M)$ be the group of $q$ cochain of $X$ with values in $M$ and let $\delta : C^q(X, M) \longrightarrow C^{q + 1}(X, M)$ be the usual coboundary operator. Then
+    \[
+        0 \longrightarrow \Der(\cdot, M) \longrightarrow C'(\cdot, M) \varrightarrow{\delta} C^2(\cdot, M) \varrightarrow{\delta} \ldots
+    \]
+    is a flask resolution of the sheaf $h_{M\times_TG}$ on $\mathbf{A}/G$. In effect any weak equivalence of simplicial groups is a homotopy equivalence of sets and the functor $C^q(X, M)$ depend only on the underlying set of $X$; hence $C^q(\cdot, M)$ is flask by Prop. \ref{prop:2.5.01}(iii). On the other hand the sequence is exact by Lemma \ref{lem:2.5.01} and the fact that cohomology of a free group vanishes in dimension $\geq 2$. Thus we find that
+    \[
+        \homology_{GT}^q(G, M) = \homology_{cot}^q(G, M) = \homology_H^q(G, M) = \begin{cases}\homology^{q + 1}(G, M) &q \geq 1 \\ \Der(G, M) &q = 0\end{cases}
+    \]
+    where $\homology^\bullet (G, M)$ is the ordinary group cohomology.
+\end{examples}
+
+
+\begin{remarks*}
+    \begin{enumerate}[label=(\roman*)]
+        \item The preceding example generalizes immediately to cover the usual cohomology of Lie algebras and associative algebras over a field (\cite{barr_acyclic_1966}). Moreover one is lead to the following general picture for cohomology of any kind of universal algebras. Letting $\mathbf{A}$ be a category of universal algebras and $X \in \Ob{\mathbf{A}}$, then an $X$-\defemphi{module} is an abelian group object $A$ in $\mathbf{A}/X$, and the cohomology of $X$ with values in $A$ may be defined to be either $\homology_M^\bullet(X, A)$, $\homology_{GT}^\bullet(X, A)$, or $\homology_{cot}^\bullet(X, A)$ where the cotriple is for example the ``underlying set'' and ``free algebra'' functors $\mathbf{A} \leftrightarrows \mathbf{Set}$. A \defemphi{cochain complex} for computing this cohomology is just a flask resolution of the sheaf $h_A$ on $\mathbf{A}/X$.
+
+        \item The isomorphism $\homology_{GT}^\bullet(X, A) = \homology^\bullet (h_A(P_\bullet ))$ is a special case of a general theorem of Verdier that the Grothendieck sheaf cohomology group $\homology^q(X, F)$ may be computed as $\lim_{\overrightarrow{\mathbf{U}}} \homology^\bullet (\mathbf{U}, F)$ where $\mathbf{U}$ runs over the category of hypercoverings of $X$ for the topology. In effect $P_\bullet  \longrightarrow X$ is cofinal in this category of hypercoverings. See \cite{grothendieck_theorie_1972} especially, exposé V, appendice.
+    \end{enumerate}
+\end{remarks*}
+\end{document}
