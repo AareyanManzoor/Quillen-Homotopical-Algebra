@@ -147,7 +147,7 @@ so that $i^{-1}h'_1\partial_1$ represents $(\alpha \cdot \lambda) \cdot \lambda_
     We may assume that (\ref{eq:1.3.4}) is the sequence constructed above from a fibration $p$.  Let $p^I:E^I \longrightarrow B^I$ be as in the definition of $m$.  Then\\ $\pr_1:E \times_B B^I \times_B(*) \longrightarrow E$ is the base extension of $(d^B_0,d^B_1)$ by\\ $(p,0):E \longrightarrow B \times B$ and hence is a fibration; so we get a fibration sequence
 %In the pdf page 3.10 is here.  I put that in sec3pt2.
 \[\tag{6}\label{eq:1.3.6}
-\Omega B \varrightarrow{(0,j,0)} E \times_B B \times_B (*) \varrightarrow{\pr_1} E \hspace{8pt} \Omega B \times \Omega E \varrightarrow{n} \Omega B.
+\Omega B \varrightarrow{(0,j,0)} E \times_B B^I \times_B (*) \varrightarrow{\pr_1} E \hspace{8pt} \Omega B \times \Omega E \varrightarrow{n} \Omega B.
 \]    
 We calculate $n$ by Proposition \ref{prop:1.3.2};  let $\lambda \in [A,\Omega B]$ be represented by\\ $u:A \longrightarrow \Omega B$, let $\mu \in [A, \Omega E]$ be represented by $h:A \times I \longrightarrow E$ and let $(h,H,0)$ be a lifting in
 \[
@@ -256,7 +256,7 @@ is exact in the following sense:
 \begin{enumerate}[label=(\roman*)]
   \item $(p_*)^{-1}\{0\} = \Image i_*$
   \item $i_*\partial_* = 0$ and $i_* \alpha_1 = i_*\alpha_2 \iff \alpha_2 = \alpha_1 \cdot \lambda $ for some $\lambda \in [A, \Omega B]$
-  \item $\partial_* (\Omega i)_* = 0$ and $\partial_* \lambda_1 = \partial_* \lambda_2 \iff \lambda_2 = (\Omega p)_* \mu \cdot \lambda_1$ for some $\mu \in [A, \Omega E]$
+  \item $\partial_* (\Omega p)_* = 0$ and $\partial_* \lambda_1 = \partial_* \lambda_2 \iff \lambda_2 = (\Omega p)_* \mu \cdot \lambda_1$ for some $\mu \in [A, \Omega E]$
   \item The sequence of group homomorphisms from $[A, \Omega E]$ to the left is exact in the usual sense.
 \end{enumerate}
 
@@ -265,8 +265,8 @@ is exact in the following sense:
 The dual proposition for cofibration sequences is
 
 \begin{customprop}{1.3.4'} \label{prop:1.3.4'}
-    Let \[A \varrightarrow{u} X \varrightarrow{v} C \quad\quad C \varrightarrow{n} C \wedge \sum A\] 
-    be a cofibration sequence in $\Ho \cat{C}$ and let $\partial:C \longrightarrow \sum A$ be $(\id_C + 0) \circ n$.  If $B$ is any object in $\Ho \cat{C}$, then the sequence
+    Let \[A \varrightarrow{u} X \varrightarrow{v} C \quad\quad C \varrightarrow{n} C \vee \Sigma A\]
+    be a cofibration sequence in $\Ho \cat{C}$ and let $\partial:C \longrightarrow \Sigma A$ be $(0 + \id_{\Sigma A}) \circ n$. If $B$ is any object in $\Ho \cat{C}$, then the sequence
     \[
     \begin{tikzcd}
     \arrow[r,"(\sum v)^*"] & {[\sum X, B]} \arrow[r,"(\sum u)^*"] & {[\sum A, B]} \arrow[r,"\partial^*"]
@@ -282,7 +282,7 @@ The dual proposition for cofibration sequences is
         \item Clearly $pi=0$.  If $p_*\alpha = 0$ represennt $\alpha$ by $u:A \longrightarrow E$, let $h:A \times I \longrightarrow B$ be such that $h\partial_0 = pu, \,h\partial = 0$.  By the covering homotopy theorem (dual of Corrolary of Lemma \ref{lem:1.1.2}) we may cover $h$ by $k:A \times I \longrightarrow E$ with $\partial_0 k=u$.  Then if $\beta$ is represented by $i^{-1}k\partial_1$ we have $i_*\beta = \alpha$.
         \item With the notation of Prop. \ref{prop:1.3.2}, we have that $h'$ is a homotopy from $iu$ which represents $i_*\alpha$ to $h'\partial_1$ which represents $i_*(\alpha \cdot \lambda)$.  Hence $i_*(\alpha \cdot \lambda) = i_* \alpha$ and in particular \[i_*\partial_*\lambda = i_*(0\cdot \lambda) = i_*0 = 0,\] so $i_*\partial_* = 0$.  Conversely given $\alpha_1 \alpha_2$ with $i_*\alpha_1 = i_*\alpha_2$, represent $\alpha_1$ by $u_i, i = 1,2$, let $h:A \times I \longrightarrow E$ be such that $h\partial_0 = iu_1 , \,h\partial_1 = iu_2$ whence if $\lambda$ is the class of $ph, \alpha_1 \cdot \lambda = \alpha_2$ by Prop \ref{prop:1.3.2}.
         \item follows from (ii) and Proposition \ref{prop:1.3.3}
-        \item follows by repeated use of Proposition \ref{diag:1.3.3}. 
+        \item follows by repeated use of Proposition \ref{prop:1.3.3}.
     \end{enumerate}
 \end{proof}
 

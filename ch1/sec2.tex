@@ -303,25 +303,25 @@ and Lemma~\ref{lem:1.2.2} give $f\sigma \cdot h \sim h$, $h \cdot g\sigma \sim h
     }
     show that $h^{-1} \cdot h \sim g \sigma$ and $h \cdot h^{-1} \sim f \sigma$ providing the last assertion of Proposition \ref{prop:1.2.1}.
 \end{proof}
-It is clear that if $i \colon A' \longrightarrow A$ is a map of cofibrant objects, then there is a functor $i^* \colon \Hom (A,B) \longrightarrow \Hom (A', B)$ which sends $f$ into $fi$ and a right homotopy $k \colon A \longrightarrow B^I$ into $ki \colon A' \longrightarrow B^I$. Similarly if $j \colon B \longrightarrow B'$ is a map of fibrant objects there is a function $j_* \colon \Hom (A,B) \longrightarrow \Hom(A,B)$.
+It is clear that if $i \colon A' \longrightarrow A$ is a map of cofibrant objects, then there is a functor $i^* \colon \Hom (A,B) \longrightarrow \Hom (A', B)$ which sends $f$ into $fi$ and a right homotopy $k \colon A \longrightarrow B^I$ into $ki \colon A' \longrightarrow B^I$. Similarly if $j \colon B \longrightarrow B'$ is a map of fibrant objects there is a functor $j_* \colon \Hom (A,B) \longrightarrow \Hom(A,B')$.
 \begin{lemma}\label{lem:1.2.3}
     The diagram
     \begin{center}
     \begin{tikzcd}
-        \pi_1(A,B;f,g) \arrow[rr, "i^*"] \arrow[dd, "j_*"] & & \pi_1(A,B;fi,gi) \arrow[dd, "j_*"]\\
+        \pi_1(A,B;f,g) \arrow[rr, "i^*"] \arrow[dd, "j_*"] & & \pi_1(A',B;fi,gi) \arrow[dd, "j_*"]\\
         \\
-        \pi_1(A,B;jf,jg) \arrow[rr, "i^*"] & & \pi_1(A',B',jfi,jgi)
+        \pi_1(A,B';jf,jg) \arrow[rr, "i^*"] & & \pi_1(A',B';jfi,jgi)
     \end{tikzcd}
     \end{center}
     commutes.
 \end{lemma}
 \begin{proof}
-    Let $\alpha \in \pi_1(A,B;f,g)$ and represent $\alpha$ with $h \colon A \times B \longrightarrow B$, $k \colon A \longrightarrow B^I$, and let $H$ be a correspondence between $h$ and $k$. By Lemma \ref{lem:1.1.5}(ii) and Lemma \ref{lem:1.2.1} we may assume that $\sigma \colon A \times I \longrightarrow A$ is a trivial cofibration. By \ref{1.1.M1} we can choose dotted arrows in
+    Let $\alpha \in \pi_1(A,B;f,g)$ and represent $\alpha$ with $h \colon A \times I \longrightarrow B$, $k \colon A \longrightarrow B^I$, and let $H$ be a correspondence between $h$ and $k$. By Lemma \ref{lem:1.1.5}(ii) and Lemma \ref{lem:1.2.1} we may assume that $\sigma \colon A \times I \longrightarrow A$ is a trivial fibration and $s \colon B \longrightarrow B^I$ is a trivial cofibration. By \ref{1.1.M1} we can choose dotted arrows in
     \begin{center}
     \begin{tikzcd}
         A' \vee A' \arrow[dd, "\partial_0' + \partial_1'"] \arrow[rr, "\partial_0 i + \partial_1 i"] & & A \times I \arrow[dd, "\sigma"] & & B \arrow[rr, "s'j"] \arrow[dd, "s"] & & (B')^I \arrow[dd, "{(d_0', d_1')}"]\\
         \\
-        A' \vee I \arrow[uurr, dashed, "\varphi"] \arrow[rr, "i\sigma'"] & & A & & B^{I} \arrow[uurr, dashed, "\psi"] \arrow[rr, "{(jd_0, jd_1)}"] & & B' \times B'
+        A' \times I \arrow[uurr, dashed, "\varphi"] \arrow[rr, "i\sigma'"] & & A & & B^{I} \arrow[uurr, dashed, "\psi"] \arrow[rr, "{(jd_0, jd_1)}"] & & B' \times B'
     \end{tikzcd}
     \end{center}
     Then $H$ is a correspondence between $jh$ and $\psi k$; hence $\psi k$ represents $j_* \alpha$ and so $\psi k i$ represents $i^* j_* \alpha$. Similarly $H\varphi$ is a correspondence between $ k i$ and $h\varphi$; hence $h\varphi$ represents $i^* \alpha$ and so $jh\varphi$ represents $j_*i^*\alpha$. Finally $\psi H\varphi$ is a correspondence between $\psi ki$ and $jh\varphi$ which shows that $i^* j_* \alpha = j_* i^* \alpha$.
@@ -329,9 +329,9 @@ It is clear that if $i \colon A' \longrightarrow A$ is a map of cofibrant object
 
 \begin{definition}
     \label{def:1.2.4}
-    A \defemphi{pointed category} is a category $\cat{A}$ in which ``the'' initial object and final object exist and are isomorphic. We shall denote this object by $*$ and call it the \defemphi{null-object} of $\cat{A}$. If $X$ and $Y$ are arbitrary objects of $\cat{A}$ we denote by $0 \in \Hom_{\cat{A}}(X,Y)$ the composition $X \longrightarrow * \longrightarrow Y$. If $f \colon X \longrightarrow Y$ is a map in $\cat{C}$, then we define the \defemphi{fibre} of $f$ to be the fibre product $* \times_Y X$ and the \defemphi{cofibre} of $f$ to be the fibre product $*\vee_X Y$.
+    A \defemphi{pointed category} is a category $\cat{A}$ in which ``the'' initial object and final object exist and are isomorphic. We shall denote this object by $*$ and call it the \defemphi{null-object} of $\cat{A}$. If $X$ and $Y$ are arbitrary objects of $\cat{A}$ we denote by $0 \in \Hom_{\cat{A}}(X,Y)$ the composition $X \longrightarrow * \longrightarrow Y$. If $f \colon X \longrightarrow Y$ is a map in $\cat{C}$, then we define the \defemphi{fibre} of $f$ to be the fibre product $* \times_Y X$ and the \defemphi{cofibre} of $f$ to be the cofibre product $*\vee_X Y$.
     
-    By a \defemphi{pointed model category} we mean a model category $\cat{C}$ which is also a pointed category. If $A$ is in $\cat{C}_0$ and $B$ in $\cat{C}_f$, then we will abbreviate $\pi_1(A,B;0,0)$ to $\pi_1(A,B)$. $\pi_1(A,B)$ is a group by the above proposition.
+    By a \defemphi{pointed model category} we mean a model category $\cat{C}$ which is also a pointed category. If $A$ is in $\cat{C}_c$ and $B$ in $\cat{C}_f$, then we will abbreviate $\pi_1(A,B;0,0)$ to $\pi_1(A,B)$. $\pi_1(A,B)$ is a group by the above proposition.
 \end{definition}
 
 \begin{theorem}
@@ -393,15 +393,15 @@ It is clear that if $i \colon A' \longrightarrow A$ is a map of cofibrant object
         \pi(A, \Omega B) \arrow[r, no head, "\sim"] & \pi_1(A,B)
     \end{tikzcd}
     \]
-    which is a natural transformation of functors as $A$ runs over $\cat{C}_C$.
+    which is a natural transformation of functors as $A$ runs over $\cat{C}_c$.
     
-    Lemma~\ref{lem:1.1.3} shows that $A,B \longrightarrow \pi_{1}(A,B)$ is a functor $(\cat{C}_{C})^{\circ} \times \cat{C}_f$ to $\mathbf{Grp}$. (\ref{eq:1.2.4}) and (\ref{diag:1.2.5}) combined with Theorem~\ref{thm:1} and its first corollary show that this functor induces a functor $(\Ho \cat{C}_C)^{\circ} \times \Ho \cat{C}_f$ to $\mathbf{Grp}$, which then by Theorem~\ref{thm:1} may be extended to a functor $A,B \longrightarrow [A,B]_1$ from $(\Ho \cat{C} )^{\circ} \times \Ho \cat{C}$ to groups, not uniquely but unique up to canonical isomorphism. By the first corollary of Theorem~\ref{thm:1} and (\ref{eq:1.2.4}) and (\ref{diag:1.2.5}) the bifunctor $[\cdot, \cdot]_1$ is representable in the first and second variables which proves the theorem.
+    Lemma~\ref{lem:1.2.3} shows that $A,B \longrightarrow \pi_{1}(A,B)$ is a functor $(\cat{C}_c)^{\circ} \times \cat{C}_f$ to $\mathbf{Grp}$. (\ref{eq:1.2.4}) and (\ref{diag:1.2.5}) combined with Theorem~\ref{thm:1} and its first corollary show that this functor induces a functor $(\Ho \cat{C}_c)^{\circ} \times \Ho \cat{C}_f$ to $\mathbf{Grp}$, which then by Theorem~\ref{thm:1} may be extended to a functor $A,B \longrightarrow [A,B]_1$ from $(\Ho \cat{C} )^{\circ} \times \Ho \cat{C}$ to groups, not uniquely but unique up to canonical isomorphism. By the first corollary of Theorem~\ref{thm:1} and (\ref{eq:1.2.4}) and (\ref{diag:1.2.5}) the bifunctor $[\cdot, \cdot]_1$ is representable in the first and second variables which proves the theorem.
 \end{proof}
 
 \begin{remark*}
     \begin{enumerate}
         \item $\Sigma$ and $\Omega$ are adjoint functors on $\Ho \cat{C}$ and are unique up to canonical isomorphism. Also for any $X$, $\Sigma^n X \ n\geq 1$ is a cogroup object (resp. $\Omega^n X$ is a group object) in $\Ho \cat{C}$, which is commutative for $n \geq 2$.
-        \item We shall indulge in the abuse of notation of writing $\Sigma$ for both the functors on $\Ho \cat{C}$ of Theorem~\ref{thm:2} and writing $\sigma A$ for the cofibre of $A \vee A \longrightarrow A \times I$ when $A$ is in $\cat{C}_C$. If we should encounter a situation where this would lead to confusion we shall denote the former use of $\Sigma$ by $\mathbf{L}\Sigma$ because it's kind of a left-derived functor in the sense of \S \ref{sec:1.4} below. Similarly $\mathbf{R} \Omega$ will be used for the loop functor on $\Ho \cat{C}$ if necessary. 
+        \item We shall indulge in the abuse of notation of writing $\Sigma$ for both the functors on $\Ho \cat{C}$ of Theorem~\ref{thm:2} and writing $\Sigma A$ for the cofibre of $A \vee A \longrightarrow A \times I$ when $A$ is in $\cat{C}_c$. If we should encounter a situation where this would lead to confusion we shall denote the former use of $\Sigma$ by $\mathbf{L}\Sigma$ because it's kind of a left-derived functor in the sense of \S \ref{sec:1.4} below. Similarly $\mathbf{R} \Omega$ will be used for the loop functor on $\Ho \cat{C}$ if necessary.
     \end{enumerate}
 \end{remark*}
 \end{document}

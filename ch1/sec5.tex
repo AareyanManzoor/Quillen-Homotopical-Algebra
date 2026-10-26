@@ -49,24 +49,24 @@ Let $p : X \longrightarrow Y$ be a fibration $\mathbf C_{cf}$. The following are
     \item[(i) $\implies$ (ii)]  One lifts successively in
 \begin{equation*}
     \begin{tikzcd}
-    \emptyset \arrow[dd] \arrow[rr]                  &  & X \arrow[dd, "P"] \\
+    \emptyset \arrow[dd] \arrow[rr]                  &  & X \arrow[dd, "p"] \\
                                                      &  &                   \\
     Y \arrow[rr, "\id_Y"'] \arrow[rruu, "t", dashed] &  & Y                
     \end{tikzcd}
     \quad 
     \begin{tikzcd}
-    X \vee X \arrow[dd, "\partial_0+\partial_1"'] \arrow[rr, "tp+\id_X"] &  & X \arrow[dd, "f"] \\
+    X \vee X \arrow[dd, "\partial_0+\partial_1"'] \arrow[rr, "tp+\id_X"] &  & X \arrow[dd, "p"] \\
                                                                          &  &                   \\
     X\times I \arrow[rr, "p\sigma"] \arrow[rruu, "h", dashed]            &  & Y                
     \end{tikzcd}
 \end{equation*}
     
-    \item[(ii) $\implies$ (i)] Let $p^I : X^I \longrightarrow \gamma^I$ be a compatible choice of path objects for $X$ and $Y$ as in the beginning of \S\ref{sec:1.2} and let $Q$ be a lifting in
+    \item[(ii) $\implies$ (i)] Let $p^I : X^I \longrightarrow Y^I$ be a compatible choice of path objects for $X$ and $Y$ as in the beginning of \S\ref{sec:1.2} and let $Q$ be a lifting in
 \begin{center}
     \begin{tikzcd}
     X \arrow[rr, "s^X"] \arrow[dd, "\partial_1"']                          &  & X^I \arrow[dd, "{(d_0^X, p^I, d_1^X)}"] \\
                                                                            &  &                                         \\
-    X\times I \arrow[rruu, "Q"'] \arrow[rr, "{(h, s^Y, p\sigma, \sigma)}"] &  & X \times_Y Y^I \times_Y X              
+    X\times I \arrow[rruu, "Q"'] \arrow[rr, "{(h, s^Y p\sigma, \sigma)}"] &  & X \times_Y Y^I \times_Y X
     \end{tikzcd}
 \end{center} 
 Then $k = Q \partial_0 : X \longrightarrow X^I$ is a right homotopy from $tp$ to $\id_X$ with\\ $p^Ik = s^Y p$. Given the first diagram
@@ -80,7 +80,7 @@ Then $k = Q \partial_0 : X \longrightarrow X^I$ is a right homotopy from $tp$ to
     \begin{tikzcd}
     A \arrow[rr, "k\alpha"] \arrow[dd, "i"']                        &  & X^I \arrow[dd, "{(d_0^X, p^I)}"] \\
                                                                     &  &                                  \\
-    B \arrow[rruu, "H", dashed] \arrow[rr, "{(t\beta, s^Y \beta)}"] &  & X \times_\gamma \gamma^I        
+    B \arrow[rruu, "H", dashed] \arrow[rr, "{(t\beta, s^Y \beta)}"] &  & X \times_Y Y^I
     \end{tikzcd}
 \end{equation*} 
 the dotted arrow $\phi$ may be constructed by choosing a dotted arrow $H$ in the second and setting $\phi = d_1^X H$.
@@ -91,13 +91,13 @@ the dotted arrow $\phi$ may be constructed by choosing a dotted arrow $H$ in the
 
 \begin{center}
     \begin{tikzcd}
-    X\times I \arrow[dd, "j_1"'] \arrow[rr, "(pq)^{-1} \cdot (pq)"] &  & X \arrow[dd, "f"] \\
+    X\times I' \arrow[dd, "j_1"'] \arrow[rr, "q^{-1} \cdot tpq"] & & X \arrow[dd, "p"] \\
                                                                       &  &                   \\
     X\times J \arrow[rr, "H"'] \arrow[rruu, "K"']                     &  & Y                
     \end{tikzcd}
 \end{center} 
 
-we obtain a left homotopy $K j_0 : X \times I \longrightarrow Y$ from $\id_X$ to $tp$ with $p Kj_0 = p\sigma$ whose inverse is the desired homotopy $h$. 
+we obtain a left homotopy $K j_0 : X \times I \longrightarrow X$ from $\id_X$ to $tp$ with $p Kj_0 = p\sigma$ whose inverse is the desired homotopy $h$.
 \end{implyenumerate}
 
 \end{proof}
@@ -107,26 +107,9 @@ A map $f \colon X \longrightarrow Y$ is said to be a retract of a map $f' : X' \
 
 \begin{center}
     \begin{tikzcd}
-    && 
-    X' 
-    \arrow[lld] 
-    \arrow[rrd] 
-    \arrow[dd, "f'", pos = 0.3] 
+    X \arrow[rr] \arrow[dd, "f"'] \arrow[rrrr, bend left, "\id_X"] && X' \arrow[rr] \arrow[dd, "f'"] && X \arrow[dd, "f"] \\
     \\
-    X 
-    \arrow[rrrr, "\id_X"', crossing over, pos = 0.3] 
-    \arrow[dd, "f"'] 
-    &&&& 
-    X \arrow[dd, "f"] 
-    \\&& 
-    Y'
-    &&\\
-    Y 
-    \arrow[rru] 
-    \arrow[rrrr, "\id_Y"]
-    &&&& 
-    Y 
-    \arrow[llu]    
+    Y \arrow[rr] \arrow[rrrr, bend right, "\id_Y"'] && Y' \arrow[rr] && Y
     \end{tikzcd}
 \end{center}
 \end{definition*} 

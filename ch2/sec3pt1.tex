@@ -42,12 +42,12 @@ The following are equivalent for a map $f$ in $\mathbf{Top}$.
 \begin{enumerate}
     \item[(i)] $f$ is a trivial fibration.
     \item[(ii)] $\Sing f$ is a trivial fibration in $\mathbf{Simp}$.
-    \item[(iii)] $f$ has the RLP with respect to $\overset{\bullet}{\Delta(q_D)} \longhookrightarrow |\Delta(n)|$ for $n \ge 0$. 
+    \item[(iii)] $f$ has the RLP with respect to $|\overset{\bullet}{\Delta(n)}| \longhookrightarrow |\Delta(n)|$ for $n \ge 0$.
 \end{enumerate} 
 \end{lemma} 
 
 \begin{proof}
-(ii) and (ii) are equivalent by (1). As $\overset{\bullet}{\Delta(q_D)} \longhookrightarrow |\Delta(n)|$ is isomorphic in $\mathbf{Top}$ to $S^{n - 1} \subset D^n$ (where $S^{-1} = \phi$ if $n = 0$), the equivalence of (i) and (iii) becomes a standard obstruction theory argument which we omit. 
+(ii) and (iii) are equivalent by (1). As $|\overset{\bullet}{\Delta(n)}| \longhookrightarrow |\Delta(n)|$ is isomorphic in $\mathbf{Top}$ to $S^{n - 1} \subset D^n$ (where $S^{-1} = \emptyset$ if $n = 0$), the equivalence of (i) and (iii) becomes a standard obstruction theory argument which we omit.
 \end{proof} 
 
 \begin{corollary*}
@@ -141,7 +141,7 @@ The following are equivalent for a map $i \colon A \to B$.
 (ii) $\implies$ (iii). Any trivial fibration is a fibration so $i$ is a cofibration. The retract and strong deformation may be constructed by lifting in 
 \begin{equation*}
 \begin{tikzcd}
-A \arrow[rr, "\sim"] \arrow[dd, "i"]   &  & B \arrow[dd] \\
+A \arrow[rr, "\id_A"] \arrow[dd, "i"] & & A \arrow[dd] \\
                                        &  &              \\
 B \arrow[rruu, "r", dashed] \arrow[rr] &  & e           
 \end{tikzcd}
@@ -182,7 +182,7 @@ which is the dual of the mapping cylinder construction. $j$ is a strong deformat
 \end{proof} 
 
 \begin{proof}[Proof of Theorem~\ref{thm:2.3.1}]
-Axioms \ref{1.1.M0}, \ref{SM0}, and \ref{1.1.M5} are clear. Axiom \ref{1.1.M6} follows immediately from definitions and lemmas \ref{lem:2.3.1}, \ref{lem:2.3.2}, \ref{lem:2.3.4}. \ref{1.1.M6} and the corollary to Lemma~\ref{lem:2.3.2} yield \ref{SM7}. Lemma~\ref{lem:2.3.3} gives one case of \ref{1.1.M2}; to obtain the other, take $f \colon X \to Y$ and factor it $X \varrightarrow{j} X \times_Y Y^i \varrightarrow{p} Y$ where $p$ is a fibration and $j$ is a weak equivalence. Then factor $j = qi$ by Lemma~\ref{lem:2.3.3} where $i$ is a cofibration and $q$ is a trivial fibration. By \ref{1.1.M5} $i$ is a trivial cofibration hence $f = (qp)i$ is the desired factorization. This proves \ref{1.1.M2} and hence the theorem. 
+Axioms \ref{1.1.M0}, \ref{SM0}, and \ref{1.1.M5} are clear. Axiom \ref{M6} follows immediately from definitions and Lemmas \ref{lem:2.3.1}, \ref{lem:2.3.2}, \ref{lem:2.3.4}. \ref{M6} and the corollary to Lemma~\ref{lem:2.3.2} yield \ref{SM7}. Lemma~\ref{lem:2.3.3} gives one case of \ref{1.1.M2}; to obtain the other, take $f \colon X \to Y$ and factor it $X \varrightarrow{j} X \times_Y Y^I \varrightarrow{p} Y$ where $p$ is a fibration and $j$ is a weak equivalence. Then factor $j = qi$ by Lemma~\ref{lem:2.3.3} where $i$ is a cofibration and $q$ is a trivial fibration. By \ref{1.1.M5} $i$ is a trivial cofibration hence $f = (pq)i$ is the desired factorization. This proves \ref{1.1.M2} and hence the theorem.
 \end{proof} 
 Let \(\mathbf{Simp Grp}\) be the category of simplicial groups endowed with its natural simplicial structure (see \S\ref{sec:2.1}). Then \(G\otimes K\) and \(G^K\) exists if \(G\in \Ob \mathbf{Simp Grp}\) and \(K\) is a simplicial set. In fact $(G\otimes K)_q = \bigvee_{\sigma\in K_q} G_q$ with natural simplicial operations and $G^K$ is the function complex $\UHom_{\mathbf{Simp}}(K,G)$ with its natural group structure. Define the normalization of $\mathbf{Simp Grp}$ by
 \[N_q(G) = \bigcap_{i>0}\ker(d_i:G_q\longrightarrow G_{q-1})\quad \quad (=G_0\text{   if   } q=0)\]

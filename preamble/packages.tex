@@ -25,11 +25,10 @@
 \usepackage{subfiles}
 \usepackage{relsize} %% to change size of symbol, using it to make a different size of wedge in sec 2.6
 
-\usepackage[b5paper]{geometry} %page size, same as Blue Book
+\usepackage[b5paper,headheight=25pt]{geometry} %reserve two-line headers; retain the B5 text block
 \usepackage{setspace}
 
 
-\newcommand{\plscite}[1]{{\color{purple} #1}} %Changed from green to purple to stop the eye massacre
 
 \usepackage{chngcntr}
 \usepackage{ifthen}
@@ -41,13 +40,13 @@
 
 
 %%%hyperref and Friends go at the end
-\usepackage[bookmarks=true, colorlinks=true, linkcolor=blue, citecolor= red,hypertexnames=false,pdftex,
-            pdfauthor={Quillen, Dan},
+\usepackage[bookmarks=true, colorlinks=true, linkcolor=blue, citecolor= red,hypertexnames=false,
+            pdfauthor={Daniel G. Quillen},
             pdftitle={Homotopical Algebra},
             pdfsubject={Category theory},
             pdfkeywords={Homotopical Algebra, Quillen, Daniel Quillen, Quillen Homotopical Algebra, TeXromancers, Model category},
             pdfproducer={Latex with hyperref},
-            pdfcreator={pdflatexl}]{hyperref}
+            pdfcreator={LaTeX}]{hyperref}
 \usepackage[hypcap=true]{caption}
 \newcommand{\parref}[1]{\hyperref[#1]{#1}} %to ref paragraphs.
 \usepackage{xurl}

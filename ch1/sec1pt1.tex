@@ -30,9 +30,7 @@ Cofibrations are stable under composition and co-base change. Any isomorphism is
 
 \item\label{1.1.M4} The bases extension of a map which is both a fibration and a weak equivalence is a weak equivalence. The co-base extension of a map which is both a cofibration and a weak equivalence is a weak equivalence.
 
-\item\label{1.1.M5} The bases extension of a map which is both a fibration and a weak equivalence is a weak equivalence. The co-base extension of a map which is both a cofibration and a weak equivalence is a weak equivalence.
-
-\item\label{1.1.M6} Let $X\varrightarrow{f} Y\varrightarrow{g}Z$ be maps in $\cat{C}$. Then if two of the maps $f,g,$ and $gf$ are weak equivalences, so is the third. Any isomorphism is a weak equivalence.
+\item\label{1.1.M5} Let $X\varrightarrow{f} Y\varrightarrow{g}Z$ be maps in $\cat{C}$. Then if two of the maps $f,g,$ and $gf$ are weak equivalences, so is the third. Any isomorphism is a weak equivalence.
 \end{enumerate}
 \end{definition}
 \begin{examples}
@@ -124,7 +122,7 @@ and the \defemphi{codiagional} map \[\nabla_f= \id_Y+\id_Y: Y\vee_XY\varrightarr
 \end{lemma}
 
 \begin{proof}
-	Given diagram (\ref{diag:1.1.3}) use \ref{1.1.M2} to factor $\partial_0+\partial_1$ into $A\vee A \varrightarrow{\partial_0'+\partial_1'} A' \varrightarrow{\rho} \xtilde{A}$ where $\partial_0'+\partial_1'$ is a trivial cofibration and $\rho$ is a trivial fibration. By \ref{1.1.M5} \\ $\sigma'=\sigma \rho:A'\varrightarrow{}A$ is a weak equivalences so $A'$ with $\partial_0',\partial_1',$ and $\sigma'$ is a cylinder object for $A$. $h'=h\rho:A'\varrightarrow{}B$ is the desired left homotopy from $f$ to $g$.
+	Given diagram (\ref{diag:1.1.3}) use \ref{1.1.M2} to factor $\partial_0+\partial_1$ into $A\vee A \varrightarrow{\partial_0'+\partial_1'} A' \varrightarrow{\rho} \xtilde{A}$ where $\partial_0'+\partial_1'$ is a cofibration and $\rho$ is a trivial fibration. By \ref{1.1.M5} \\ $\sigma'=\sigma \rho:A'\varrightarrow{}A$ is a weak equivalence so $A'$ with $\partial_0',\partial_1',$ and $\sigma'$ is a cylinder object for $A$. $h'=h\rho:A'\varrightarrow{}B$ is the desired left homotopy from $f$ to $g$.
 \end{proof}
 
 \begin{lemma}\label{lem:1.1.2}
@@ -132,7 +130,7 @@ and the \defemphi{codiagional} map \[\nabla_f= \id_Y+\id_Y: Y\vee_XY\varrightarr
 \end{lemma}
 
 \begin{proof}
-	$\In_1:A\varrightarrow{}A\vee A$ is a commutativ by the coase change assertion in \ref{1.1.M3}, hence $\partial_0=(\partial_0+\partial_1)\In_1$ is a cofibration. $\sigma \partial_0=\id_A$ ands \ref{1.1.M5} imply that $\partial_0$ is also a weak equivalence. Similarly $\partial_1$ is a trivial cofibration.	
+	$\In_1:A\varrightarrow{}A\vee A$ is a cofibration by the cobase change assertion in \ref{1.1.M3}, hence $\partial_0=(\partial_0+\partial_1)\In_1$ is a cofibration. $\sigma \partial_0=\id_A$ and \ref{1.1.M5} imply that $\partial_0$ is also a weak equivalence. Similarly $\partial_1$ is a trivial cofibration.
 \end{proof}
 
 \begin{corollary*}[Covering Homotopy theorem]\label{cor:1.1.1} 
@@ -179,7 +177,7 @@ and the \defemphi{codiagional} map \[\nabla_f= \id_Y+\id_Y: Y\vee_XY\varrightarr
 \end{lemma}
 
 \begin{proof}
-	The relation is reflexive since if $f=g$ we may take $\xtilde{A}=A$ and $h=f$ in (\ref{diag:1.1.3}) and it is symmetric since given (\ref{diag:1.1.3}) we may interchange $\partial_0$ and $\partial_1$. Finally given $f_0,f_1,f_2\in \Hom(A,B)$ and a left homotopy $h:A\times I\varrightarrow{} B$ from $f_0$ to $f_1$ and a left homotopy $h':A\times I'\varrightarrow{}B$ from $f_0$ to $f_1$ and a left homotopy $h':A\times I'\varrightarrow{}B$ we obtain by Lemma \ref{lem:1.1.3} a left homotopy $h'':A\times I''\varrightarrow{} B$ from $f_0$ to $f_2$ by setting $h''\In_1=h$ and $h''\In_2 = h'$.
+	The relation is reflexive since if $f=g$ we may take $\xtilde{A}=A$ and $h=f$ in (\ref{diag:1.1.3}) and it is symmetric since given (\ref{diag:1.1.3}) we may interchange $\partial_0$ and $\partial_1$. Finally given $f_0,f_1,f_2\in \Hom(A,B)$ and a left homotopy $h:A\times I\varrightarrow{} B$ from $f_0$ to $f_1$ and a left homotopy $h':A\times I'\varrightarrow{}B$ from $f_1$ to $f_2$ we obtain by Lemma \ref{lem:1.1.3} a left homotopy $h'':A\times I''\varrightarrow{} B$ from $f_0$ to $f_2$ by setting $h''\In_1=h$ and $h''\In_2 = h'$.
 \end{proof}
 
 \begin{lemma}\label{lem:1.1.5}

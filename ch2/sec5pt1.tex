@@ -25,26 +25,26 @@ Finally we shall assume that $\Ho \mathbf C_{ab}$ satisfies the following two co
   \item [A.] The Adjunction map $\theta\colon A  \cong \Omega \Sigma A $ is an isomorphism for all objects $A$.
   
   \item [B.] If \[A' \varrightarrow{i} A \varrightarrow{j} A'' \varrightarrow{\delta} \Sigma A'\] is a cofibration sequence, then
-  \[\Omega\Sigma A' \varrightarrow{-i \cdot \theta^{-1}} A \varrightarrow{j} A'' \varrightarrow{\delta} \Sigma A\]
-  is a fibration sequence (Note that as $\Ho \mathbf C_{-ab}$ is additive the action\\ $F\times \Omega B \varrightarrow{m}F$ is determined by $\partial = m(0, \id ): \partial B \longrightarrow  F$ via the rule \\$m(\alpha, \lambda) = \alpha + \partial\lambda$ if $\alpha: T \longrightarrow  F$ and $\lambda:T \longrightarrow  \Omega B$). 
+  \[\Omega\Sigma A' \varrightarrow{-i \cdot \theta^{-1}} A \varrightarrow{j} A'' \varrightarrow{\delta} \Sigma A'\]
+  is a fibration sequence (Note that as $\Ho \mathbf C_{ab}$ is additive the action\\ $F\times \Omega B \varrightarrow{m}F$ is determined by $\partial = m(0, \id ): \Omega B \longrightarrow F$ via the rule \\$m(\alpha, \lambda) = \alpha + \partial\lambda$ if $\alpha: T \longrightarrow F$ and $\lambda:T \longrightarrow \Omega B$).
 \end{enumerate}
 
 These conditions hold for example if  $\mathbf C_{ab} = s \mathbf A$, where $\mathbf A$ is an abelian category with enough projectives and if $\mathbf C_{ab}$ is the model category of simplicial modules over a simplicial ring (see following section.)
 
 We define the \defemph{cohomology} groups of an object $X$ of $\Ho \mathbf C$ with coefficients an object $A$ of $\Ho \mathbf C_{ab}$ to be 
 \[ 
-  H_{M}^q(X,A) = [\mathbf L \ab (X), \Omega^{q+N}\Sigma^NA ]
+  H_{M}^q(X,A) = [\mathbf L \ab (X), \Omega^N\Sigma^{q+N}A]
 \] 
 where $N$ is an integer $\ge 0$ with $q+N\ge 0$. By (A) it does not matter what $N$ we choose. Suppose now that $\mathbf C$ is pointed. Then 
 \begin{align*}
-  H_{M}^{q} (\Sigma X, A) &= [\mathbf{L}\ab  (\Sigma X), \Omega^{q+N}\Sigma^NA] = [\Sigma \mathbf{L}\ab (X), \Omega^{q+N}\Sigma^N A]\\[0.5em]
-                          &= [\mathbf{L}\ab (X), \Omega^{q+N+1}\Sigma^N A] = H_{M}^{q+1} (X,A)
+  H_{M}^{q} (\Sigma X, A) &= [\mathbf{L}\ab (\Sigma X), \Omega^N\Sigma^{q+N}A] = [\Sigma \mathbf{L}\ab (X), \Omega^N\Sigma^{q+N}A]\\[0.5em]
+                          &= [\mathbf{L}\ab (X), \Omega^{N+1}\Sigma^{q+N}A] = H_{M}^{q-1} (X,A)
 \end{align*}
 Using this and the fact that $\mathbf{L}\ab $ preserves cofibration sequence, we find that if $X \longrightarrow  Y \longrightarrow  C,$ etc. is a cofibration sequence, then there is a long exact sequence
 \[ 
   \cdots \longrightarrow  H_{M}^{q} (C,A) \longrightarrow  H_{M}^{q} (Y,A) \longrightarrow  H_{M}^{q}(X,A) \varrightarrow{\delta } H_{M}^{q+1} (C,A) \longrightarrow   \cdots
 \] 
-From (B) it follows that if \[A'\longrightarrow A\longrightarrow A' \longrightarrow \Sigma A'\]
+From (B) it follows that if \[A'\longrightarrow A\longrightarrow A'' \longrightarrow \Sigma A'\]
 is a cofibration sequence in $\Ho \mathbf{C}_{ab}$ then there is a long exact sequence
 \[\cdots\longrightarrow  H_{M}^{q} (X,A') \longrightarrow  H_{M}^{q} (X,A) \longrightarrow  H_{M}^{q}(X,A'') \varrightarrow{\delta } H_{M}^{q+1} (X,A') \longrightarrow\cdots \]
 
@@ -83,9 +83,9 @@ the usual cohomology of $X$ with values in the abelian group $R$. Also
                  H^{q+1}(\xoverline WG,R) & q \ge 0
                \end{cases}
              \] 
-             where $WG$ is the ``classifying space'' simplicial set of $G$. Also
+             where $\xoverline WG$ is the ``classifying space'' simplicial set of $G$. Also
              \[ 
-               \pi_{q}(\mathbf{L}\ab (G)) = H_{q+1}(WG, \mathbb{Z}).
+               \pi_{q}(\mathbf{L}\ab (G)) = H_{q+1}(\xoverline WG, \mathbb{Z}).
              \] 
              These formulas are seen to hold for any simplicial group $G$ since to calculate $\mathbf{L} \ab(G)$ we may replace $G$ by a free simplicial group.
    \end{enumerate} 
@@ -95,7 +95,7 @@ the usual cohomology of $X$ with values in the abelian group $R$. Also
 We now show how these model cohomology groups compare with other kinds of cohomology. In the following $\mathbf A$ denotes a category closed under finite projective limits, $X$ is an object of $\mathbf A,$ and $A$ is an abelian group object in $\mathbf A/X.$ We consider four definitions of cohomology of $X$ with values in $A.$ 
 
 \begin{enumerate} [label=(\arabic*)\quad]
-  \item Suppose that the effective epimorphisms of $\mathbf A$ are universal effective epimorphisms (which is the case if $\mathbf A$ has sufficiently many projectives-- Cor. to Prop. \ref{eq:2.4.2}). We define a Grothendieck topology on  $\mathbf A$ (\cite{artin_grothendieck_1962}) by defining a covering of an object $Y$ to be a family consisting of a single map $U \longrightarrow  Y$ which is an effective epimorphism. The induced topology on $\mathbf{A} / X$ is coarser than the canonical topology so the representable functor $h_{A}$ is a sheaf of abelian groups; hence sheaf cohomology groups, which we shall denote by $H_{GT}^{\bullet} (X,A)$, are defined. Thus $H_{GT}^{q} (X,A) = H^q(I' (X))$ where $I'$ is an injective resolution of  $h_{A}$ in the category of abelian sheaves on $X.$ 
+  \item Suppose that the effective epimorphisms of $\mathbf A$ are universal effective epimorphisms (which is the case if $\mathbf A$ has sufficiently many projectives-- Cor. to Prop. \ref{prop:2.4.02}). We define a Grothendieck topology on $\mathbf A$ (\cite{artin_grothendieck_1962}) by defining a covering of an object $Y$ to be a family consisting of a single map $U \longrightarrow Y$ which is an effective epimorphism. The induced topology on $\mathbf{A} / X$ is coarser than the canonical topology so the representable functor $h_{A}$ is a sheaf of abelian groups; hence sheaf cohomology groups, which we shall denote by $H_{GT}^{\bullet} (X,A)$, are defined. Thus $H_{GT}^{q} (X,A) = H^q(I^\bullet (X))$ where $I^\bullet$ is an injective resolution of $h_{A}$ in the category of abelian sheaves on $X$.
 
 
     \item Suppose that there are adjoint functors 

@@ -17,9 +17,9 @@ Chapter \ref{ch:1} is an attempt to define what is meant by a ``homotopy theory'
     the existence of a path or cylinder functor; in fact the homotopy relation for maps may be recovered as follows: Call an object \defemphi{cofibrant}\index{fibrant!\indexline co} if the map $\emptyset \to X$ is a cofibration (hence in the category of simplicial groups the cofibrant objects are the free simplicial groups) and \defemphi{fibrant} if the map $X \to e$ is a fibration (hence in the category of simplicial sets the fibrant objects are the Kan complexes). Then two maps $f, g$ from a cofibrant object $A$ to a fibrant object $B$ are said to be \defemph{homotopic}\index{homotopy} if there exists a commutative diagram
     \[\tag{I}\label{diag:1.0.1}
         \begin{tikzcd}
-            A \vee A \arrow[rrdd, "i_0+i_1"] \arrow[rr, "f+g"] &  & B                                       \\
+            A \vee A \arrow[rrdd, "i_0+i_1"] \arrow[rr, "f+g"] \arrow[dd, "\id + \id"'] &  & B                                       \\
                                                                &  &                                         \\
-            A \arrow[uu, "\id + \id"]                          &  & A' \arrow[ll, "\sigma"] \arrow[uu, "h" right]
+            A                                                 &  & A' \arrow[ll, "\sigma"] \arrow[uu, "h" right]
         \end{tikzcd}
     \]
     where $\vee$ denotes direct sum, $f + g$ is the map with components $f$ and $g$, and where $\sigma$ is a weak equivalence. 

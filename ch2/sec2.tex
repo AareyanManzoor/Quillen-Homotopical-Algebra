@@ -18,7 +18,7 @@ $\overset{\bullet}{\Delta(n)}$ for $n \geq 0$ (resp. $V(n,k)$ for $0 \leq k \leq
 \begin{proposition}\label{prop:2.2.2}
     The following are equivalent for a map $f$ in $\mathbf{S}$.
     \begin{enumerate}[(i)]
-        \item $f$ has the RLP with respect to $V(n,k) \longhookrightarrow$ for $0 \leq k \leq n > 0$
+        \item $f$ has the RLP with respect to $V(n,k) \longhookrightarrow \Delta(n)$ for $0 \leq k \leq n > 0$
         \item $f$ has the RLP with respect to \[\overset{\bullet}{\Delta(n)} \times \Delta(1) \cup \Delta(n) \times \{e\} \longhookrightarrow \Delta(n) \times \Delta(1)\] for $n \geq 0$ and $e=0,1$.
         \item $f$ has the RLP with respect to \[L\times \Delta(1) \cup K\times\{e\} \longhookrightarrow K \times \Delta(1)\] for all injective maps $L \longhookrightarrow K$ in $\mathbf{S}$ and $e=0,1$.
     \end{enumerate}
@@ -37,6 +37,7 @@ Thus a fibration is a fiber map in the sense of Kan. It is easy to see that a tr
         \[\tag{1}\label{eq:2.2.1}
             \UHom(B,X) \xrightarrow{(i^*,p_*)} \UHom(A,X)\underset{\UHom(A,Y)}{\times}\UHom(B,Y)
         \]
+        is a fibration of simplicial sets, which is trivial if either $i$ or $p$ is trivial.
     \end{enumerate}
 \end{definition}
 
@@ -133,7 +134,7 @@ Propostion \ref{prop:2.2.5} shows that the simplicial homotopy relation of \\$\H
 \begin{proof}
     The assertion about $\C^{op}$ is trivial. If $A$ and $B$ are two objects of $\C/X$, we let $\UHom_{\C/X} (A,B)$ be the subcomplex of $\UHom_{\C}(A,B)$ consisting of elements $f_n$ of dimension $n$ with $(s_0^n)\circ f = s^n_0u$, where $u:A\longrightarrow X$ and $v:B\longrightarrow X$ are the structural maps. With the induced composition $\C/X$ becomes a simplicial category closed under finite limits. If $K$ is a finite simplicial set, then the object $(A\varrightarrow{u} X)\otimes K$ in $\C/X$ is the map $A\otimes K \varrightarrow{\sigma(u\otimes \id)} X$, where $\sigma:X\otimes K\longrightarrow X$ is the map corresponding to the map $K\longrightarrow \UHom(X,X)$ sending all elements of $K$ to degeneracies of $\id_X$. The objects $(A\varrightarrow{u}X)^K$ in $\C/X$ is the map $\pr_2:A^K\times_{X^K}X$, whose source is the fiber product of $u^K$ and the map $s:X\longrightarrow X^K$ corresponding to $\sigma$. Thus $\C/X$ satisfies \ref{SM0}.
     
-    A map in $\C/X$ will be called a fibration, cofibration or weak equivalence if it is so in $\C$. Axioms \ref{1.1.M2} and \ref{1.1.M5} are clear if $i:A\longrightarrow A'$ and $p:B'\longrightarrow B$ are maps in $\C/X$, then the map $\Hom_{\C/X}(A',B')\longrightarrow \UHom_{\C/X}(i,p)$ is the base extension by the structural map $\Delta(0)\longrightarrow \UHom_{\C}(A',X)$ of the map \\$\Hom_{\C}(A',B')\longrightarrow \Hom_{\C}(i,p)$. Hence \ref{SM7} holds, hence also \ref{1.1.M1}. To obtain \ref{1.1.M6} argue as follows: Supposing a map $f$ in $\C/X$ has the LLP with respect to the fibrations in $\C/X$, factor $f=pi$ where $i$ is a trivial cofibration and $p$ is a fibration $\C/X$; Then $f$ is a retract of $i$ hence is a trivial cofibration in $\C$ and hence in $\C/X$. The other cases of \ref{M6} are similar.
+    A map in $\C/X$ will be called a fibration, cofibration or weak equivalence if it is so in $\C$. Axioms \ref{1.1.M2} and \ref{1.1.M5} are clear. If $i:A\longrightarrow A'$ and $p:B'\longrightarrow B$ are maps in $\C/X$, then the map $\UHom_{\C/X}(A',B')\longrightarrow \UHom_{\C/X}(i,p)$ is the base extension by the structural map $\Delta(0)\longrightarrow \UHom_{\C}(A',X)$ of the map \\$\UHom_{\C}(A',B')\longrightarrow \UHom_{\C}(i,p)$. Hence \ref{SM7} holds, hence also \ref{1.1.M1}. To obtain \ref{M6} argue as follows: Supposing a map $f$ in $\C/X$ has the LLP with respect to the fibrations in $\C/X$, factor $f=pi$ where $i$ is a trivial cofibration and $p$ is a fibration in $\C/X$; then $f$ is a retract of $i$ hence is a trivial cofibration in $\C$ and hence in $\C/X$. The other cases of \ref{M6} are similar.
 \end{proof}
 
 

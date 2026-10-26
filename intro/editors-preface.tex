@@ -18,4 +18,66 @@ We also added a small index. This is minimalist as of now, if the reader feels m
 We changed some notations, particularly for the name of categories. (sets) is now $\mathbf{Set}$ for example. Underlining is also a relic of the typewritter era, so those were replaced with bolded text, same for category names. For example category $\xunderline{C}$ in the original book is now $\mathbf{C}$.
 
 All diagrams are redrawn in tikz or tikzcd.
+
+\section*{Corrections to the text}
+The transcription has been checked against the Springer first edition (1967,
+Lecture Notes in Mathematics 43). Missing hypotheses, formulas, diagram labels,
+and references have been restored; in particular M0--M5 are the model-category
+axioms of Chapter I, \S1, while M6 is the additional closed-model axiom of
+Chapter I, \S5. The notation changes described above are retained.
+
+Some errors already occur in the first edition. The following are editorial
+corrections, rather than restorations of the original printing (page numbers
+here are chapter-local).
+\begin{itemize}
+  \item In I.1.6, the cylinder factorization uses a cofibration followed by a
+  trivial fibration, not two trivial maps. In I.1.10 the target of composition
+  is $\pi^r(A,C)$; in I.1.14 the fibrant replacement is a trivial cofibration.
+  References there and in I.1.12 to the homotopy-comparison lemma now point to
+  Lemma~\ref{lem:1.1.5}, not Lemma~\ref{lem:1.1.4}.
+  \item In I.2.8 the homotopy has domain $A\times I$. In I.3.8 exactness uses
+  $\partial_*(\Omega p)_*=0$, and in I.3.9 the coaction boundary is
+  $(0+\id_{\Sigma A})n$. In I.5.4 the lifted homotopy has target $X$,
+  and its boundary in the lifting square is $q^{-1}\cdot tpq$.
+  The retract diagram in I.5.5 has been given the standard arrow-category directions.
+  \item In I.3.16 the Toda formula uses $X$ and $E$, as required by
+  $A\to X\to E\to B$; $\alpha^{-1}$ is interpreted through the adjunction
+  $[A,\Omega B]\simeq[\Sigma A,B]$.
+  \item In II.3.13 the simplicial-group homotopy is defined on
+  $G\otimes\Delta(1)$ and its simplex with $i+1$ zeroes has $q-i$ ones.
+  The factorization reference is to Lemma~\ref{lem:2.3.3}.
+  \item In II.5.2--5.7 cohomological degree $q$ is represented by
+  $\Omega^N\Sigma^{q+N}A$, not $\Omega^{q+N}\Sigma^N A$.
+  Accordingly $H_M^q(\Sigma X,A)=H_M^{q-1}(X,A)$. This agrees with
+  the chain-complex calculation in the proof of Theorem~5:
+  $NK(A,q)=A[q]$ (see also the
+  \href{https://stacks.math.columbia.edu/tag/0199}{Stacks Project, Lemma 14.23.5}).
+  In II.5.10 the sheaf-to-presheaf functor is on abelian sheaves and the
+  covariant mapping-space map follows $Z_\bullet\to Y_\bullet$.
+  In II.5.11 the cohomology vanishing is for $q>0$, and in II.5.13
+  the projective object is a retract of $FSP$, not $FSF$.
+  \item In II.6.2 the last internal-Hom target is $Y$.
+  In II.6.7 the symmetry of the shuffle product reads
+  $\tau(x\wedge y)=(-1)^{pq}(y\wedge x)$.
+  In Theorem~6, $X$ is a right module and $Y$ a left module,
+  and the graded Tor expression uses $\pi X,\pi Y$ throughout.
+  In II.6.14 the factor $i$ is a trivial cofibration.
+  The degree-zero sphere module is explicitly $RS^0=R$; in II.6.12
+  suspension of a graded $S$-module is again an $S$-module.
+  In II.6.17 the group-homology tensor product is derived.
+\end{itemize}
+
+\section*{Compiling this edition}
+The default accessible edition requires LuaLaTeX, the genuine
+\href{https://opendyslexic.org/}{OpenDyslexic} font family (including bold and
+italic weights), and the XITS Math font supplied by TeX Live. Install the
+OpenDyslexic fonts under their family name \texttt{OpenDyslexic}; no substitute
+font is selected. Bold mathematical symbols use XITS Math rather than the text
+font, and the page geometry reserves space for two-line running heads.
+A complete build also requires Biber compatible with the
+installed \texttt{biblatex}, and MakeIndex. From the repository directory run
+\begin{quote}
+\texttt{latexmk -lualatex -outdir=build main.tex}
+\end{quote}
+with these programs on \texttt{PATH}; the final PDF is \texttt{build/main.pdf}.
 \end{document}
